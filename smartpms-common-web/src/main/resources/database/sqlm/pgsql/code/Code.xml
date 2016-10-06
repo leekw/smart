@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "src/org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd"> 
+<mapper namespace="code">
+	<update id="mergeCode" parameterType="CommonCode">
+	with t_code as (
+		select #{commonCodeType} as code_type_id, 
+			#{commonCode} as code_id, 
+			#{commonCodeName} as code_name, 
+			#{sortNo} as sort_no
+	),
+	update_code as (
+	update intg_code_info a
+	set a.code_name = t_code.code_name,
+	    a.sort_no = t_code.sort_no
+	from t_code where a.code_type_id = t_code.code_type_id and a.code_id = t_code.code_id
+	)
+	insert into intg_code_info (code_type_id, code_id, code_name, sort_no)
+	select t_code.code_type_id, 
+	       t_code.code_id,
+	       t_code.code_name,
+	       t_code.sort_no
+	from t_code where not exists (select 1 from intg_code_info a where a.code_type_id = t_code.code_type_id and a.code_id = t_code.code_id)
+	</update>
+	
+	<select id="selectCodeList" parameterType="CommonCode" resultType="CommonCode">
+	SELECT code_type_id as commonCodeType,
+	       code_id as commonCode,
+	       code_name as commonCodeName,
+	       sort_no as sortNo,
+	       ref_value1 as refValue1,
+	       ref_value2 as refValue2
+	FROM intg_code_info
+	WHERE 1=1
+	<if test="commonCodeType != null">
+	AND code_type_id = #{commonCodeType}
+	</if>
+	<if test="refValue1 != null">
+	and ref_value1 = #{refValue1}
+	</if>
+	<if test="refValue2 != null">
+	and ref_value2 = #{refValue2}
+	</if>
+	ORDER BY code_type_id, sort_no
+	</select>
+	
+</mapper>
