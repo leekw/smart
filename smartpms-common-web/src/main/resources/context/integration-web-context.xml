@@ -34,7 +34,7 @@
 		
 	<!-- ################################## property setting ################################################## -->	
     
-    <import resource="classpath*:context/integration-core-context.xml"/>
+    <import resource="classpath*:context/smart-core-context.xml"/>
 	
    <!--  <context:component-scan base-package="net.smart.common.web"/> -->
    

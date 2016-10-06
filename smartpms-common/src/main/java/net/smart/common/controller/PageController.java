@@ -9,12 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import net.smart.common.domain.IntUser;
 import net.smart.common.domain.UserDetail;
-import net.smart.common.service.IntegrationCommonService;
-import net.smart.common.support.util.IntegrationHttpSessionCollector;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
@@ -27,25 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class PageController {
-	
-	private static Logger logger = LoggerFactory.getLogger(PageController.class);
-	
-	@Autowired
-	private IntegrationCommonService integrationCommonService;
-	
-	private enum CodeValue {
-		CATEGORY("_category"),
-		UI("_ui"),
-		VIEW("view");
-		private String value;
-		private CodeValue(String value) {
-			this.value = value;
-		}
-		public String getValue() {
-			return value;
-		}
-	}
+public class PageController extends AbstractPageController {
 	
 	@RequestMapping(value = "/{category}/{ui}/view.do", method = RequestMethod.GET)
 	public ModelAndView movePage(@PathVariable("category") String category, 
@@ -118,6 +95,7 @@ public class PageController {
 		}
 		request.setAttribute(CodeValue.CATEGORY.getValue(), category);
 		request.setAttribute(CodeValue.UI.getValue(), ui);
+		super.setPageBasedInfo(modelAndView);
 		
 		return modelAndView;
 	}
@@ -125,12 +103,14 @@ public class PageController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public ModelAndView loginPage(ModelAndView modelAndView) {
 		modelAndView.setViewName("login");
+		super.setPageBasedInfo(modelAndView);
 		return modelAndView;
 	}
 	 
 	@RequestMapping(value = "/index.do", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView modelAndView) {
 		modelAndView.setViewName("index");
+		super.setPageBasedInfo(modelAndView);
 		return modelAndView;
 	}
 	
@@ -145,21 +125,7 @@ public class PageController {
 			}
 		}
 		modelAndView.setViewName("loginFail");
-		return modelAndView;
-	}
-	
-	
-	@RequestMapping(value = "/wait.do", method = RequestMethod.GET)
-	public ModelAndView connectionWait(HttpServletRequest request) {		
-		ModelAndView modelAndView  = new ModelAndView();
-		
-		Map<String, HttpSession> sessions = IntegrationHttpSessionCollector.getConnectionSession();
-		
-		int limit = integrationCommonService.getLimitCount();
-		
-		modelAndView.setViewName("wait");
-		request.setAttribute("maxConnection", limit + "");
-		request.setAttribute("curConnection", sessions.size() + "");
+		super.setPageBasedInfo(modelAndView);
 		return modelAndView;
 	}
 

@@ -27,7 +27,7 @@
         });
 
         function _onWindowClick($evt) {
-        	alert($evt);
+//        	alert($evt);
           if (!baUtil.isDescendant(el[0], $evt.target) &&
               !$evt.originalEvent.$sidebarEventProcessed &&
               !baSidebarService.isMenuCollapsed() &&

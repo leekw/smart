@@ -12,7 +12,6 @@
     <security:http pattern="/ext/**" security="none"/>
     <security:http pattern="/angular/**" security="none"/>
     <security:http pattern="/index.html" security="none"/>
-    <!-- <security:http pattern="/index.do" security="none"/> -->
     <security:http pattern="/etc/cutover-min.html" security="none"/>
     <security:http pattern="/login.html" security="none"/>
     <security:http pattern="/loginFail.do" security="none"/>
@@ -46,34 +45,6 @@
 	<security:http pattern="/svn/file/view.do" security="none"/>
 	<security:http pattern="/etc/project-scheduler.html" security="none"/>
 	<security:http pattern="/sr/excel/download.do" security="none"/>
-	
-	
-	
-<!-- 	<security:http pattern="/cutover/gantt/get.json" security="none"/>
-	<security:http pattern="/cutover/prejob/modify.json" security="none"/>
-	<security:http pattern="/cutover/jira/sync.json" security="none"/>
-	<security:http pattern="/cutover/excel/download.do" security="none"/> -->
-	
-	<!-- <security:http pattern="/etc/gantt.html" security="none"/>
-	<security:http pattern="/etc/milestone.html" security="none"/>
-	<security:http pattern="/etc/project.html" security="none"/>
-	<security:http pattern="/task/gantt/get.json" security="none"/>
-	<security:http pattern="/task/gantt/add.json" security="none"/>
-	<security:http pattern="/task/gantt/modify.json" security="none"/>
-	<security:http pattern="/task/gantt/remove.json" security="none"/>
-	<security:http pattern="/task/link/add.json" security="none"/>
-	<security:http pattern="/task/link/remove.json" security="none"/>
-	
-	<security:http pattern="/resource/check/modify.json" security="none"/>
-	<security:http pattern="/resource/complete/modify.json" security="none"/> -->
-	
-	
-	<!-- <security:http pattern="/cutover/dashboard/info/get.json" security="none"/>
-	<security:http pattern="/cutover/dashboard/chart/get.json" security="none"/>
-	<security:http pattern="/cutover/dashboard/status/get.json" security="none"/>
-	<security:http pattern="/cutover/main/list/get.json" security="none"/>
-	<security:http pattern="/cutover/main/assignready/get.json" security="none"/>
-	<security:http pattern="/cutover/task/assign.json" security="none"/> -->
 	
    
     <!-- Security Annotations activation -->
