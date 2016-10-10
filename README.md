@@ -14,6 +14,7 @@
 		 
 	 4. smartpms-common-web
 		 - project 의 공통 웹 모듈로 배포될 대상의 정적인 정보(공통 js, css 등) 및 공통 프레임 영역의 웹 기능을 정의(작업중)
+		 - context path : /smart
 		 
 	 5. smartpms-web
 		 - project management system의 화면기능을 담고 있는 js 및 html을 정의(작업중)
