@@ -397,7 +397,27 @@
 		  <version>3.1</version> 
         </dependency>
          
-        <dependency>
+        
+        <!-- excel parsing LIB -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		<dependency>
         	<groupId>com.atlassian.crowd</groupId> 
 			<artifactId>crowd-api</artifactId> 
 			<version>2.3.8</version>
@@ -473,25 +493,6 @@
 			<version>2.3.8</version>
         </dependency>
         
-        <!-- excel parsing LIB -->
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.9</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.9</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml-schemas</artifactId>
-			<version>3.9</version>
-		</dependency>
-        
         
         <!-- jdbc -->
         <dependency>
@@ -514,6 +515,42 @@
 		
         
 	</dependencies>
+	<repositories>
+	    <repository> 
+	        <id>public</id>
+	        <url>http://172.20.10.2:8081/nexus/content/groups/public</url>
+	        <releases><enabled>true</enabled></releases>
+	        <snapshots><enabled>true</enabled></snapshots>
+	    </repository>
+		<repository> 
+	        <id>thirdparty</id>
+	        <url>http://172.20.10.2:8081/nexus/content/repositories/thirdparty</url>
+	        <releases><enabled>true</enabled></releases>
+	        <snapshots><enabled>true</enabled></snapshots>
+	    </repository>    
+	</repositories>
+	  
+	<pluginRepositories>
+	    <pluginRepository>
+	        <id>central</id>
+	        <url>http://172.20.10.2:8081/nexus/content/groups/public</url>
+	        <releases><enabled>true</enabled></releases>
+	        <snapshots><enabled>true</enabled></snapshots>
+	    </pluginRepository>
+	</pluginRepositories>
+		
+	<distributionManagement>  
+	    <!-- use the following if you're not using a snapshot version. -->  
+	    <repository>  
+	      <id>Releases</id>  
+	      <url>http://172.20.10.2:8081/nexus/content/repositories/releases/</url>  
+	    </repository>  
+	    <!-- use the following if you ARE using a snapshot version. -->  
+	    <snapshotRepository>  
+	      <id>Snapshots</id>  
+	      <url>http://172.20.10.2:8081/nexus/content/repositories/snapshots/</url>  
+	    </snapshotRepository>  
+	  </distributionManagement>
     <build>
         <plugins>
             <plugin>

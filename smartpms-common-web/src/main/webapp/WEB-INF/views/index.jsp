@@ -11,6 +11,7 @@
   <title>${sysTitle}</title>
   <base href="${sysContext}/angular/">
 
+
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
 
   <link rel="icon" type="image/png" sizes="16x16" href="${sysContext}/angular/assets/img/favicon-16x16.png?version=${resVersion}">
@@ -47,6 +48,7 @@
   <!-- endinject -->
   <script type="text/javascript">
   var G_TOKEN = "${_csrf.token}";
+  var G_PATH = "${sysContext}";
   </script>
   <!-- endbuild -->
 </head>

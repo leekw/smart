@@ -20,6 +20,16 @@
       var menuTopValue = 66;
       $scope.hoverElemTop = $event.currentTarget.getBoundingClientRect().top - menuTopValue;
     };
+    
+    $scope.menuToggle = function($event, menu, $http) {
+    	if (menu.subMenu == null || menu.subMenu.length == 0) {
+    		
+    		menu.subMenu.push({
+    			title : 'test'
+    		});
+    		alert(menu.subMenu);
+    	}
+    };
 
     $scope.$on('$stateChangeSuccess', function () {
       if (baSidebarService.canSidebarBeHidden()) {

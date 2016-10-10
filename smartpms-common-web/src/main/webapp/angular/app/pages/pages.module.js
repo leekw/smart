@@ -10,6 +10,7 @@
     'ui.router',
 
     'BlurAdmin.pages.ui',
+    'BlurAdmin.pages.ui.notifications'
   ])
       .provider('refs', ReferencesProvider).config(routeConfig).controller(AppController).run(['$rootScope', '$http', 'refs', function($rootScope, $http, refs) {
     	  let baSidebarServiceProvider = refs.get('baSidebarServiceProvider');
@@ -20,20 +21,32 @@
 	    	  };
 	    	  $http({
 	    		method: 'POST', //방식
-	    		url: '/int/resource/list/get.json', /* 통신할 URL */
+	    		url: G_PATH + '/resource/list/get.json', /* 통신할 URL */
 	    		data: dataObject, /* 파라메터로 보낼 데이터 */
 	    		headers: {'Content-Type': 'application/json; charset=utf-8', 'X-CSRF-Token' : G_TOKEN } //헤더
 	    	})
 	    	.success(function(data, status, headers, config) {
 	    		if( data ) {
-	    			/* 성공적으로 결과 데이터가 넘어 왔을 때 처리 */
-	    			for (var i=0;i < data.resources.length;i++) {
-	    				var menu = data.resources[i].resourceName;
-	    				baSidebarServiceProvider.addStaticItem({
-	  	    		      title: menu,
-	  	    		      icon: 'ion-android-laptop',
-	  	    		      subMenu: []
-	    				});
+	    			if (data.error != null) {
+	    				if (data.error.code == "NOTLOGIN" || data.error.code == "NOTAUTH") {
+	    					if (parent != null) {
+	    						parent.document.location.href = G_PATH + '/login.do';
+	    					} else {
+	    						document.location.href = G_PATH + '/login.do';
+	    					}
+	    				}
+	    			} else {
+		    			/* 성공적으로 결과 데이터가 넘어 왔을 때 처리 */
+		    			for (var i=0;i < data.resources.length;i++) {
+		    				var menu = data.resources[i].resourceName;
+		    				var menuId = data.resources[i].resourceId;
+		    				baSidebarServiceProvider.addStaticItem({
+		  	    		      title: menu,
+		  	    		      menuId : menuId,
+		  	    		      icon: 'ion-android-laptop',
+		  	    		      subMenu: []
+		    				});
+		    			}
 	    			}
 	    			
 //	    			baSidebarServiceProvider.addStaticItem({
