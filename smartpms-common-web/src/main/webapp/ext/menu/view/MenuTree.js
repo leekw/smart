@@ -29,7 +29,7 @@ Ext.define('Ext.menu.view.MenuTree', {
 					var temp = treeData[i];
 					sendData.push({resourceId : temp.data.resourceId, parentResourceId: temp.data.parentResourceId, sortNo : i});
 				}
-				var url = '/int/resource/modify.json';
+				var url = G_PATH + '/resource/modify.json';
 				Ext.Ajax.request({
 		    	    url: url,
 		    	    method: 'POST',
@@ -84,7 +84,7 @@ var ContextMenu = {
 	_remove : function(btn) {
 		if (btn == "yes") {
 			var formData = {resourceId : parentId };
-			var url = '/int/resource/remove.json';
+			var url = G_PATH + '/resource/remove.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',
@@ -119,7 +119,7 @@ var ContextMenu = {
 
 	},
 	_openMenuCheck : function(selectedData, isForce) {
-		var url = '/int/resource/check/modify.json';
+		var url = G_PATH + '/resource/check/modify.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',
@@ -264,7 +264,7 @@ var ContextMenu = {
 				handler: function() {
 					var form = Ext.getCmp('menu-form');
 					var formData = form.getForm().getValues();
-					var url = '/int/resource/content/modify.json';
+					var url = G_PATH + '/resource/content/modify.json';
 					Ext.Ajax.request({
 			    	    url: url,
 			    	    method: 'POST',
@@ -291,7 +291,7 @@ var ContextMenu = {
 				text : '취소',
 				ui : 'gray',
 				handler: function() {
-					var url = '/int/resource/complete/modify.json';
+					var url = G_PATH + '/resource/complete/modify.json';
 					Ext.Ajax.request({
 			    	    url: url,
 			    	    method: 'POST',
@@ -429,7 +429,7 @@ var ContextMenu = {
 					handler: function() {
 						var form = Ext.getCmp('menu-form');
 						var formData = form.getForm().getValues();
-						var url = '/int/resource/add.json';
+						var url = G_PATH + '/resource/add.json';
 						Ext.Ajax.request({
 				    	    url: url,
 				    	    method: 'POST',
@@ -507,7 +507,7 @@ var FileUpload = {
 	    			    		var frm = object.up("form").getForm();
 	    			    		if (frm.isValid()) {
 	    			    			frm.submit({
-	    			    				url : '/int/file/upload.file',
+	    			    				url : G_PATH + '/file/upload.file',
 	    			    				success : function(ft, res) {
 	    			    					var jsonResult = Ext.JSON.decode(res.response.responseText);
 	    			    					var grid = Ext.getCmp('menu-file-grid');
@@ -575,7 +575,7 @@ var FileUpload = {
 				}
 				data.push(rec.getData());
 			}
-			var url = '/int/file/add.json';
+			var url = G_PATH + '/file/add.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',

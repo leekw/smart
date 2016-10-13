@@ -4,7 +4,7 @@ Ext.define('Ext.qualitytest.store.ChangeBarChart', {
     autoDestroy: false,
     proxy: {
         type: 'ajax',
-        url: '/int/quality/test/change/chart/get.json',
+        url: G_PATH + '/quality/test/change/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

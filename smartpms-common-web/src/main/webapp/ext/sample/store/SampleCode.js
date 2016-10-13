@@ -4,7 +4,7 @@ Ext.define('Ext.sample.store.SampleCode', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/sample/code/category/list/get.json',
+        url: G_PATH + '/sample/code/category/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

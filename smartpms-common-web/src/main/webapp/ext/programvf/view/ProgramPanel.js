@@ -29,7 +29,7 @@ var ValidAction = {
         	};
         	
         	Ext.Ajax.request({
-        	    url: '/int/changerequest/file/validate.json',
+        	    url: G_PATH + '/changerequest/file/validate.json',
         	    method: 'POST',
         	    jsonData: Ext.encode(param),
         	    success: function(response){
@@ -65,7 +65,7 @@ var ValidAction = {
        		jiraId : jiraId
        	};
        	Ext.Ajax.request({
-    	    url: '/int/changerequest/summary/get.json',
+    	    url: G_PATH + '/changerequest/summary/get.json',
     	    method: 'POST',
     	    jsonData: Ext.encode(param),
     	    success: function(response){
@@ -188,7 +188,7 @@ Ext.define('Ext.programvf.view.ProgramPanel', {
 											    		var frm = object.up("form").getForm();
 											    		if (frm.isValid()) {
 											    			frm.submit({
-											    				url : '/int/file/upload.file',
+											    				url : G_PATH + '/file/upload.file',
 											    				success : function(ft, res) {
 											    					var jsonResult = Ext.JSON.decode(res.response.responseText);
 											    					win.close();

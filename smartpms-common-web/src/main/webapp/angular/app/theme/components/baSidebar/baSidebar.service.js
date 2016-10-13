@@ -18,6 +18,10 @@
 
       function _factory() {
         var isMenuCollapsed = shouldMenuBeCollapsed();
+        
+        this.addSubMenu = function(parent) {
+            alert($state);
+        };
 
         this.getMenuItems = function() {
           var states = defineMenuItemStates();

@@ -199,7 +199,7 @@ var GridAction = {
         	var recs = sm.getSelection()[0];
         	var params = [];
         	params.push({boardNo : recs.getData().boardNo, boardId : recs.getData().boardId});
-			var url = '/int/board/remove.json';
+			var url = G_PATH + '/board/remove.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',

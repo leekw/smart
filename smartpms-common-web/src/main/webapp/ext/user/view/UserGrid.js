@@ -114,7 +114,7 @@ var UserHandler = {
 	_modifyRoles : function(_userId, _roles) {
 		var param = {userId : _userId, roles : _roles};
 		var useGrid = Ext.getCmp('user-grid');
-		var url = '/int/user/role/modify.json';
+		var url = G_PATH + '/user/role/modify.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',
@@ -136,7 +136,7 @@ var UserHandler = {
 	_accessUser : function(_userId, _checked) {
 		var useGrid = Ext.getCmp('user-grid');
 		var param = {userId:_userId, accessYn: (_checked ? 'Y' : 'N')};
-		var url = '/int/user/access/modify.json';
+		var url = G_PATH + '/user/access/modify.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',

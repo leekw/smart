@@ -23,7 +23,7 @@ Ext.define('Ext.nmenu.view.MenuPanel', {
 	     		    		Ext.Msg.alert('Info', '잠금해제할 대상을 선택하십시오.');
 	     		    		return false;
 	     		    	}
-	     		    	var url = '/int/resource/check/modify.json';
+	     		    	var url = G_PATH + '/resource/check/modify.json';
 		     		   	Ext.Ajax.request({
 		     		       url: url,
 		     		       method: 'POST',
@@ -105,7 +105,7 @@ Ext.define('Ext.nmenu.view.MenuPanel', {
 	     		    		if (btn == 'yes') {
 	     		    			if (selectMenu != null) {
 		     		    			var formData = {resourceId : selectMenu.data.id };
-			     		   			var url = '/int/resource/remove.json';
+			     		   			var url = G_PATH + '/resource/remove.json';
 			     		   			Ext.Ajax.request({
 			     		   	    	    url: url,
 			     		   	    	    method: 'POST',

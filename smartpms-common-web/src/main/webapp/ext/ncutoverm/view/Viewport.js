@@ -48,7 +48,7 @@ Ext.define('Ext.ncutoverm.view.Viewport', {
     listeners : {
     	beforerender : function() {
 			Ext.Ajax.request({
-	    	    url: '/int/cutover/dashboard/info/get.json',
+	    	    url: G_PATH + '/cutover/dashboard/info/get.json',
 	    	    method: 'POST',
 	    	    jsonData: Ext.encode({}),
 	    	    success: function(response){
@@ -102,7 +102,7 @@ var DashboardBind = {
 	_reload : function() {
 		Ext.getBody().mask("Processing...");
 		Ext.Ajax.request({
-    	    url: '/int/cutover/dashboard/info/get.json',
+    	    url: G_PATH + '/cutover/dashboard/info/get.json',
     	    method: 'POST',
     	    jsonData: Ext.encode({}),
     	    success: function(response){

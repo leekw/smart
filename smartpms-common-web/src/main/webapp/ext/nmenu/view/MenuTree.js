@@ -141,12 +141,12 @@ Ext.define('Ext.nmenu.view.MenuTree', {
             		if (e.record.data.resourceId == null || e.record.data.resourceId == '') {
 	                	params = {resourceName: e.record.data.text, parentResourceId : e.record.data.parentResourceId
 	                			, url: e.record.data.url, resourceTypeCode: e.record.data.resourceTypeCode , resourceContent : cotnent, mainResourceYn : e.record.data.mainResource ? 'Y' : 'N'};
-	                	url = '/int/resource/add.json';
+	                	url = G_PATH + '/resource/add.json';
 	                	isModify = false;
             		} else {
             			params = {resourceId : e.record.data.resourceId, resourceName: e.record.data.text, parentResourceId : e.record.data.parentResourceId
             					, url: e.record.data.url, resourceTypeCode: e.record.data.resourceTypeCode, resourceContent : cotnent, mainResourceYn : e.record.data.mainResource ? 'Y' : 'N'};
-	                	url = '/int/resource/content/modify.json';
+	                	url = G_PATH + '/resource/content/modify.json';
 	                	isModify = true;
             		}
         			Ext.Ajax.request({
@@ -172,7 +172,7 @@ Ext.define('Ext.nmenu.view.MenuTree', {
         			var content = Ext.getCmp('resourceContent');
         			content.setReadOnly(true);
         			if (isModify) {
-        				var url = '/int/resource/complete/modify.json';
+        				var url = G_PATH + '/resource/complete/modify.json';
 						Ext.Ajax.request({
 				    	    url: url,
 				    	    method: 'POST',
@@ -190,7 +190,7 @@ Ext.define('Ext.nmenu.view.MenuTree', {
         			content.setReadOnly(true);
         			
         			if (e.record.data.resourceId != null && e.record.data.resourceId != '') {
-	        			var url = '/int/resource/complete/modify.json';
+	        			var url = G_PATH + '/resource/complete/modify.json';
 						Ext.Ajax.request({
 				    	    url: url,
 				    	    method: 'POST',
@@ -234,7 +234,7 @@ Ext.define('Ext.nmenu.view.MenuTree', {
 					var temp = treeData[i];
 					sendData.push({resourceId : temp.data.resourceId, parentResourceId: temp.data.parentResourceId, sortNo : i});
 				}
-				var url = '/int/resource/modify.json';
+				var url = G_PATH + '/resource/modify.json';
 				Ext.Ajax.request({
 		    	    url: url,
 		    	    method: 'POST',

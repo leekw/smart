@@ -1001,7 +1001,7 @@ var DataAction = {
 		types[3] = 'BOC';
 		types[4] = 'BO';
 		Ext.Ajax.request({
-    	    url: '/int/quality/test/summary/get.json',
+    	    url: G_PATH + '/quality/test/summary/get.json',
     	    method: 'POST',
     	    jsonData: Ext.encode(params),
     	    success: function(response){

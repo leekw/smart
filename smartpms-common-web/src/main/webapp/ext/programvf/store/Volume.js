@@ -5,7 +5,7 @@ Ext.define('Ext.programvf.store.Volume', {
     groupField: 'developer',
     proxy: {
         type: 'ajax',
-        url: '/int/changerequest/volume/get.json',
+        url: G_PATH + '/changerequest/volume/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

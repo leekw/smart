@@ -9,7 +9,7 @@ Ext.define('Ext.qualityhist.store.DeveloperWin', {
     },
     proxy: {
         type: 'ajax',
-        url: '/int/quality/developer/get.json',
+        url: G_PATH + '/quality/developer/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

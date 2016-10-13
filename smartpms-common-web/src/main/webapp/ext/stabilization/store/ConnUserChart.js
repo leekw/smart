@@ -4,7 +4,7 @@ Ext.define('Ext.stabilization.store.ConnUserChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/connuser/chart/get.json',
+        url: G_PATH + '/connuser/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

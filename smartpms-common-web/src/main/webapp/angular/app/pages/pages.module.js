@@ -48,10 +48,6 @@
 		    				});
 		    			}
 	    			}
-	    			
-//	    			baSidebarServiceProvider.addStaticItem({
-//	    		      title: 'Etc Page',
-//	    		      icon: 'ion-document',
 	    		}
 	    		else {
 	    			/* 통신한 URL에서 데이터가 넘어오지 않았을 때 처리 */
@@ -67,20 +63,19 @@
 	
 	function ReferencesProvider() {
 	    this.$get = function () {
-	        return {
-	            get: function (name) {
-	              return refs[name];
-	        }
-	    };
-	};
+		        return {
+		            get: function (name) {
+		              return refs[name];
+		        }
+		    };
+		};
 	
-	this.injectRef = function (name, ref) {
+		this.injectRef = function (name, ref) {
 	        refs[name] = ref;
 	    };
 	}
   
   function AppController($http) {
-	  
   }
 
   /** @ngInject */

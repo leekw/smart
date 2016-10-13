@@ -9,7 +9,7 @@ Ext.define('Ext.qainterfacesvc.store.QaInterfaceSummary', {
     },
     proxy: {
         type: 'ajax',
-        url: '/int/quality/interface/summary/get.json',
+        url: G_PATH + '/quality/interface/summary/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -3,7 +3,7 @@ Ext.define('Ext.menu.store.MenuTree', {
 	model : 'Ext.menu.model.MenuTree',
 	proxy : {
 		type: 'ajax',
-        url: '/int/resource/list/get.json',
+        url: G_PATH + '/resource/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

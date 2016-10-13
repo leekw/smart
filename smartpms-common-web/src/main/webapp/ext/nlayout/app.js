@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.nlayout',
     
-    appFolder:'/int/ext/nlayout',
+    appFolder: G_PATH + '/ext/nlayout',
     
     extend: 'Ext.nlayout.Application',
 

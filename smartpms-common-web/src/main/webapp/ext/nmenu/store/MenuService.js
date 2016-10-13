@@ -5,7 +5,7 @@ Ext.define('Ext.nmenu.store.MenuService', {
     proxy: {
         type: 'ajax',
         enablePaging : true,
-        url: '/int/resource/service/list/get.json',
+        url: G_PATH + '/resource/service/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

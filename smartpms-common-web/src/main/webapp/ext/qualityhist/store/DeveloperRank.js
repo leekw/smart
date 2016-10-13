@@ -4,7 +4,7 @@ Ext.define('Ext.qualityhist.store.DeveloperRank', {
     autoDestroy: false,
     proxy: {
         type: 'ajax',
-        url: '/int/quality/developer/top/get.json',
+        url: G_PATH + '/quality/developer/top/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

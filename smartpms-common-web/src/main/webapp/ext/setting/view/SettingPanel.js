@@ -177,7 +177,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -201,7 +201,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -225,7 +225,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -249,7 +249,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -273,7 +273,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -300,7 +300,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -324,7 +324,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -348,7 +348,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -372,7 +372,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -396,7 +396,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 						    	        	
 						    	        	
 //						    	        	var iframe = document.getElementById("excel-down-iframe");
-						    	    		var downUrl = '/int/jira/sr/excel/download.do?project=' + project 
+						    	    		var downUrl = G_PATH + '/jira/sr/excel/download.do?project=' + project 
 						    	    												 + '&issueTypeId=' + issueTypeId
 						    	    												 + '&issueTypeName=' + issueTypeName;
 						    	        	
@@ -437,7 +437,7 @@ Ext.define('Ext.setting.view.SettingPanel', {
 var ProjectInfo = {
 	_get : function() {
 		Ext.Ajax.request({
-			url: '/int/project/status/get.json',
+			url: G_PATH + '/project/status/get.json',
 			method : 'POST',
 			headers : {'Content-Type' : 'application/json'},
 			params : (Ext.JSON.encode({})),
@@ -468,7 +468,7 @@ var ProjectInfo = {
 		});
 	},
 	_apply : function(data) {
-		var url = '/int/project/status/modify.json';
+		var url = G_PATH + '/project/status/modify.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',

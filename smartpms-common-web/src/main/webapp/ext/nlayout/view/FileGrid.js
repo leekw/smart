@@ -65,7 +65,7 @@ Ext.define('Ext.nlayout.view.FileGrid' ,{
             		var iframe = Ext.getBody().createChild({
                 		tag : 'iframe',
                 		cls : 'x-hidden',
-                		src : '/int/file/download.do?fileNo=' + encodeURIComponent(data.fileNo) + '&filePath=' + encodeURIComponent(data.filePath),
+                		src : G_PATH + '/file/download.do?fileNo=' + encodeURIComponent(data.fileNo) + '&filePath=' + encodeURIComponent(data.filePath),
                 		onload : 'Ext.getBody().unmask(); var t = Ext.get(this); t.remove.defer(1000, t);'
                 	});
             		

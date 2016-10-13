@@ -1,4 +1,4 @@
-Ext.Loader.loadScript({url:'/int/ext/notice/controller/NoticeCore.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/notice/controller/NoticeCore.js'});
 Ext.define('Ext.notice.controller.Notice', {
     extend: 'Ext.app.Controller',
     stores: ['Notice', 'Mail'],
@@ -162,7 +162,7 @@ Ext.define('Ext.notice.controller.Notice', {
     },
     openNoticePopupByForm : function() {
     	var formData = this.getNoticeForm().getValues();
-    	var url = '/int/notice/publish.json';
+    	var url = G_PATH + '/notice/publish.json';
     	var data = {noticeId:formData.noticeId};
     	Ext.Ajax.request({
 	        url: url,
@@ -182,7 +182,7 @@ Ext.define('Ext.notice.controller.Notice', {
     openNoticePopup : function(grid, record, index) {
     	var store = this.getNoticeGrid().getStore();
     	var m = store.getAt(index);
-    	var url = '/int/notice/publish.json';
+    	var url = G_PATH + '/notice/publish.json';
     	var data = {noticeId:m.get('noticeId')};
     	if (G_IS_HADNS == "Y") {
     		Ext.MessageBox.confirm('Confirm', '공지 발행하시겠습니까?',

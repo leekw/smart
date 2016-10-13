@@ -17,10 +17,10 @@ Ext.define('Ext.nmenu.view.MenuServiceGrid' ,{
             		var params, url;
             		if (e.record.data.resourceId == null || e.record.data.resourceId == '') {
 	                	params = {resourceName: e.record.data.text, parentResourceId : e.record.data.parentResourceId, url: e.record.data.url, resourceTypeCode: 'CONTENT'};
-	                	url = '/int/resource/add.json';
+	                	url = G_PATH + '/resource/add.json';
             		} else {
             			params = {resourceId : e.record.data.resourceId, resourceName: e.record.data.text, parentResourceId : e.record.data.parentResourceId, url: e.record.data.url, resourceTypeCode: 'CONTENT'};
-	                	url = '/int/resource/content/modify.json';
+	                	url = G_PATH + '/resource/content/modify.json';
             		}
         			Ext.Ajax.request({
 	    	    	    url: url,

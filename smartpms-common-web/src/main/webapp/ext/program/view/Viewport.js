@@ -1,5 +1,5 @@
-Ext.Loader.loadScript({url:'/int/ext/common/CommonCode.js'});
-Ext.Loader.loadScript({url:'/int/ext/common/Org.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/common/CommonCode.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/common/Org.js'});
 Ext.define('Ext.program.view.Viewport', {
     extend: 'Ext.Viewport',
     layout: 'fit',

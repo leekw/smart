@@ -6,7 +6,7 @@ Ext.define('Ext.user.store.Role', {
     proxy: {
         type: 'ajax',
         enablePaging : true,
-        url: '/int/role/list/get.json',
+        url: G_PATH + '/role/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

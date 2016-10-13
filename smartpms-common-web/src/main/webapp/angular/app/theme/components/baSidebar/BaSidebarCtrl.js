@@ -9,8 +9,8 @@
     .controller('BaSidebarCtrl', BaSidebarCtrl);
 
   /** @ngInject */
-  function BaSidebarCtrl($scope, baSidebarService) {
-
+  function BaSidebarCtrl($scope, $http, $attrs, baSidebarService) {
+	
     $scope.menuItems = baSidebarService.getMenuItems();
     $scope.defaultSidebarState = $scope.menuItems[0].stateRef;
 
@@ -21,14 +21,9 @@
       $scope.hoverElemTop = $event.currentTarget.getBoundingClientRect().top - menuTopValue;
     };
     
-    $scope.menuToggle = function($event, menu, $http) {
-    	if (menu.subMenu == null || menu.subMenu.length == 0) {
-    		
-    		menu.subMenu.push({
-    			title : 'test'
-    		});
-    		alert(menu.subMenu);
-    	}
+    $scope.menuToggle = function($event, menu) {
+    	alert($attrs.baSidebarTogglingItem);
+    	//baSidebarService.addSubMenu(menu);
     };
 
     $scope.$on('$stateChangeSuccess', function () {

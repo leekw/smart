@@ -21,7 +21,7 @@ Ext.define('Ext.notice.view.NoticePanelNew', {
 	    {
 	    	id : 'notice-list',
 			xtype : 'noticegrid',
-			border:true
+			border:false
 		}, {
 			hidden:true,
 			collapsible:false,

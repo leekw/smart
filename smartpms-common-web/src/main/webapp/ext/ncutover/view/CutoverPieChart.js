@@ -33,7 +33,7 @@ Ext.define('Ext.ncutover.view.CutoverPieChart', {
         width: 20,
         height: 20,
         handler : function() {
-        	var url = '/int/etc/gantt.html';
+        	var url = G_PATH + '/etc/gantt.html';
     	    var option = "left=100,top=100,width='100%',height='100%',fullscreen=yes,location=no,titlebar=no,scrollbars=yes";
     	    var temp = new Date();
         	var popup = window.open(url, 'Task' + temp, option);
@@ -123,7 +123,7 @@ Ext.define('Ext.ncutover.view.CutoverPieChart', {
 			            			_PieChartIndex = 1;
 			            			_PieGridReload = true;
 			            			Ext.Ajax.request({
-			            	    	    url: '/int/cutover/dashboard/status/get.json',
+			            	    	    url: G_PATH + '/cutover/dashboard/status/get.json',
 			            	    	    method: 'POST',
 			            	    	    jsonData: Ext.encode({yCategory : '17146'}),
 			            	    	    success: function(response){
@@ -186,7 +186,7 @@ Ext.define('Ext.ncutover.view.CutoverPieChart', {
 			            			_PieChartIndex = 2;
 			            			_PieGridReload = true;
 			            			Ext.Ajax.request({
-			            	    	    url: '/int/cutover/dashboard/status/get.json',
+			            	    	    url: G_PATH + '/cutover/dashboard/status/get.json',
 			            	    	    method: 'POST',
 			            	    	    jsonData: Ext.encode({yCategory : '17151'}),
 			            	    	    success: function(response){
@@ -249,7 +249,7 @@ Ext.define('Ext.ncutover.view.CutoverPieChart', {
 			            			_PieChartIndex = 3;
 			            			_PieGridReload = true;
 			            			Ext.Ajax.request({
-			            	    	    url: '/int/cutover/dashboard/status/get.json',
+			            	    	    url: G_PATH + '/cutover/dashboard/status/get.json',
 			            	    	    method: 'POST',
 			            	    	    jsonData: Ext.encode({yCategory : '17149'}),
 			            	    	    success: function(response){
@@ -312,7 +312,7 @@ Ext.define('Ext.ncutover.view.CutoverPieChart', {
 			            			_PieChartIndex = 4;
 			            			_PieGridReload = true;
 			            			Ext.Ajax.request({
-			            	    	    url: '/int/cutover/dashboard/status/get.json',
+			            	    	    url: G_PATH + '/cutover/dashboard/status/get.json',
 			            	    	    method: 'POST',
 			            	    	    jsonData: Ext.encode({yCategory : '17152'}),
 			            	    	    success: function(response){
@@ -375,7 +375,7 @@ Ext.define('Ext.ncutover.view.CutoverPieChart', {
 			            			_PieChartIndex = 5;
 			            			_PieGridReload = true;
 			            			Ext.Ajax.request({
-			            	    	    url: '/int/cutover/dashboard/status/get.json',
+			            	    	    url: G_PATH + '/cutover/dashboard/status/get.json',
 			            	    	    method: 'POST',
 			            	    	    jsonData: Ext.encode({yCategory : '17158'}),
 			            	    	    success: function(response){
@@ -438,7 +438,7 @@ Ext.define('Ext.ncutover.view.CutoverPieChart', {
 			            			_PieChartIndex = 6;
 			            			_PieGridReload = true;
 			            			Ext.Ajax.request({
-			            	    	    url: '/int/cutover/dashboard/status/get.json',
+			            	    	    url: G_PATH + '/cutover/dashboard/status/get.json',
 			            	    	    method: 'POST',
 			            	    	    jsonData: Ext.encode({yCategory : '17352'}),
 			            	    	    success: function(response){

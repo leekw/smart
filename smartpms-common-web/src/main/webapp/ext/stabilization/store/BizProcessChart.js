@@ -4,7 +4,7 @@ Ext.define('Ext.stabilization.store.BizProcessChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/bizprocess/chart/get.json',
+        url: G_PATH + '/bizprocess/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -14,7 +14,7 @@ Ext.define('Ext.admin.view.RoleGrid' ,{
             	edit : function(editor, e) {
             		var param = {roleId : e.record.data.roleId, roleName: e.record.data.roleName, roleDescription: e.record.data.roleDescription, mode: e.record.data.mode};
             		var grid = Ext.getCmp('role-grid');
-            		var url = url = '/int/role/save.json';
+            		var url = url = G_PATH + '/role/save.json';
             		Ext.Ajax.request({
                 	    url: url,
                 	    method: 'POST',

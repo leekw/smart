@@ -4,7 +4,7 @@ Ext.define('Ext.cutover.store.TaskCombo', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/cutover/search/list/get.json',
+        url: G_PATH + '/cutover/search/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

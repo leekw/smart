@@ -3,7 +3,7 @@ window['google'] = {};
 }
 if (!window['google']['loader']) {
 window['google']['loader'] = {};
-google.loader.ServiceBase = '/int/resources/js/google/uds';
+google.loader.ServiceBase = G_PATH + '/resources/js/google/uds';
 google.loader.GoogleApisBase = 'http://ajax.googleapis.com/ajax';
 google.loader.ApiKey = 'notsupplied';
 google.loader.KeyVerified = true;

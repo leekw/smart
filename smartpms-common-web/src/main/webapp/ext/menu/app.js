@@ -2,7 +2,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.menu',
     
-    appFolder:'/int/ext/menu',
+    appFolder:G_PATH + '/ext/menu',
 
     controllers: [
         'Menu' 

@@ -93,7 +93,7 @@ Ext.define('Ext.layout.controller.LayoutMain', {
 		    	  	                    height: '100%', 
 		    	  	                    focusOnLoad: true, 
 		    	  	                    frameborder: 0, 
-		    	  	                    src: '/int' + record.data.url 
+		    	  	                    src: G_PATH + '' + record.data.url 
 		    	  	            } 
 		    	  			}],
 		    				closable : true

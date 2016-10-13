@@ -4,7 +4,7 @@ Ext.define('Ext.main.store.MainCode', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/jira/cutover/th/list/get.json',
+        url: G_PATH + '/jira/cutover/th/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

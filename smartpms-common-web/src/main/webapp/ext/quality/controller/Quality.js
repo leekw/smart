@@ -75,7 +75,7 @@ Ext.define('Ext.quality.controller.Quality', {
     	var grid = this.getProgramGrid();
     	if (grid.columns[cellIndex].dataIndex == 'programId') {
     		var param = record.data.svnFilePath;
-    		var url = '/int/svn/file/view.do?svnFilePath=' + encodeURIComponent(param);
+    		var url = G_PATH + '/svn/file/view.do?svnFilePath=' + encodeURIComponent(param);
     	    var option = "left=100,top=100,width='100%',height='100%',fullscreen=yes,location=no,titlebar=no,scrollbars=yes";
         	var popup = window.open(url, 'CutOver_Task_' + param, option);
             popup.focus();

@@ -5,7 +5,7 @@ Ext.define('Ext.program.store.SourceProgramListJira', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/changerequest/programlist/get.json',
+        url: G_PATH + '/changerequest/programlist/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

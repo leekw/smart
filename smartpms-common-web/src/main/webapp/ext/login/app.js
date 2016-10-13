@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.login',
     
-    appFolder:'/int/ext/login',
+    appFolder:G_PATH + '/ext/login',
 
     controllers: [
         'Login'

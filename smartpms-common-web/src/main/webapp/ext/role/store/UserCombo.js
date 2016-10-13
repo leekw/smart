@@ -4,7 +4,7 @@ Ext.define('Ext.role.store.UserCombo', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/user/list/get.json',
+        url: G_PATH + '/user/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

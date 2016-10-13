@@ -96,7 +96,7 @@ Ext.define('Ext.program.view.WBSCRForm' ,{
 	        	};
 	        	
 	        	Ext.Ajax.request({
-	        	    url: '/int/changerequest/add.json',
+	        	    url: G_PATH + '/changerequest/add.json',
 	        	    method: 'POST',
 	        	    jsonData: Ext.encode(param),
 	        	    success: function(response){

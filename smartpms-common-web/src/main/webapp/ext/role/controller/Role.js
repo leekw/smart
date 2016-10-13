@@ -65,7 +65,7 @@ var GridAction = {
     		params.push({roleId : r.roleId, userId: r.userId});
     	}
     	if (params.length > 0) {
-			var url = url = '/int/role/user/remove.json';
+			var url = url = G_PATH + '/role/user/remove.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',
@@ -93,7 +93,7 @@ var GridAction = {
     	var sm = grid.getSelectionModel();
     	var record = sm.getSelection()[0];
         var param = {roleId : record.data.roleId};
-		var url = url = '/int/role/remove.json';
+		var url = url = G_PATH + '/role/remove.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',
@@ -135,7 +135,7 @@ var GridAction = {
 		var params = this._getData(store.getModifiedRecords());
 		if (params.length > 0) {
 	    	Ext.Ajax.request({
-	    	    url: '/int/role/auth/save.json',
+	    	    url: G_PATH + '/role/auth/save.json',
 	    	    method: 'POST',
 	    	    jsonData: Ext.encode(params),
 	    	    success: function(response){

@@ -90,7 +90,7 @@ var GridAction = {
     		params.push({resourceId : r.id});
     	}
     	if (params.length > 0) {
-			var url = url = '/int/resource/list/remove.json';
+			var url = url = G_PATH + '/resource/list/remove.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',

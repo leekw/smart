@@ -1,4 +1,4 @@
-Ext.Loader.loadScript({url:'/int/ext/cutover/controller/CutoverCore.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/cutover/controller/CutoverCore.js'});
 Ext.define('Ext.cutover.controller.Cutover', {
     extend: 'Ext.app.Controller',
     stores: ['Cutover','UserCombo','TaskCombo'],
@@ -111,7 +111,7 @@ Ext.define('Ext.cutover.controller.Cutover', {
     	var yCategory = type.getValue();
     	
 //    	var iframe = document.getElementById("excel-down-iframe");
-		var downUrl = '/int/cutover/excel/download.do?cutoverTh=' + cutoverTh 
+		var downUrl = G_PATH + '/cutover/excel/download.do?cutoverTh=' + cutoverTh 
 												 + '&jobStep=' + jobStep
 												 + '&jobType=' + jobType
 												 + '&jobExecutionTeam=' + jobExecutionTeam
@@ -142,7 +142,7 @@ Ext.define('Ext.cutover.controller.Cutover', {
     		Ext.Msg.alert('Info', '전환단계상세는 필수로 선택해야 합니다.');
     		return ;
     	}
-    	var url = '/int/etc/gantt.html';
+    	var url = G_PATH + '/etc/gantt.html';
 	    var option = "left=100,top=100,width='100%',height='100%',fullscreen=yes,location=no,titlebar=no,scrollbars=yes";
 	    var temp = new Date();
     	var popup = window.open(url, 'Task' + temp, option);
@@ -332,7 +332,7 @@ Ext.define('Ext.cutover.controller.Cutover', {
 				    autoDestroy: true,
 				    proxy: {
 				        type: 'ajax',
-				        url: '/int/cutover/detail/list/get.json',
+				        url: G_PATH + '/cutover/detail/list/get.json',
 				        headers: {
 				            'Content-Type': 'application/json'
 				        },
@@ -505,7 +505,7 @@ Ext.define('Ext.cutover.controller.Cutover', {
 								var rec = recs[i];
 								param.push({detailType : 'CheckList', jobId : _jobId, detailSummary : rec.data.detailSummary, worker : rec.data.worker});
 							}
-							var url = '/int/cutover/detail/save.json';
+							var url = G_PATH + '/cutover/detail/save.json';
 							Ext.Ajax.request({
 					    	    url: url,
 					    	    method: 'POST',
@@ -549,7 +549,7 @@ var CutoverDetail = {
         	proxy.extraParams.jobId = _jobId;
         	proxy.extraParams.detailType = 'CheckList';
         	store.load();
-			var url = '/int/cutover/detail/list/get.json';
+			var url = G_PATH + '/cutover/detail/list/get.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',

@@ -29,7 +29,7 @@ Ext.define('Ext.layout.view.SubMenu', {
 					var temp = treeData[i];
 					sendData.push({resourceId : temp.data.resourceId, parentResourceId: temp.data.parentResourceId, sortNo : i});
 				}
-				var url = '/int/resource/modify.json';
+				var url = G_PATH + '/resource/modify.json';
 				Ext.Ajax.request({
 		    	    url: url,
 		    	    method: 'POST',
@@ -84,7 +84,7 @@ var ContextMenu = {
 	_remove : function(btn) {
 		if (btn == "yes") {
 			var formData = {resourceId : parentId };
-			var url = '/int/resource/remove.json';
+			var url = G_PATH + '/resource/remove.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',
@@ -119,7 +119,7 @@ var ContextMenu = {
 
 	},
 	_openMenuCheck : function(selectedData, isForce) {
-		var url = '/int/resource/check/modify.json';
+		var url = G_PATH + '/resource/check/modify.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',
@@ -254,7 +254,7 @@ var ContextMenu = {
 				handler: function() {
 					var form = Ext.getCmp('menu-form');
 					var formData = form.getForm().getValues();
-					var url = '/int/resource/content/modify.json';
+					var url = G_PATH + '/resource/content/modify.json';
 					Ext.Ajax.request({
 			    	    url: url,
 			    	    method: 'POST',
@@ -279,7 +279,7 @@ var ContextMenu = {
 				xtype: 'button',
 				text : '취소',
 				handler: function() {
-					var url = '/int/resource/complete/modify.json';
+					var url = G_PATH + '/resource/complete/modify.json';
 					Ext.Ajax.request({
 			    	    url: url,
 			    	    method: 'POST',
@@ -407,7 +407,7 @@ var ContextMenu = {
 					handler: function() {
 						var form = Ext.getCmp('menu-form');
 						var formData = form.getForm().getValues();
-						var url = '/int/resource/add.json';
+						var url = G_PATH + '/resource/add.json';
 						Ext.Ajax.request({
 				    	    url: url,
 				    	    method: 'POST',

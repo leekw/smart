@@ -1,6 +1,7 @@
 package net.smart.web.domain.resource;
 
 import java.util.List;
+import java.util.Map;
 
 import net.smart.common.domain.Tree;
 
@@ -30,8 +31,7 @@ public class Resource extends Tree {
 	private String roleId;
 	private String includeYn;
 	private boolean mainResource;
-	
-	
+
 	public boolean isMainResource() {
 		return mainResource;
 	}

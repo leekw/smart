@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.working',
     
-    appFolder:'/int/ext/working',
+    appFolder:G_PATH + '/ext/working',
 
     controllers: [
         'Working'

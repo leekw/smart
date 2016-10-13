@@ -3,7 +3,7 @@ Ext.define('Ext.sample.store.SampleTree', {
 	model : 'Ext.sample.model.SampleTree',
 	proxy : {
 		type: 'ajax',
-        url: '/int/sample/tree/get.json',
+        url: G_PATH + '/sample/tree/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

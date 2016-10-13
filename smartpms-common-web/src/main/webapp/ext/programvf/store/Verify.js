@@ -4,7 +4,7 @@ Ext.define('Ext.programvf.store.Verify', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/changerequest/verify/summary/get.json',
+        url: G_PATH + '/changerequest/verify/summary/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

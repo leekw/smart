@@ -32,7 +32,7 @@ var Menu = {
 	  	                    height: '100%', 
 	  	                    focusOnLoad: true, 
 	  	                    frameborder: 0, 
-	  	                    src: '/int/' + obj.id + "/app/view.do" 
+	  	                    src: G_PATH + '/' + obj.id + "/app/view.do" 
 	  	            } 
 	  			}],
 				closable : true

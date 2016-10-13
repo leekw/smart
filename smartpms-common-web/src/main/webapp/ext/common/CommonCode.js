@@ -14,7 +14,7 @@ var CommonCode = {
 				autoDestroy: true,
 			    proxy: {
 			        type: 'ajax',
-			        url: '/int/code/list/get.json',
+			        url: G_PATH + '/code/list/get.json',
 			        headers: {
 			            'Content-Type': 'application/json'
 			        },

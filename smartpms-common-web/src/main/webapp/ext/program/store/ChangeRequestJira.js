@@ -4,7 +4,7 @@ Ext.define('Ext.program.store.ChangeRequestJira', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/changerequest/list/get.json',
+        url: G_PATH + '/changerequest/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -4,7 +4,7 @@ Ext.define('Ext.stabilizationm.store.JiraChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/jira/chart/get.json',
+        url: G_PATH + '/jira/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

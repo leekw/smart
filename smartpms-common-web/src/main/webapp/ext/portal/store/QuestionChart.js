@@ -4,7 +4,7 @@ Ext.define('Ext.portal.store.QuestionChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/question/chart/get.json',
+        url: G_PATH + '/question/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

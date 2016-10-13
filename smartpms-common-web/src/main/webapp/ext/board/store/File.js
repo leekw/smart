@@ -4,7 +4,7 @@ Ext.define('Ext.board.store.File', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/file/list/get.json',
+        url: G_PATH + '/file/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

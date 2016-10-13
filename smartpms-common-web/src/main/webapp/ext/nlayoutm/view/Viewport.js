@@ -79,7 +79,7 @@ Ext.define('Ext.nlayoutm.view.Viewport', {
                     height: 30,
                     padding : '0 2 0 0',
                     width: 30,
-                    src: '/int/resources/images/pie-chart-1.png',
+                    src: G_PATH + '/resources/images/pie-chart-1.png',
                     listeners : {
                     	render : function() {
                     		this.imgEl.on('click', this.onClick, this);
@@ -96,7 +96,7 @@ Ext.define('Ext.nlayoutm.view.Viewport', {
                     height: 30,
                     padding : '0 2 0 0',
                     width: 30,
-                    src: '/int/resources/images/presentation-7-2.png',
+                    src: G_PATH + '/resources/images/presentation-7-2.png',
                     listeners : {
                     	render : function() {
                     		this.imgEl.on('click', this.onClick, this);
@@ -112,7 +112,7 @@ Ext.define('Ext.nlayoutm.view.Viewport', {
                     cls: 'header-right-profile-image',
                     height: 38,
                     width: 38,
-                    src: '/int/resources/images/user-23-2.png',
+                    src: G_PATH + '/resources/images/user-23-2.png',
                     listeners : {
                     	render : function() {
                     		this.imgEl.on('click', this.onClick, this);
@@ -168,15 +168,15 @@ var UserInfo = {
 	_logout : function(btn) {
 		if (btn == "yes") {
 			Ext.Ajax.request({
-				url: '/int/logout/process.json',
+				url: G_PATH + '/logout/process.json',
 				method : 'POST',
 				headers : {'Content-Type' : 'application/json'},
 				params : (Ext.JSON.encode({})),
 				success: function(res, eOtps) {
 					if (parent != null) {
-						parent.document.location.href = '/int/nlayout/app/view.do';
+						parent.document.location.href = G_PATH + '/nlayout/app/view.do';
 					} else {
-						document.location.href = '/int/nlayout/app/view.do';
+						document.location.href = G_PATH + '/nlayout/app/view.do';
 					}
 				},
 				failure: function(res, eOtps) {
@@ -186,6 +186,6 @@ var UserInfo = {
 		}
 	},
 	_main : function() {
-		document.location.href = '/int/nlayout/app/view.do';
+		document.location.href = G_PATH + '/nlayout/app/view.do';
 	}
 };

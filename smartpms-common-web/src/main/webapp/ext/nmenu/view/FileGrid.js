@@ -65,7 +65,7 @@ Ext.define('Ext.nmenu.view.FileGrid' ,{
 					    		var frm = object.up("form").getForm();
 					    		if (frm.isValid()) {
 					    			frm.submit({
-					    				url : '/int/file/upload.file',
+					    				url : G_PATH + '/file/upload.file',
 					    				success : function(ft, res) {
 					    					var jsonResult = Ext.JSON.decode(res.response.responseText);
 					    					var grid = Ext.getCmp('menu-file-grid');
@@ -102,7 +102,7 @@ Ext.define('Ext.nmenu.view.FileGrid' ,{
                 if (store.getCount() > 0) {
                     sm.select(0);
                 }
-                var url = '/int/file/remove.json';
+                var url = G_PATH + '/file/remove.json';
         		Ext.Ajax.request({
             	    url: url,
             	    method: 'POST',
@@ -138,7 +138,7 @@ Ext.define('Ext.nmenu.view.FileGrid' ,{
             		var iframe = Ext.getBody().createChild({
                 		tag : 'iframe',
                 		cls : 'x-hidden',
-                		src : '/int/file/download.do?fileNo=' + encodeURIComponent(data.fileNo) + '&filePath=' + encodeURIComponent(data.filePath),
+                		src : G_PATH + '/file/download.do?fileNo=' + encodeURIComponent(data.fileNo) + '&filePath=' + encodeURIComponent(data.filePath),
                 		onload : 'Ext.getBody().unmask(); var t = Ext.get(this); t.remove.defer(1000, t);'
                 	});
             		
@@ -163,7 +163,7 @@ var FileUpload = {
 					data.push(rec.getData());
 				}
 			}
-			var url = '/int/file/add.json';
+			var url = G_PATH + '/file/add.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',

@@ -4,7 +4,7 @@ Ext.define('Ext.cutover.store.Cutover', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/cutover/list/get.json',
+        url: G_PATH + '/cutover/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

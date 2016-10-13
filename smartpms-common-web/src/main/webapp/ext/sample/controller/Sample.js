@@ -1,4 +1,4 @@
-Ext.Loader.loadScript({url:'/int/ext/sample/controller/SampleCore.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/sample/controller/SampleCore.js'});
 Ext.define('Ext.sample.controller.Sample', {
     extend: 'Ext.app.Controller',
     stores: ['Sample', 'SampleTree'],

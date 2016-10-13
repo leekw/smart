@@ -5,7 +5,7 @@ Ext.define('Ext.role.store.RoleAuth', {
     proxy: {
         type: 'ajax',
         enablePaging : true,
-        url: '/int/role/auth/list/get.json',
+        url: G_PATH + '/role/auth/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

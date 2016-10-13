@@ -19,9 +19,9 @@ var NoticeCore = {
 		}
 	},
 	_merge : function(data, mode, store) {
-		var url = '/int/notice/modify.json';
+		var url = G_PATH + '/notice/modify.json';
 		if (mode != 'R') {
-			url = '/int/notice/add.json';
+			url = G_PATH + '/notice/add.json';
 		}
 		Ext.Ajax.request({
     	    url: url,
@@ -42,7 +42,7 @@ var NoticeCore = {
     	});
 	},
 	_getMailGroup : function(mailGroupId) {
-		var url = '/int/mail/get.json';
+		var url = G_PATH + '/mail/get.json';
 		var data = {mailGroupId : mailGroupId};
 		Ext.Ajax.request({
     	    url: url,
@@ -64,7 +64,7 @@ var NoticeCore = {
     	});
 	},
 	_modifyMailGroup : function(mailGroupId, mailAddress) {
-		var url = '/int/mail/modify.json';
+		var url = G_PATH + '/mail/modify.json';
 		var data = {mailGroupId : mailGroupId, targetMailAddress : mailAddress};
 		Ext.Ajax.request({
     	    url: url,

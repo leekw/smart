@@ -48,9 +48,9 @@ Ext.Ajax.on('requestcomplete', function(con, res, opt){
 		}
 //		alert('해당 서비스에 접근할 수 있는 권한이 없습니다.');
 //		if (parent != null) {
-//			parent.document.location.href = '/int/layout/app/view.do';
+//			parent.document.location.href = G_PATH + '/layout/app/view.do';
 //		} else {
-//			document.location.href = '/int/layout/app/view.do';
+//			document.location.href = G_PATH + '/layout/app/view.do';
 //		}
 	}
 	if (data.error != null && data.error.code == 'NOTLOGIN') {
@@ -60,9 +60,9 @@ Ext.Ajax.on('requestcomplete', function(con, res, opt){
 			Ext.Msg.alert('Not Login', '로그인 세션이 유효하지 않습니다. 재로그인 하시기 바랍니다.');
 		}
 		if (parent != null) {
-			parent.document.location.href = '/int/login.html';
+			parent.document.location.href = G_PATH + '/login.html';
 		} else {
-			document.location.href = '/int/login.html';
+			document.location.href = G_PATH + '/login.html';
 		}
 	}
 }, this);

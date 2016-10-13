@@ -4,7 +4,7 @@ Ext.define('Ext.stabilization.store.CompareChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/compare/chart/get.json',
+        url: G_PATH + '/compare/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

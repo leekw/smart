@@ -37,7 +37,7 @@ var BoardCore = {
 				}
 				data.push(rec.getData());
 			}
-			var url = '/int/file/add.json';
+			var url = G_PATH + '/file/add.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',
@@ -58,9 +58,9 @@ var BoardCore = {
 		}
 	},
 	_merge : function(data, mode, store) {
-		var url = '/int/board/modify.json';
+		var url = G_PATH + '/board/modify.json';
 		if (mode != 'R') {
-			url = '/int/board/add.json';
+			url = G_PATH + '/board/add.json';
 		}
 		Ext.Ajax.request({
     	    url: url,
@@ -87,7 +87,7 @@ var BoardCore = {
     	});
 	},
 	_remove : function(data, mode, store) {
-		var url = '/int/board/remove.json';
+		var url = G_PATH + '/board/remove.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',

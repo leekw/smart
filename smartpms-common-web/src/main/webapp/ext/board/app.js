@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.board',
     
-    appFolder:'/int/ext/board',
+    appFolder:G_PATH + '/ext/board',
 
     controllers: [
         'Board' 

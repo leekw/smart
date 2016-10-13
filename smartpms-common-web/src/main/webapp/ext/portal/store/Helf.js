@@ -4,7 +4,7 @@ Ext.define('Ext.portal.store.Helf', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/helf/list/get.json',
+        url: G_PATH + '/helf/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -4,7 +4,7 @@ Ext.define('Ext.ncutover.store.CutoverChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/cutover/dashboard/chart/get.json',
+        url: G_PATH + '/cutover/dashboard/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

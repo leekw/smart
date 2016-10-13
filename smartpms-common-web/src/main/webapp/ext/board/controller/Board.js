@@ -1,4 +1,4 @@
-Ext.Loader.loadScript({url:'/int/ext/board/controller/BoardCore.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/board/controller/BoardCore.js'});
 Ext.define('Ext.board.controller.Board', {
     extend: 'Ext.app.Controller',
     stores: ['Board', 'Team', 'File'],
@@ -150,7 +150,7 @@ Ext.define('Ext.board.controller.Board', {
     	        if (store.getCount() > 0) {
     	            sm.select(0);
     	        }
-    	        var url = '/int/file/remove.json';
+    	        var url = G_PATH + '/file/remove.json';
     			Ext.Ajax.request({
     	    	    url: url,
     	    	    method: 'POST',
@@ -179,7 +179,7 @@ Ext.define('Ext.board.controller.Board', {
         		var data = sm.getSelection()[0].getData();
         		
         		var iframe = document.getElementById("file-down-iframe");
-        		iframe.src = '/int/file/download.do?fileName=' + encodeURIComponent(data.fileName) + '&filePath=' + encodeURIComponent(data.filePath);
+        		iframe.src = G_PATH + '/file/download.do?fileName=' + encodeURIComponent(data.fileName) + '&filePath=' + encodeURIComponent(data.filePath);
         	}
     	}
     }

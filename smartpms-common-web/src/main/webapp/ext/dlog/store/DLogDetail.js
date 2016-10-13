@@ -4,7 +4,7 @@ Ext.define('Ext.dlog.store.DLogDetail', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/dlog/detail/get.json',
+        url: G_PATH + '/dlog/detail/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

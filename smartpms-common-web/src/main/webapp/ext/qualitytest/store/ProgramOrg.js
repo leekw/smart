@@ -5,7 +5,7 @@ Ext.define('Ext.qualitytest.store.ProgramOrg', {
     pageSize : 300,
     proxy: {
         type: 'ajax',
-        url: '/int/quality/detail/list/get.json',
+        url: G_PATH + '/quality/detail/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -4,7 +4,7 @@ Ext.define('Ext.loginpolicy.store.LoginPolicy', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/login/policy/list/get.json',
+        url: G_PATH + '/login/policy/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

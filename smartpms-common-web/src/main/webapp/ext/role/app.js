@@ -2,7 +2,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.role',
     
-    appFolder:'/int/ext/role',
+    appFolder:G_PATH + '/ext/role',
 
     controllers: [
         'Role' 

@@ -4,7 +4,7 @@ Ext.define('Ext.qualitytest.store.RelationTree', {
 	autoDestroy: false,
 	proxy : {
 		type: 'ajax',
-        url: '/int/quality/test/tree/get.json',
+        url: G_PATH + '/quality/test/tree/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

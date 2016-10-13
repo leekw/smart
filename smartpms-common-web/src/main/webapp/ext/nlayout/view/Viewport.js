@@ -40,14 +40,14 @@ Ext.define('Ext.nlayout.view.Viewport', {
         {
             xtype: 'toolbar',
             cls: 'sencha-dash-dash-headerbar toolbar-btn-shadow',
-            height: 35,
+            height: 64,
             itemId: 'headerBar',
             items: [
                 {
                     xtype: 'component',
                     reference: 'senchaLogo',
                     cls: 'sencha-logo',
-                    html: '<div class="main-logo"><img src="/int/resources/images/kpi.png" onclick="UserInfo._main();"  style="cursor:pointer;cursor:hand;">Integration</div>',
+                    html: '<div class="main-logo"><img src="' + G_PATH + '/angular/assets/img/favicon-32x32.png"><span style="color: #1B8679;">Smart</span>PMS</div>',
                     width: 250
                 },
                 {
@@ -97,7 +97,7 @@ Ext.define('Ext.nlayout.view.Viewport', {
                     height: 35,
                     width: 35,
                     alt:'current user image',
-                    src: '/int/resources/images/profile-icon.png',
+                    src: G_PATH + '/resources/images/Nasta.png',
                     listeners : {
                     	render : function() {
                     		this.imgEl.on('click', this.onClick, this);
@@ -212,15 +212,15 @@ var UserInfo = {
 	_logout : function(btn) {
 		if (btn == "yes") {
 			Ext.Ajax.request({
-				url: '/int/logout/process.json',
+				url: G_PATH + '/logout/process.json',
 				method : 'POST',
 				headers : {'Content-Type' : 'application/json'},
 				params : (Ext.JSON.encode({})),
 				success: function(res, eOtps) {
 					if (parent != null) {
-						parent.document.location.href = '/int/nlayout/app/view.do';
+						parent.document.location.href = G_PATH + '/nlayout/app/view.do';
 					} else {
-						document.location.href = '/int/nlayout/app/view.do';
+						document.location.href = G_PATH + '/nlayout/app/view.do';
 					}
 				},
 				failure: function(res, eOtps) {
@@ -230,6 +230,6 @@ var UserInfo = {
 		}
 	},
 	_main : function() {
-		document.location.href = '/int/nlayout/app/view.do';
+		document.location.href = G_PATH + '/nlayout/app/view.do';
 	}
 };

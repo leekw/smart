@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.qualityhist',
     
-    appFolder:'/int/ext/qualityhist',
+    appFolder:G_PATH + '/ext/qualityhist',
 
     controllers: [
         'QualityHist' 

@@ -107,7 +107,7 @@ var OrgGridAction = {
 			Ext.getBody().mask("Processing...");
 			Ext.Ajax.setTimeout(1000 * 60 * 10);
 			Ext.Ajax.request({
-        	    url: '/int/quality/data/add.json',
+        	    url: G_PATH + '/quality/data/add.json',
         	    method: 'POST',
 //        	    jsonData: Ext.encode(param),
         	    success: function(response){

@@ -4,7 +4,7 @@ Ext.define('Ext.qualitytest.store.ModulePieChart', {
     autoDestroy: false,
     proxy: {
         type: 'ajax',
-        url: '/int/quality/test/module/chart/get.json',
+        url: G_PATH + '/quality/test/module/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

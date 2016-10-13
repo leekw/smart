@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.qainterfacesvc',
     
-    appFolder:'/int/ext/qainterfacesvc',
+    appFolder:G_PATH + '/ext/qainterfacesvc',
 
     controllers: [
         'QaInterface' 

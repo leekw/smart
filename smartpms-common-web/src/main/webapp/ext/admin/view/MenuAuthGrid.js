@@ -26,7 +26,7 @@ Ext.define('Ext.admin.view.MenuAuthGrid' ,{
 				var menu = Ext.getCmp('menu-tree');
 				var param = {roleId : SELECTED_ROlE_ID, resourceId : data.records[0].data.resourceId, includeYn : 'Y'};
 				
-				var url = '/int/resource/role/add.json';
+				var url = G_PATH + '/resource/role/add.json';
 				var grid = Ext.getCmp('menu-auth-grid');
 				Ext.Ajax.request({
 		    	    url: url,
@@ -118,7 +118,7 @@ var AuthHandler = {
 	_exclude : function(resourceId, roleId, checked) {
 		var grid = Ext.getCmp('menu-auth-grid');
 		var param = {resourceId:resourceId, roleId: roleId, includeYn: (checked ? 'N' : 'Y')};
-		var url = '/int/resource/role/modify.json';
+		var url = G_PATH + '/resource/role/modify.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',

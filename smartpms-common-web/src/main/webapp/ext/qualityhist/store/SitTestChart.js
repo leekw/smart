@@ -4,7 +4,7 @@ Ext.define('Ext.qualityhist.store.SitTestChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/quality/history/chart/get.json',
+        url: G_PATH + '/quality/history/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

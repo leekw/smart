@@ -4,7 +4,7 @@ Ext.define('Ext.admin.store.UserSearch', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/resource/session/user/list/get.json',
+        url: G_PATH + '/resource/session/user/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

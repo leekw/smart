@@ -1,4 +1,4 @@
-var socket = new SockJS("/int/ws");
+var socket = new SockJS(G_PATH + "/ws");
 var stompClient = Stomp.over(socket);
 var errorCount = 0;
 var isNotConnected = false;

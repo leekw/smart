@@ -1,4 +1,4 @@
-Ext.Loader.loadScript({url:'/int/ext/portal/controller/PortalCore.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/portal/controller/PortalCore.js'});
 Ext.define('Ext.portal.controller.Portal', {
     extend: 'Ext.app.Controller',
     
@@ -466,7 +466,7 @@ Ext.define('Ext.portal.controller.Portal', {
 	    			        		var frm = object.up("form").getForm();
 		    			    		if (frm.isValid()) {
 		    			    			frm.submit({
-		    			    				url : '/int/excel/upload.file',
+		    			    				url : G_PATH + '/excel/upload.file',
 		    			    				success : function(ft, res) {
 		    			    					var jsonResult = Ext.JSON.decode(res.response.responseText);
 		    			    					

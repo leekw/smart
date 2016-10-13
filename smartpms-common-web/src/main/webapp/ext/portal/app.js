@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.portal',
     
-    appFolder:'/int/ext/portal',
+    appFolder:G_PATH + '/ext/portal',
 
     controllers: [
         'Portal' 

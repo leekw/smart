@@ -54,7 +54,7 @@ Ext.define('Ext.menu.view.FileGrid' ,{
                 if (store.getCount() > 0) {
                     sm.select(0);
                 }
-                var url = '/int/file/remove.json';
+                var url = G_PATH + '/file/remove.json';
         		Ext.Ajax.request({
             	    url: url,
             	    method: 'POST',

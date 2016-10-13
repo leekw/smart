@@ -29,9 +29,9 @@ var SampleCore = {
 		}
 	},
 	_merge : function(data, mode, store) {
-		var url = '/int/sample/modify.json';
+		var url = G_PATH + '/sample/modify.json';
 		if (mode != 'R') {
-			url = '/int/sample/add.json';
+			url = G_PATH + '/sample/add.json';
 		}
 		Ext.Ajax.request({
     	    url: url,
@@ -54,7 +54,7 @@ var SampleCore = {
 	_add : function(rs, store) {
 		if (rs.length > 0) {
 	    	Ext.Ajax.request({
-	    	    url: '/int/sample/add.json',
+	    	    url: G_PATH + '/sample/add.json',
 	    	    method: 'POST',
 	    	    jsonData: Ext.encode(this._getData(rs)),
 	    	    success: function(response){
@@ -72,7 +72,7 @@ var SampleCore = {
 	_modify : function(rs, store) {
 		if (rs.length > 0) {
 	    	Ext.Ajax.request({
-	    	    url: '/int/sample/modify.json',
+	    	    url: G_PATH + '/sample/modify.json',
 	    	    method: 'POST',
 	    	    jsonData: Ext.encode(this._getData(rs)),
 	    	    success: function(response){
@@ -90,7 +90,7 @@ var SampleCore = {
 	_remove : function(rs, store) {
 		if (rs.length > 0) {
 	    	Ext.Ajax.request({
-	    	    url: '/int/sample/remove.json',
+	    	    url: G_PATH + '/sample/remove.json',
 	    	    method: 'POST',
 	    	    jsonData: Ext.encode(this._getData(rs)),
 	    	    success: function(response){

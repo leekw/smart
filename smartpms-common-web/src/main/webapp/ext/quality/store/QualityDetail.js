@@ -9,7 +9,7 @@ Ext.define('Ext.quality.store.QualityDetail', {
     },
     proxy: {
         type: 'ajax',
-        url: '/int/quality/detail/get.json',
+        url: G_PATH + '/quality/detail/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

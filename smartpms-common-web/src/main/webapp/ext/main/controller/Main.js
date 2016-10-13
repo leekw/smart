@@ -1,4 +1,4 @@
-Ext.Loader.loadScript({url:'/int/ext/main/controller/MainCore.js'});
+Ext.Loader.loadScript({url:G_PATH + '/ext/main/controller/MainCore.js'});
 Ext.define('Ext.main.controller.Main', {
     extend: 'Ext.app.Controller',
     stores: ['Main', 'MainCode', 'TransitionCode'],

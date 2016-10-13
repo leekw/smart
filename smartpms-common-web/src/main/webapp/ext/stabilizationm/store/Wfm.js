@@ -4,7 +4,7 @@ Ext.define('Ext.stabilizationm.store.Wfm', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/wfm/list/get.json',
+        url: G_PATH + '/wfm/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

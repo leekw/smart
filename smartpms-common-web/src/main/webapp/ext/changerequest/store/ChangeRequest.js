@@ -5,7 +5,7 @@ Ext.define('Ext.changerequest.store.ChangeRequest', {
     pageSize : 100,
     proxy: {
         type: 'ajax',
-        url: '/int/changerequest/target/list/get.json',
+        url: G_PATH + '/changerequest/target/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

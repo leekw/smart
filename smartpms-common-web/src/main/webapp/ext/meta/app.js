@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.meta',
     
-    appFolder:'/int/ext/meta',
+    appFolder:G_PATH + '/ext/meta',
 
     controllers: [
         'Meta' 

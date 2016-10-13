@@ -4,7 +4,7 @@ Ext.define('Ext.notice.store.Mail', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/mail/group/list/get.json',
+        url: G_PATH + '/mail/group/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

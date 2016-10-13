@@ -4,7 +4,7 @@ Ext.define('Ext.main.store.TransitionCode', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/jira/transition/step/list/get.json',
+        url: G_PATH + '/jira/transition/step/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

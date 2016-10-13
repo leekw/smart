@@ -229,7 +229,7 @@ Ext.define('Ext.ncutoverm.view.CutoverPieChart', {
 var ChartView = {
 	_initBar : function(comp_id, code) {
 		Ext.Ajax.request({
-    	    url: '/int/cutover/dashboard/chart/get.json',
+    	    url: G_PATH + '/cutover/dashboard/chart/get.json',
     	    method: 'POST',
     	    jsonData: Ext.encode({yCategory : code}),
     	    success: function(response){

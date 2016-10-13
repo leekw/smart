@@ -4,7 +4,7 @@ Ext.define('Ext.portal.store.JiraChannel', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/open/issue/channel/get.json',
+        url: G_PATH + '/open/issue/channel/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

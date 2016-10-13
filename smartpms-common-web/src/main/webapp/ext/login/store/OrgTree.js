@@ -3,7 +3,7 @@ Ext.define('Ext.login.store.OrgTree', {
 	model : 'Ext.login.model.OrgTree',
 	proxy : {
 		type: 'ajax',
-        url: '/int/org/list/get.json',
+        url: G_PATH + '/org/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

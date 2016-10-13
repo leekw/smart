@@ -7,7 +7,7 @@ Ext.define('Ext.user.store.User', {
     proxy: {
         type: 'ajax',
         enablePaging : true,
-        url: '/int/user/list/get.json',
+        url: G_PATH + '/user/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

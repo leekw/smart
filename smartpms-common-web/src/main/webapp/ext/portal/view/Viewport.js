@@ -118,7 +118,7 @@ var TrafficLight = {
 		}
 	},
 	_applyStatus : function(data) {
-		var url = '/int/project/status/modify.json';
+		var url = G_PATH + '/project/status/modify.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',
@@ -199,7 +199,7 @@ Ext.define('Ext.portal.view.Viewport', {
 					    			beforerender( p, eOpts ) {
 					    				Ext.getBody().mask("Loading...");
 					    				Ext.Ajax.request({
-					    					url: '/int/project/status/get.json',
+					    					url: G_PATH + '/project/status/get.json',
 					    					method : 'POST',
 					    					headers : {'Content-Type' : 'application/json'},
 					    					params : (Ext.JSON.encode({})),

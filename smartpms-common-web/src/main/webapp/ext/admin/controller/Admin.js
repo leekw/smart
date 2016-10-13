@@ -92,7 +92,7 @@ Ext.define('Ext.admin.controller.Admin', {
     	var sm = grid.getSelectionModel();
     	var record = sm.getSelection()[0];
         var param = {roleId : record.data.roleId};
-		var url = url = '/int/role/remove.json';
+		var url = url = G_PATH + '/role/remove.json';
 		Ext.Ajax.request({
     	    url: url,
     	    method: 'POST',
@@ -197,7 +197,7 @@ Ext.define('Ext.admin.controller.Admin', {
     	var menu = this.getMenuTree();
     	var grid = this.getMenuAuthGrid();
     	var store = grid.getStore();
-    	var url = '/int/resource/role/remove.json';
+    	var url = G_PATH + '/resource/role/remove.json';
     	var rs = grid.getSelectionModel().getSelection();
     	var data = [];
     	if (rs == null || rs.length == 0) {

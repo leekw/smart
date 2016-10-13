@@ -5,7 +5,7 @@ Ext.define('Ext.stabilization.store.JiraLevel', {
     groupField: 'day',
     proxy: {
         type: 'ajax',
-        url: '/int/open/issue/level/get.json',
+        url: G_PATH + '/open/issue/level/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

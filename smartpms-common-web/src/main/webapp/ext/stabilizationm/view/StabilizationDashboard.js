@@ -203,7 +203,7 @@ var ViewInfo = {
 	_summaryConn : function(paramDay) {
 		Ext.getBody().mask("Processing...");
 		Ext.Ajax.request({
-    	    url: '/int/connuser/list/get.json',
+    	    url: G_PATH + '/connuser/list/get.json',
     	    method: 'POST',
     	    jsonData: Ext.encode({day : paramDay}),
     	    success: function(response){
@@ -237,7 +237,7 @@ var ViewInfo = {
 	_summaryBiz : function(paramDay) {
 		Ext.getBody().mask("Processing...");
 		Ext.Ajax.request({
-    	    url: '/int/bizprocess/list/get.json',
+    	    url: G_PATH + '/bizprocess/list/get.json',
     	    method: 'POST',
     	    jsonData: Ext.encode({day : paramDay}),
     	    success: function(response){
@@ -271,7 +271,7 @@ var ViewInfo = {
 	_summaryHelp : function(paramDay) {
 		Ext.getBody().mask("Processing...");
 		Ext.Ajax.request({
-    	    url: '/int/helf/list/get.json',
+    	    url: G_PATH + '/helf/list/get.json',
     	    method: 'POST',
     	    jsonData: Ext.encode({day : paramDay}),
     	    success: function(response){

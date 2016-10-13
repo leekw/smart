@@ -59,7 +59,7 @@ Ext.define('Ext.nlayout.view.ViewportController', {
 				              height: '98%', 
 				              focusOnLoad: true, 
 				              frameborder: 0, 
-				              src: '/int' + view 
+				              src: G_PATH + '' + view 
 					     },
 					     hideMode: 'offsets',
 		                 resourceId: hashTag
@@ -223,7 +223,7 @@ Ext.define('Ext.nlayout.view.ViewportController', {
 	    	var me = this;
 	    	Ext.getBody().mask("Loading...");
 			Ext.Ajax.request({
-				url: '/int/resource/info/get.json',
+				url: G_PATH + '/resource/info/get.json',
 				method : 'POST',
 				headers : {'Content-Type' : 'application/json'},
 				params : (Ext.JSON.encode({resourceId : id})),

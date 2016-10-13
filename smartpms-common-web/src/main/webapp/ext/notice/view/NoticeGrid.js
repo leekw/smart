@@ -232,7 +232,7 @@ var GridAction = {
         		params.push({noticeId : r.getData().noticeId});
         	}
         	
-        	var url = '/int/notice/remove.json';
+        	var url = G_PATH + '/notice/remove.json';
 	    	Ext.Ajax.request({
 		        url: url,
 		        method: 'POST',

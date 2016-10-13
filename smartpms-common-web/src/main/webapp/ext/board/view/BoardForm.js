@@ -121,7 +121,7 @@ var FileUpload = {
 					data.push(rec.getData());
 				}
 			}
-			var url = '/int/file/add.json';
+			var url = G_PATH + '/file/add.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',
@@ -184,7 +184,7 @@ var FileUpload = {
 	    			    		var frm = object.up("form").getForm();
 	    			    		if (frm.isValid()) {
 	    			    			frm.submit({
-	    			    				url : '/int/file/upload.file',
+	    			    				url : G_PATH + '/file/upload.file',
 	    			    				success : function(ft, res) {
 	    			    					var jsonResult = Ext.JSON.decode(res.response.responseText);
 	    			    					var grid = Ext.getCmp('file-grid');

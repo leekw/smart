@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.changerequest',
     
-    appFolder:'/int/ext/changerequest',
+    appFolder:G_PATH + '/ext/changerequest',
 
     controllers: [
         'ChangeRequest' 

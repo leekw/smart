@@ -3,7 +3,7 @@ Ext.define('Ext.nlayoutm.Application', {
     
     name: 'Ext.nlayoutm',
     
-    appFolder:'/int/ext/nlayoutm',
+    appFolder:G_PATH + '/ext/nlayoutm',
 
     stores: [
     ],

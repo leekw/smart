@@ -2,7 +2,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.user',
     
-    appFolder:'/int/ext/user',
+    appFolder:G_PATH + '/ext/user',
 
     controllers: [
         'User' 

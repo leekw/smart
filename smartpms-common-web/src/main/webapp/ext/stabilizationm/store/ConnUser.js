@@ -5,7 +5,7 @@ Ext.define('Ext.stabilizationm.store.ConnUser', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/connuser/list/get.json',
+        url: G_PATH + '/connuser/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

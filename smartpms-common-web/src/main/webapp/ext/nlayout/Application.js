@@ -3,7 +3,7 @@ Ext.define('Ext.nlayout.Application', {
     
     name: 'Ext.nlayout',
     
-    appFolder:'/int/ext/nlayout',
+    appFolder: G_PATH + '/ext/nlayout',
 
     stores: [
         'NavigationTree'

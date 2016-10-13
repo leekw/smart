@@ -2,7 +2,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.setting',
     
-    appFolder:'/int/ext/setting',
+    appFolder:G_PATH + '/ext/setting',
 
     controllers: [
         'Setting' 

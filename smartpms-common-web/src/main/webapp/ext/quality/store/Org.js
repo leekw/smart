@@ -4,7 +4,7 @@ Ext.define('Ext.quality.store.Org', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/org/list/get.json',
+        url: G_PATH + '/org/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

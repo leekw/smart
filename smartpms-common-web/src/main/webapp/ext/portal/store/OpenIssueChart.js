@@ -4,7 +4,7 @@ Ext.define('Ext.portal.store.OpenIssueChart', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/issue/chart/get.json',
+        url: G_PATH + '/issue/chart/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

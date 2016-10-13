@@ -4,7 +4,7 @@ Ext.define('Ext.meta.store.Meta', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/meta/list/get.json',
+        url: G_PATH + '/meta/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

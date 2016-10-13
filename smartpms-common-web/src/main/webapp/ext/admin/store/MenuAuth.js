@@ -5,7 +5,7 @@ Ext.define('Ext.admin.store.MenuAuth', {
     proxy: {
         type: 'ajax',
         enablePaging : true,
-        url: '/int/resource/role/list/get.json',
+        url: G_PATH + '/resource/role/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

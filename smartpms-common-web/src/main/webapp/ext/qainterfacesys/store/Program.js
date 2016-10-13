@@ -5,7 +5,7 @@ Ext.define('Ext.qainterfacesys.store.Program', {
     pageSize : 300,
     proxy: {
         type: 'ajax',
-        url: '/int/quality/interface/list/get.json',
+        url: G_PATH + '/quality/interface/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

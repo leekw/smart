@@ -50,7 +50,7 @@ Ext.define('Ext.programvf.view.CRGrid' ,{
     	               		jiraId : record.data.jiraId
     	               	};
     	               	Ext.Ajax.request({
-    	            	    url: '/int/changerequest/summary/get.json',
+    	            	    url: G_PATH + '/changerequest/summary/get.json',
     	            	    method: 'POST',
     	            	    jsonData: Ext.encode(param),
     	            	    success: function(response){

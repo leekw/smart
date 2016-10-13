@@ -4,7 +4,7 @@ Ext.define('Ext.changerequest.store.RepositoryCombo', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/changerequest/repository/list/get.json',
+        url: G_PATH + '/changerequest/repository/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

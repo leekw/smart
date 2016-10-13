@@ -4,7 +4,7 @@ Ext.define('Ext.portal.store.Itsm', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: '/int/itsm/list/get.json',
+        url: G_PATH + '/itsm/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

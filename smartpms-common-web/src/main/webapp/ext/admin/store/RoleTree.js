@@ -3,7 +3,7 @@ Ext.define('Ext.admin.store.RoleTree', {
 	model : 'Ext.admin.model.Role',
 	proxy : {
 		type: 'ajax',
-        url: '/int/role/list/get.json',
+        url: G_PATH + '/role/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

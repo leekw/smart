@@ -48,7 +48,7 @@ Ext.define('Ext.layout.view.Viewport', {
             	listeners : {
 	            	beforeexpand : function(p, animate, options) {
 	            		Ext.Ajax.request({
-	    					url: '/int/connection/get.json',
+	    					url: G_PATH + '/connection/get.json',
 	    					method : 'POST',
 	    					headers : {'Content-Type' : 'application/json'},
 	    					params : (Ext.JSON.encode({})),
@@ -85,7 +85,7 @@ Ext.define('Ext.layout.view.Viewport', {
     listeners : {
     	afterrender : function(v, eOpts) {
     		Ext.Ajax.request({
-				url: '/int/notice/main/get.json',
+				url: G_PATH + '/notice/main/get.json',
 				method : 'POST',
 				headers : {'Content-Type' : 'application/json'},
 				params : (Ext.JSON.encode({})),
@@ -106,15 +106,15 @@ var UserInfo = {
 	_logout : function(btn) {
 		if (btn == "yes") {
 			Ext.Ajax.request({
-				url: '/int//logout/process.json',
+				url: G_PATH + '//logout/process.json',
 				method : 'POST',
 				headers : {'Content-Type' : 'application/json'},
 				params : (Ext.JSON.encode({})),
 				success: function(res, eOtps) {
 					if (parent != null) {
-						parent.document.location.href = '/int/layout/app/view.do';
+						parent.document.location.href = G_PATH + '/layout/app/view.do';
 					} else {
-						document.location.href = '/int/layout/app/view.do';
+						document.location.href = G_PATH + '/layout/app/view.do';
 					}
 				},
 				failure: function(res, eOtps) {
@@ -140,7 +140,7 @@ var MainPage = {
 			              height: '100%', 
 			              focusOnLoad: true, 
 			              frameborder: 0, 
-			              src: '/int' + M_URL 
+			              src: G_PATH + '' + M_URL 
 			      } 
 				}]
       		};

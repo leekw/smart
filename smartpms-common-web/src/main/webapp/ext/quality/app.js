@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.quality',
     
-    appFolder:'/int/ext/quality',
+    appFolder:G_PATH + '/ext/quality',
 
     controllers: [
         'Quality' 

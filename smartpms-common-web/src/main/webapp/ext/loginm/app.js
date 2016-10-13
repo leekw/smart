@@ -3,7 +3,7 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
     name: 'Ext.loginm',
     
-    appFolder:'/int/ext/loginm',
+    appFolder:G_PATH + '/ext/loginm',
 
     controllers: [
         'LoginMobile'
