@@ -33,7 +33,7 @@ Ext.define('Ext.nlayout.view.ViewportController', {
             view = node ? node.get('url') : M_URL,
             lastView = vmData.currentView,
             existingItem = mainCard.child('component[resourceId=' + hashTag + ']'),
-            newView;
+            newView, naviView;
         hashTag = node ? hashTag : M_RESOURCE_ID;
     	M_TITLE = resourceName == null ? M_RESOURCE_NAME : resourceName;
         // Kill any previously routed window
@@ -51,21 +51,28 @@ Ext.define('Ext.nlayout.view.ViewportController', {
 	 		        popup.focus();
 	 		        return ;
         		} else {
-		        	newView = Ext.create('Ext.Component',{
-		        		margin: '10 10 10 10',
-		    			autoEl: { 
-				              tag: 'iframe', 
-				              width: '98%', 
-				              height: '98%', 
-				              focusOnLoad: true, 
-				              frameborder: 0, 
-				              src: G_PATH + '' + view 
-					     },
+        			Ext.getCmp('main-navigation-path').setHtml('<div style="padding-left:2px;color:#fff;font-weight:600;"> Home / ' + M_TITLE + '</div>');
+		        	newView = Ext.create('Ext.container.Container',{
+		        		 margin: '10 10 10 10',
+		    		     items : [
+		    		         {
+			    		         xtype : 'component',
+			    		         autoEl: { 
+						              tag: 'iframe', 
+						              width: '98%', 
+						              height: '98%', 
+						              focusOnLoad: true, 
+						              frameborder: 0, 
+						              src: G_PATH + '' + view 
+							     }
+		    		         }
+		    		     ],
 					     hideMode: 'offsets',
 		                 resourceId: hashTag
 		    		});
         		}
         	} else if (resourceTypeCode == 'IMAGE') {
+        		Ext.getCmp('main-navigation-path').setHtml('<div style="padding-left:2px;color:#fff;font-weight:600;">' + M_TITLE +'</div>');
 				newView = Ext.create('Ext.Panel',{
         			autoScroll : true,
         			margin: '10 10 10 10',

@@ -4,7 +4,7 @@
 <html>
     <head>
        <title> ${sysTitle}</title>
-      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-triton/resources/theme-triton-all-debug.css?version=${version}">
+      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-etc/resources/theme-triton-all-debug.css?version=${version}">
       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends/Admin-all.css?version=${version}">
       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/ux/triton/resources/ux-all-debug.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-int/charts-all.css?version=${version}">

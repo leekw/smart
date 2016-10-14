@@ -47,7 +47,7 @@ Ext.define('Ext.nlayout.view.Viewport', {
                     xtype: 'component',
                     reference: 'senchaLogo',
                     cls: 'sencha-logo',
-                    html: '<div class="main-logo"><img src="' + G_PATH + '/angular/assets/img/favicon-32x32.png"><span style="color: #1B8679;">Smart</span>PMS</div>',
+                    html: '<div class="main-logo"><img src="' + G_PATH + '/angular/assets/img/favicon-32x32.png"><span style="font-family: Brush script MT;font-size:45px;color: #e5c649;">S</span><span style="color: #e5c649;">mart</span>PMS</div>',
                     width: 250
                 },
                 {
@@ -56,6 +56,11 @@ Ext.define('Ext.nlayout.view.Viewport', {
                     iconCls:'x-fa fa-navicon',
                     id: 'main-navigation-btn',
                     handler: 'onToggleNavigationSize'
+                },
+                {
+                	xtype: 'tbtext',
+                	id : 'main-navigation-path',
+                	html :''
                 },
                 {
                     xtype: 'tbspacer',

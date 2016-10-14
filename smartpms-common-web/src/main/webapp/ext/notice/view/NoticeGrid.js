@@ -212,9 +212,13 @@ Ext.define('Ext.notice.view.NoticeGrid' ,{
     ],
     listeners : {
     	afterrender : function(panel) {
+//    		alert("aaaa");
     		//var header = panel.header;
     		//header.setStyle('background-color', '#32404e');
     		//header.setStyle('border-color', '#32404e');
+    	},
+    	beforerender : function(panel) {
+    		
     	}
     }
 });    
