@@ -3,50 +3,53 @@
 <mapper namespace="resource">
 	<select id="selectResourceList" parameterType="Resource" resultType="Resource">
 	SELECT /* resource.selectResourceList 2014-07-10 Lee Kyung Wook */
-		  resource_id AS resourceId,
-		  resource_name AS resourceName,
-		  parent_resource_id AS parentResourceId,
-		  resource_type AS resourceTypeCode,
-		  url AS url,
+		  c.resource_id AS resourceId,
+		  c.resource_name AS resourceName,
+		  c.parent_resource_id AS parentResourceId,
+		  c.resource_type AS resourceTypeCode,
+		  c.url AS url,
+		  b.resource_name as parentResourceName,
 		  <if test="viewType == null">
-		  case when resource_type = 'MENU' then 0
-		       when url is null and resource_content is null then 0
+		  case when c.resource_type = 'MENU' then 0
+		       when c.url is null and c.resource_content is null then 0
 		       else 1 end as leaf,
 		  </if>
 		  <if test="viewType != null">
 		  (select case when count(1) &gt; 0 then 0 else 1 end  from intg_resource where parent_resource_id = c.resource_id) AS leaf,
 		  </if>
 		  <if test="viewType == null and resourceId != null">
-		  resource_content as resourceContent,
+		  c.resource_content as resourceContent,
 		  </if>
 		  <if test="adminYn !=null">
-		  resource_content as resourceContent,
+		  c.resource_content as resourceContent,
 		  </if>
-		  sort_no as sortNo,
-		  case when icon_cls is null then 'x-fa fa-leanpub' else icon_cls end as iconCls
-	FROM intg_resource c
+		  c.sort_no as sortNo,
+		  case when c.icon_cls is null then 'x-fa fa-leanpub' else c.icon_cls end as iconCls
+	FROM intg_resource c,
+		 intg_resource b
 	WHERE 1=1
+	and b.resource_id = c.parent_resource_id
 	<if test="viewType == null">
-	AND resource_type IN ('MENU','PAGE', 'IMAGE')
+	AND c.resource_type IN ('MENU','PAGE', 'IMAGE')
 	</if>
 	<if test="resourceId != null">
-	AND resource_id = #{resourceId}
+	AND c.resource_id = #{resourceId}
 	</if>
 	<if test="parentResourceId != null and allData == null">
-	AND parent_resource_id = #{parentResourceId}
+	AND c.parent_resource_id = #{parentResourceId}
 	</if>
 	<if test="resourceTypeCode != null">
-	AND resource_type = #{resourceTypeCode}
+	AND c.resource_type = #{resourceTypeCode}
 	</if>
 	<if test="parentResourceId == null and resourceId == null">
-	START WITH parent_resource_id = 'TOP'
-	CONNECT BY PRIOR resource_id = parent_resource_id
+	START WITH c.parent_resource_id = 'TOP'
+	CONNECT BY PRIOR c.resource_id = c.parent_resource_id
 	</if>
 	<if test="parentResourceId != null">
-	START WITH parent_resource_id = #{parentResourceId}
-	CONNECT BY PRIOR resource_id = parent_resource_id
+	START WITH c.parent_resource_id = #{parentResourceId}
+	CONNECT BY PRIOR c.resource_id = c.parent_resource_id
 	</if>
-	order by sort_no, resource_id  asc
+	order by c.sort_no, c.resource_id  asc
 	</select>
 	
 	<update id="updateResource" parameterType="Resource">

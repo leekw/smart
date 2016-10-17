@@ -146,7 +146,7 @@
 	 
 	<!-- SuccessHandler -->
 	<bean id="successHandler" class="net.smart.web.support.authentication.handler.IntegrationSavedRequestAwareAuthenticationSuccessHandler">
-    	 <property name="defaultTargetUrl" value="/index.do"/>
+    	 <property name="defaultTargetUrl" value="/nlayout/app/view.do"/>
 	</bean>
 	
 	<bean id="affirmativeBased" class="org.springframework.security.access.vote.AffirmativeBased">

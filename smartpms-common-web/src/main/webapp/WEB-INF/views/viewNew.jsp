@@ -4,7 +4,7 @@
 <html>
     <head>
        <title> ${sysTitle}</title>
-       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends/Admin-all.css?version=${version}">
+       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-gr/Admin-all.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/ext-charts/build/resources/ext-charts-all-debug.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/css/traffic-lignt.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/css/view_etc.css?version=${version}">
@@ -23,7 +23,7 @@
        <script type="text/javascript" src="${sysContext}/resources/ext/ext-all.js"></script>
        <script type="text/javascript" src="${sysContext}/resources/ext-charts/build/ext-charts.js"></script>
        <script type ="text/javascript" src="${sysContext}/ext/core/core.js"></script>  
-       <script type ="text/javascript" src="${sysContext}/ext/${_category}/${_ui}.js?version=${version}"></script>
+       <script type ="text/javascript" src="${sysContext}/ui/${_category}/${_ui}.js?version=${version}"></script>
        <script type="text/javascript" src="${sysContext}/resources/js/jquery-1.7.1.min.js"></script>
        <c:if test="${(_category  == 'nlayout' || _category  == 'portal')  && CALL_LOC == 'internal'}">
        <script type="text/javascript" src="${sysContext}/resources/js/sockjs-0.3.4.min.js"></script>
@@ -37,10 +37,12 @@
     	var M_URL = "${M_URL}";
     	var M_RESOURCE_ID = "${M_RESOURCE_ID}";
     	var M_RESOURCE_NAME = "${M_RESOURCE_NAME}";
+    	var M_PARENT_RESOURCE_NAME = "${M_PARENT_RESOURCE_NAME}";
     	var M_RESOURCE_TYPE = "${M_RESOURCE_TYPE}";
     	var G_MAX_CONNECTION = "${_maxConnection}";
     	var G_IS_LOGIN = "${IS_LOGIN}";
     	var G_LOGIN_NAME = "${LOGIN_NAME}";
+    	var G_LOGIN_ID = "${LOGIN_ID}";
     	var G_BOARD_NO = "${BOARD_NO}";
     	G_TOKEN = "${_csrf.token}";
     	var app = window.navigator.userAgent.toLowerCase();

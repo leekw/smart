@@ -33,14 +33,14 @@ Ext.define('Ext.nlayout.view.ViewportController', {
             view = node ? node.get('url') : M_URL,
             lastView = vmData.currentView,
             existingItem = mainCard.child('component[resourceId=' + hashTag + ']'),
+            parentResourceName = node ? node.get('parentResourceName') : null,
             newView, naviView;
         hashTag = node ? hashTag : M_RESOURCE_ID;
-    	M_TITLE = resourceName == null ? M_RESOURCE_NAME : resourceName;
+    	M_TITLE = resourceName == null ? M_PARENT_RESOURCE_NAME + ' / ' + M_RESOURCE_NAME : parentResourceName + ' / ' + resourceName;
         // Kill any previously routed window
         if (lastView && lastView.isWindow) {
             lastView.destroy();
         }
-
         lastView = mainLayout.getActiveItem();
         if (!existingItem) {
         	if (resourceTypeCode == 'PAGE') {

@@ -17,13 +17,17 @@
 	
 	
 	<select id="selectMainResourceInfo" resultType="HashMap">
-	SELECT url,
-		   resource_id as resourceId,
-		   resource_name as resourceName,
-		   resource_type as resourceType,
-		   resource_content as resourceContent 
-	FROM intg_resource 
-	WHERE resource_id = (
+	SELECT a.url,
+		   a.resource_id as resourceId,
+		   a.resource_name as resourceName,
+		   a.resource_type as resourceType,
+		   a.resource_content as resourceContent,
+		   b.resource_name as parentResourceName 
+	FROM intg_resource a,
+		 intg_resource b 
+	WHERE 1=1
+	and b.resource_id = a.parent_resource_id
+	and a.resource_id = (
 	SELECT  main_resource_id as mainResourceId
     FROM intg_project_status)
     limit 1

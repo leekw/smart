@@ -4,8 +4,8 @@
 <html>
     <head>
        <title> ${sysTitle}</title>
-      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-etc/resources/theme-triton-all-debug.css?version=${version}">
-      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends/Admin-all.css?version=${version}">
+      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-etc-gr/resources/theme-triton-all-debug.css?version=${version}">
+      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-gr/Admin-all.css?version=${version}">
       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/ux/triton/resources/ux-all-debug.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-int/charts-all.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/css/traffic-lignt.css?version=${version}">
@@ -115,9 +115,9 @@
 			background-color : #c2c2c2 !important;
 			color : #ffffff !important;
 		}
-		.fa-check-circle:before{color:#36bbf7;}
-		.fa-search:before{color:#36bbf7;}
-		.fa-cloud-download:before{color:#ffcc00;}
+		.fa-check-circle:before{color:#1c2b36;}
+		.fa-search:before{color:#1c2b36;}
+		.fa-cloud-download:before{color:#1c2b36;}
 		.x-label{
 			vertical-align: middle;
 		}
@@ -214,6 +214,7 @@
     	var M_URL = "${M_URL}";
     	var M_RESOURCE_ID = "${M_RESOURCE_ID}";
     	var M_RESOURCE_NAME = "${M_RESOURCE_NAME}";
+    	var M_PARENT_RESOURCE_NAME = "${M_PARENT_RESOURCE_NAME}";
     	var M_RESOURCE_TYPE = "${M_RESOURCE_TYPE}";
     	var M_RESOURCE_CONTENT = '${M_RESOURCE_CONTENT}';
     	var G_MAX_CONNECTION = "${_maxConnection}";

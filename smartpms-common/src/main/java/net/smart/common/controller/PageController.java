@@ -54,12 +54,13 @@ public class PageController extends AbstractPageController {
 		request.setAttribute("IS_HANDS", integrationCommonService.isAdmin() ? "Y" :"N");
 		request.setAttribute("IS_CT_HANDS", integrationCommonService.isCutOverAdmin() ? "Y" :"N");
 		Map<String, String> mainResource = integrationCommonService.getMainResourceInfo();
-		if (category.equals("layout") || category.equals("nlayout")) {
+		if (category.equals("layout") || category.equals("nlayout") || category.equals("main")) {
 			request.setAttribute("M_RESOURCE_CONTENT", mainResource.get("resourcecontent"));
 		}
 		request.setAttribute("M_URL", mainResource.get("url"));
 		request.setAttribute("M_RESOURCE_ID", mainResource.get("resourceid"));
 		request.setAttribute("M_RESOURCE_NAME", mainResource.get("resourcename"));
+		request.setAttribute("M_PARENT_RESOURCE_NAME", mainResource.get("parentresourcename"));
 		request.setAttribute("M_RESOURCE_TYPE", mainResource.get("resourcetype"));
 			
 		String boardNo = request.getParameter("boardNo");
@@ -82,7 +83,7 @@ public class PageController extends AbstractPageController {
 			}
 		}
 		
-		if ("nlayout".equals(category)) {
+		if ("nlayout".equals(category) || "main".equals(category)) {
 			if ("external".equals(callLocation) || "Y".equals(modileYn)) category = "nlayoutm";
 			modelAndView.setViewName("viewNew");
 		} else {
