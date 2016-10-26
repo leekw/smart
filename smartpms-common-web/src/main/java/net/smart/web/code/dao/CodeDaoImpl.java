@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.CommonCode;
 
 @Repository
-public class CodeDaoImpl extends IntegrationSqlSessionDaoSupport  implements CodeDao {
+public class CodeDaoImpl extends SmartSqlSessionDaoSupport  implements CodeDao {
 
 	@Override
 	public void addCode(List<CommonCode> params) {

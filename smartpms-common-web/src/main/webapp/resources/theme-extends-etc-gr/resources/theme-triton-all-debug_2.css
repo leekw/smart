@@ -1890,7 +1890,7 @@
 .x-tree-arrows .x-tree-expander {
     font-size: 16px;
     font-family: FontAwesome;
-    color: #63bbad;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-tree-arrows .x-tree-expander:before {
@@ -1900,7 +1900,7 @@
 .x-tree-arrows .x-grid-tree-node-expanded .x-tree-expander {
     font-size: 16px;
     font-family: FontAwesome;
-    color: #63bbad;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-tree-arrows .x-grid-tree-node-expanded .x-tree-expander:before {
@@ -1911,7 +1911,7 @@
 .x-tree-elbow-end-plus {
     font-size: 14px;
     font-family: FontAwesome;
-    color: #63bbad;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-tree-elbow-plus:before,
@@ -1923,7 +1923,7 @@
 .x-grid-tree-node-expanded .x-tree-elbow-end-plus {
     font-size: 14px;
     font-family: FontAwesome;
-    color: #63bbad;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-grid-tree-node-expanded .x-tree-elbow-plus:before,
@@ -1935,7 +1935,7 @@
     width: 16px;
     height: 16px;
     line-height: 32px;
-    color: #63bbad;
+    color: #1c2b36;
     font-size: 16px;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/tree/View.scss:159 */
@@ -1956,7 +1956,7 @@
 .x-tree-icon-leaf {
     font-size: 16px;
     font-family: FontAwesome;
-    color: #63bbad;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-tree-icon-leaf:before {
@@ -1966,7 +1966,7 @@
 .x-tree-icon-parent {
     font-size: 16px;
     font-family: FontAwesome;
-    color: #63bbad;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-tree-icon-parent:before {
@@ -1976,7 +1976,7 @@
 .x-tree-icon-parent-expanded {
     font-size: 16px;
     font-family: FontAwesome;
-    color: #63bbad;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-tree-icon-parent-expanded:before {
@@ -5572,7 +5572,7 @@
 }
 /* http://localhost:1843/classic/theme-triton/sass/src/tree/View.scss:1 */
 .x-tree-checkbox {
-    color: #63bbad;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-triton/sass/src/window/Toast.scss:1 */
 .x-toast {

@@ -68,7 +68,6 @@ position: absolute;
 }
 .fa-check-circle:before{color:#eea236}
 .main-logo {
-	background-color : #1c2b36 !important;
 	color: #ffffff;
   	display: block;
  	font-size: 24px;
@@ -82,3 +81,12 @@ position: absolute;
 .top-user-name {
 	color : #ffffff !important;
 }
+.x-panel-header-default {
+ 
+ }
+ .x-panel-body-default {
+ 	
+ }
+ .x-panel-header-title-default {
+ }
+ 

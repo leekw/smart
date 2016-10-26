@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import net.smart.common.exception.IntegrationException;
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.common.support.util.DateUtil;
 import net.smart.common.support.util.FileUtil;
 import net.smart.web.changerequest.dao.ChangeRequestDao;
@@ -77,7 +77,7 @@ public class ChangeRequestServiceImpl implements ChangeRequestService {
 	private JiraService jiraService;
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 	
 	@Autowired
 	private CodeService codeService;

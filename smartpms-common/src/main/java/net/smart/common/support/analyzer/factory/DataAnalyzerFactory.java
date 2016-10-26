@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * <pre>
  * 데이터 분석기 중 입력된 type에 의해 해당하는 타입의 클래스를 리턴하기 위한 Factory class
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

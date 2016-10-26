@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  * <pre>
  * Object를 json로 변환하거나 json 을 Object로 변환하는 JSON 데이터 분석기 클래스(계츨구조의 json 생성, 파싱) 
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

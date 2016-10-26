@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * <pre>
  * 발생된 Exception을 받아 System에 맞게 예외처리 제어하는 ExceptionHandler 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

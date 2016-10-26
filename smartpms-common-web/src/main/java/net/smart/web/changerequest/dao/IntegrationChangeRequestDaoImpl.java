@@ -2,7 +2,7 @@ package net.smart.web.changerequest.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.common.support.util.DateUtil;
 import net.smart.web.domain.changerequest.ChangeRequestJira;
 import net.smart.web.domain.changerequest.ChangeRequestLimit;
@@ -13,7 +13,7 @@ import net.smart.web.domain.changerequest.ChangeRequestVolume;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class IntegrationChangeRequestDaoImpl extends IntegrationSqlSessionDaoSupport implements IntegrationChangeRequestDao {
+public class IntegrationChangeRequestDaoImpl extends SmartSqlSessionDaoSupport implements IntegrationChangeRequestDao {
 
 	@Override
 	public List<ChangeRequestTarget> getProgramListByJiraId(ChangeRequestTarget param) {

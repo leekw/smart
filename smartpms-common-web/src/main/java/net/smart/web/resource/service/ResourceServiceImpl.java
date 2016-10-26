@@ -9,8 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.PostConstruct;
 
 import net.smart.common.domain.UploadFile;
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.web.domain.UserInfo;
+import net.smart.web.domain.resource.RegUser;
 import net.smart.web.domain.resource.Resource;
 import net.smart.web.domain.resource.ResourceRole;
 import net.smart.web.domain.role.UserRole;
@@ -31,7 +32,7 @@ public class ResourceServiceImpl implements ResourceService {
 	private Map<String, String> contextData;
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 	
 	@PostConstruct
 	private void init() {
@@ -207,6 +208,11 @@ public class ResourceServiceImpl implements ResourceService {
 	@Transactional
 	public void removeResource(List<Resource> params) {
 		resourceDao.removeResource(params);
+	}
+
+	@Override
+	public RegUser getRegUser(RegUser param) {
+		return resourceDao.getRegUser(param);
 	}
 
 }

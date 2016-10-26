@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct;
 
 import net.smart.common.domain.DataSyncInfo;
 import net.smart.common.exception.IntegrationException;
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.common.support.constant.ErrorCode;
 import net.smart.common.support.util.DateUtil;
 import net.smart.common.support.util.FileUtil;
@@ -99,7 +99,7 @@ public class JiraServiceImpl implements JiraService {
 	private JiraConfig jiraConfig;
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 	
 	@Autowired
 	private CodeService codeService;

@@ -2,7 +2,7 @@ package net.smart.web.sample.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.CodeCategory;
 import net.smart.web.domain.Sample;
 import net.smart.web.domain.SampleTree;
@@ -10,7 +10,7 @@ import net.smart.web.domain.SampleTree;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SampleDaoImpl extends IntegrationSqlSessionDaoSupport implements SampleDao {
+public class SampleDaoImpl extends SmartSqlSessionDaoSupport implements SampleDao {
 
 	@Override
 	public void addSample(Sample param) {

@@ -33,8 +33,10 @@
 		</if>
 		<if test="orgRefValue != null">
 		AND org_ref_value = #{orgRefValue}
-		</if> 
+		</if>
+		<if test="parentOrgId == null"> 
 		and parent_org_id = 'TOP'
+		</if>
 		union all
 		select org_id as orgId,
 		       org_name||case when org_div = 'TEAM' then '(팀)'

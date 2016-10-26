@@ -5,7 +5,7 @@ package net.smart.common.support.constant;
  * <pre>
  *  공통 에러코드 상수 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

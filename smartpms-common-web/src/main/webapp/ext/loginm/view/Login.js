@@ -61,7 +61,7 @@ Ext.define('Ext.loginm.view.Login', {
                     },
                     listeners : {
 				    	afterrender : function(field) {
-				    		if (!Cookies._getCookie("INT_USER"))
+				    		if (!Cookies._getCookie("SAVED_USER"))
 				    			field.focus(false, 1000);	
 				    	}
 				    }
@@ -84,7 +84,7 @@ Ext.define('Ext.loginm.view.Login', {
                     },
                     listeners : {
 				    	afterrender : function(field) {
-				    		if (Cookies._getCookie("INT_USER"))
+				    		if (Cookies._getCookie("SAVED_USER"))
 				    			field.focus(false, 1000);	
 				    	},
 				    	specialkey : function(f, e) {
@@ -109,9 +109,9 @@ Ext.define('Ext.loginm.view.Login', {
                             	change : function( obj, newValue, oldValue, eOpts ) {
                             		if (newValue) {
                             			var userId  = Ext.getCmp('userid').getValue();
-                            			Cookies._setCookie("INT_USER", userId, -1);
+                            			Cookies._setCookie("SAVED_USER", userId, -1);
                             		} else {
-                            			Cookies._delCookie("INT_USER");
+                            			Cookies._delCookie("SAVED_USER");
                             		}
                             	}
                             }

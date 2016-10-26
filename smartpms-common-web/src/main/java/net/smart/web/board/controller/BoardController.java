@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.smart.common.annotation.IntegrationRequest;
 import net.smart.common.annotation.IntegrationResponse;
 import net.smart.common.exception.IntegrationException;
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.web.board.service.BoardService;
 import net.smart.web.domain.CommonCode;
 import net.smart.web.domain.board.Board;
@@ -27,7 +27,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 	
 	@RequestMapping(value = "/board/list/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="boards")

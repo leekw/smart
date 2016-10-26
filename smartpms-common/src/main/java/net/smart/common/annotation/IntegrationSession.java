@@ -9,7 +9,7 @@ import java.lang.annotation.RetentionPolicy;
  * <pre>
  *  web에서 bind될 session annotation
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

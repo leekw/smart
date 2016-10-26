@@ -27,7 +27,7 @@
         </property>
     </bean>
     
-    <bean id="intMessageSource" class="net.smart.common.support.message.IntegrationMessageSource">
+    <bean id="smartMessageSource" class="net.smart.common.support.message.smartMessageSource">
         <property name="messageSource" ref="messageSource" />
     </bean>
     

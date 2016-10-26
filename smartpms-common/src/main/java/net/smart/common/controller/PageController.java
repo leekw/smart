@@ -50,10 +50,10 @@ public class PageController extends AbstractPageController {
 		}
 		request.setAttribute("IS_MOBILE", modileYn);
 		request.setAttribute("CALL_LOC", callLocation);
-		request.setAttribute("version", integrationCommonService.getSystemDeployVersion());
-		request.setAttribute("IS_HANDS", integrationCommonService.isAdmin() ? "Y" :"N");
-		request.setAttribute("IS_CT_HANDS", integrationCommonService.isCutOverAdmin() ? "Y" :"N");
-		Map<String, String> mainResource = integrationCommonService.getMainResourceInfo();
+		request.setAttribute("version", smartCommonService.getSystemDeployVersion());
+		request.setAttribute("IS_HANDS", smartCommonService.isAdmin() ? "Y" :"N");
+		request.setAttribute("IS_CT_HANDS", smartCommonService.isCutOverAdmin() ? "Y" :"N");
+		Map<String, String> mainResource = smartCommonService.getMainResourceInfo();
 		if (category.equals("layout") || category.equals("nlayout") || category.equals("main")) {
 			request.setAttribute("M_RESOURCE_CONTENT", mainResource.get("resourcecontent"));
 		}
@@ -77,7 +77,7 @@ public class PageController extends AbstractPageController {
 				request.setAttribute("LOGIN_NAME", intUser != null ? intUser.getUserName() : "");
 				request.setAttribute("LOGIN_ID", intUser != null ? intUser.getUserId() : "");
 				if ("external".equals(callLocation)
-						&& integrationCommonService.isIntegrationDeveloper(intUser.getUserId())) {
+						&& smartCommonService.isIntegrationDeveloper(intUser.getUserId())) {
 					callLocation = "internal";
 				}
 			}
@@ -90,7 +90,7 @@ public class PageController extends AbstractPageController {
 			modelAndView.setViewName(CodeValue.VIEW.getValue());
 		}
 		if ("external".equals(callLocation) || "Y".equals(modileYn)) {
-			if(!integrationCommonService.isPermitExternalUrl(category)) {
+			if(!smartCommonService.isPermitExternalUrl(category)) {
 				modelAndView.setViewName("notPermit");
 			}
 		}
@@ -100,6 +100,14 @@ public class PageController extends AbstractPageController {
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/user/reg.do", method = RequestMethod.GET)
+	public ModelAndView regUser(ModelAndView modelAndView) {
+		modelAndView.setViewName("regUser");
+		super.setPageBasedInfo(modelAndView);
+		return modelAndView;
+	}
+	
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public ModelAndView loginPage(ModelAndView modelAndView) {

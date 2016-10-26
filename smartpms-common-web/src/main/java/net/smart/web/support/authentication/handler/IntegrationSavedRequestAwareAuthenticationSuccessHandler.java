@@ -25,7 +25,7 @@ public class IntegrationSavedRequestAwareAuthenticationSuccessHandler extends Sa
 			IntUser user = null;
 			UserDetail userDetail = (UserDetail) authentication.getDetails();
 			user = userDetail.getIntUser();
-			session.setAttribute("INT_USER", user);
+			session.setAttribute("SAVED_USER", user);
 		}
 		super.onAuthenticationSuccess(request, response, authentication);
 	}

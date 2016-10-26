@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * <pre>
  *  XSS 공격을 무력화 하기 위한 필터 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

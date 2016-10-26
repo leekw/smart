@@ -9,7 +9,7 @@ import java.util.Date;
  * <pre>
  * 모든 도메인 객체를 대표하는 도메인 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

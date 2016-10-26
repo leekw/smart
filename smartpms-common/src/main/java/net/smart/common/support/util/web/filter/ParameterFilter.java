@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * <pre>
  *  Integration web module servletFilter
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

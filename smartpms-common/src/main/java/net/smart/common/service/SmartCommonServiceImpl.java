@@ -1,0 +1,414 @@
+package net.smart.common.service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.annotation.PostConstruct;
+
+import net.smart.common.dao.BasedResourceDao;
+import net.smart.common.dao.SmartCommonDao;
+import net.smart.common.domain.DataSyncInfo;
+import net.smart.common.domain.IntUser;
+import net.smart.common.domain.UserDetail;
+import net.smart.common.domain.based.BasedOrg;
+import net.smart.common.domain.based.BasedOrgRel;
+import net.smart.common.domain.based.BasedRole;
+import net.smart.common.domain.based.BasedUser;
+import net.smart.common.exception.IntegrationException;
+import net.smart.common.support.security.StringEncrypter;
+import net.smart.common.support.util.DateUtil;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service("smartCommonService")
+public class SmartCommonServiceImpl implements SmartCommonService {
+	
+	@Autowired
+	private SmartCommonDao smartCommonDao;
+	
+	@Autowired
+	private BasedResourceDao basedResourceDao;
+	
+	private int limitCount;
+	
+	private Map<String, String> mainResource;
+	
+	private Map<String, String> developerData;
+	
+	private Map<String, String> permitUrls;
+	
+	private DataSyncInfo interfaceDate;
+	
+	private AtomicInteger dateSync = new AtomicInteger(0);
+	
+	private AtomicInteger syncCount = new AtomicInteger(0);
+	
+	private Map<String, BasedOrg> orgData;
+	private Map<String, BasedOrgRel> orgRelationData;
+	
+	@Value("${system.deploy.version}")
+	private String systemDeployVersion;
+	
+	@Value("${integration.developers}")
+	private String developers;
+	
+	
+	public String getDevelopers() {
+		return developers;
+	}
+
+
+	public void setDevelopers(String developers) {
+		this.developers = developers;
+	}
+
+
+	public String getSystemDeployVersion() {
+		return systemDeployVersion;
+	}
+
+	
+	public int getLimitCount() {
+		return this.limitCount;
+	}
+	
+	
+	
+	@PostConstruct
+	public void init() {
+		this.limitCount = smartCommonDao.getLimitConnectionCount();
+		this.mainResource = smartCommonDao.getMainResourceInfo();
+		this.interfaceDate = smartCommonDao.getInterfaceDateInfo();
+		this.setDeveloperData();
+		this.setExternalPermitUrl();
+		this.setOrgData();
+		this.setOrgRelationData();
+	}
+	
+	private void setOrgData() {
+		if (this.orgData == null) {
+			this.orgData = new ConcurrentHashMap<String, BasedOrg>();
+			List<BasedOrg> temps = basedResourceDao.getOrgList(new BasedOrg());
+			for (BasedOrg org : temps) {
+				this.orgData.put(org.getOrgId(), org);
+			}
+		}
+	}
+	
+	private void setOrgRelationData() {
+		if (this.orgRelationData == null) {
+			this.orgRelationData = new ConcurrentHashMap<String, BasedOrgRel>();
+			List<BasedOrgRel> temps = basedResourceDao.getOrgRelationList(new BasedOrgRel());
+			for (BasedOrgRel rel : temps) {
+				this.orgRelationData.put(rel.getSourceOrgId(), rel);
+			}
+		}
+	}
+	
+	private void setExternalPermitUrl() {
+		this.permitUrls = new HashMap<String, String>();
+		this.permitUrls.put("nlayout", "nlayout");
+		this.permitUrls.put("nlayoutm", "nlayoutm");
+		this.permitUrls.put("ncutoverm", "ncutoverm");
+		this.permitUrls.put("stabilizationm", "stabilizationm");
+	}
+	
+	private void setDeveloperData() {
+		this.developerData = new HashMap<String, String>();
+		for (String dev : developers.split(",")) {
+			this.developerData.put(dev, dev);
+		}
+	}
+	
+//	@Scheduled(cron="0 0/5 * * * ? ")
+	public void setInterfaceDateInfo() {
+		DataSyncInfo data = smartCommonDao.getInterfaceDateInfo();
+		synchronized(dateSync) {
+			this.interfaceDate = null;
+			this.interfaceDate = data;
+		}
+	}
+
+
+	@Override
+	public boolean isAdmin(String ip) {
+		if (this.isSuperAmin()) return true;
+		return false;
+	}
+
+	@Override
+//	@Scheduled(cron="0 0/1 * * * ? ")
+	public void setLimitConnectionCount() {
+		Integer result = smartCommonDao.getLimitConnectionCount();
+		Map<String, String> mainResource = smartCommonDao.getMainResourceInfo();
+		synchronized(syncCount){
+			this.limitCount = result.intValue();
+			this.mainResource.clear();
+			this.mainResource = mainResource;
+		}
+	}
+
+	@Override
+	public Map<String, String> getMainResourceInfo() {
+		return this.mainResource;
+	}
+
+	@Override
+	public DataSyncInfo getDataSyncInfo(DataSyncInfo param) {
+		return smartCommonDao.getDataSyncInfo(param);
+	}
+
+	@Override
+	@Transactional
+	public void modifyDataSyncInfo(DataSyncInfo param) {
+		smartCommonDao.modifyDataSyncInfo(param);
+	}
+
+	@Override
+	@Transactional
+	public void addDataSyncInfo(DataSyncInfo param) {
+		smartCommonDao.addDataSyncInfo(param);
+	}
+
+	@Override
+	public void beforeDataSyncInfo(DataSyncInfo param) {
+		DataSyncInfo temp = this.getDataSyncInfo(param);
+		param.setInsert(temp == null ? true : false); 
+		param.setLastSyncDate(temp == null ? DateUtil.getDateByString("20000101", DateUtil.Format.YYYYMMDD.getValue()) : temp.getLastSyncDate());
+	}
+
+	@Override
+	public void afterDataSyncInfo(DataSyncInfo param) {
+		param.setLastSyncDate(DateUtil.getNow());
+		if (param.isInsert()) {
+			this.addDataSyncInfo(param);
+		} else {
+			this.modifyDataSyncInfo(param);
+		}
+	}
+
+	@Override
+	public boolean isValidInterfaceDate(String type) {
+		Date startDate = null;
+		Date endDate = null;
+		if ("cutover".equals(type)){
+			startDate = DateUtil.getDateByString(this.interfaceDate.getCutoverStartDate(), DateUtil.Format.YYYY_MM_DD.getValue());
+			endDate  = DateUtil.getDateByString(this.interfaceDate.getCutoverEndDate(), DateUtil.Format.YYYY_MM_DD.getValue());
+		} else {
+			startDate = DateUtil.getDateByString(this.interfaceDate.getDefectStartDate(), DateUtil.Format.YYYY_MM_DD.getValue());
+			endDate  = DateUtil.getDateByString(this.interfaceDate.getDefectEndDate(), DateUtil.Format.YYYY_MM_DD.getValue());
+		}
+		
+		return DateUtil.isBetweenDate(startDate, endDate, DateUtil.getNow());
+	}
+	
+	private IntUser getIntUser() {
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		if (securityContext != null ) {
+			Authentication authentication = securityContext.getAuthentication();
+			if (authentication != null) {
+				if (authentication.getDetails() != null) {
+					try {
+						UserDetail userDetail = (UserDetail) authentication.getDetails();
+						IntUser intUser = userDetail.getIntUser();
+						return intUser;
+					} catch (Exception e) {
+						return null;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean isSuperAmin() {
+		IntUser intUser = this.getIntUser();
+		if (intUser != null && intUser.getAuthorityList() != null && !intUser.getAuthorityList().isEmpty()) {
+			for (GrantedAuthority obj : intUser.getAuthorityList()) {
+				if ("ROLE_SUPER".equals(obj.getAuthority())) 
+					return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public String getSessionUserId() {
+		IntUser intUser = this.getIntUser();
+		if (intUser != null) {
+			return intUser.getUserId();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean isAccessPossible() {
+		IntUser intUser = this.getIntUser();
+		if (intUser != null) {
+			return intUser.isAccess();
+		}
+		return false;
+	}
+
+	@Override
+	public String getSessionUserName() {
+		IntUser intUser = this.getIntUser();
+		if (intUser != null) {
+			return intUser.getUserName();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean isAdmin() {
+		IntUser intUser = this.getIntUser();
+		if (intUser != null && intUser.getAuthorityList() != null && !intUser.getAuthorityList().isEmpty()) {
+			for (GrantedAuthority obj : intUser.getAuthorityList()) {
+				if ("ROLE_SUPER".equals(obj.getAuthority())
+						|| "ROLE_ADMIN".equals(obj.getAuthority())) 
+					return true;
+			}
+		}
+		return false;
+	}
+
+
+	@Override
+	public DataSyncInfo getInterfaceDate() {
+		return this.interfaceDate;
+	}
+
+
+	@Override
+	public boolean isIntegrationDeveloper(String id) {
+		return developerData.containsKey(id);
+	}
+
+
+	@Override
+	public boolean isPermitExternalUrl(String category) {
+		return this.permitUrls.containsKey(category);
+	}
+
+
+	@Override
+	public boolean isCutOverAdmin() {
+		IntUser intUser = this.getIntUser();
+		if (intUser != null && intUser.getAuthorityList() != null && !intUser.getAuthorityList().isEmpty()) {
+			for (GrantedAuthority obj : intUser.getAuthorityList()) {
+				if ("CUTOVER_JIRA_SYNC".equals(obj.getAuthority())) 
+					return true;
+			}
+		}
+		return false;
+	}
+
+
+	@Override
+	public List<BasedUser> getUserList(BasedUser param) {
+		return basedResourceDao.getUserList(param);
+	}
+
+
+	@Override
+	public IntUser login(BasedUser param) {
+		StringEncrypter se = new StringEncrypter(false);
+		String checkParamPassword;
+		try {
+			checkParamPassword = se.encrypt(param.getUserPassword());
+		} catch (Exception e) {
+			throw new IntegrationException("ERROR.0006", "사용자 패스워드 Encription 도중 오류가 발생되었습니다.");
+		}
+		IntUser result = new IntUser();
+		result.setUserId(param.getUserId());
+		result.setLoginDate(DateUtil.getNowByFormat(DateUtil.Format.YYYY_MM_DD_HH_MI_SS.getValue()));
+		result.setIp(param.getIp());
+		param.setMaxRowSize(1);
+		List<BasedUser> users = basedResourceDao.getUserList(param);
+		boolean isAccess = false;
+		String userName = null;
+		if (users == null || users.isEmpty()) {
+			throw new IntegrationException("ERROR.0007");
+		}
+		if (!checkParamPassword.equals(users.get(0).getUserPassword())) {
+			throw new IntegrationException("ERROR.0008");
+		}
+		isAccess = users.get(0).getStatus().equals("USED");
+		userName = users.get(0).getUserName();
+		if (!isAccess) {
+			throw new IntegrationException("ERROR.0009");
+		}
+		
+		this.setSessionAuth(users.get(0), result);
+		
+		result.setAccess(isAccess);
+		result.setUserName(userName);
+
+		return result;
+	}
+
+	private void setSessionAuth(BasedUser user, IntUser result) {
+		List<BasedRole> roles = new ArrayList<BasedRole>();
+		BasedRole roleParam = new BasedRole();
+		roleParam.setTargetId(user.getUserId());
+		roleParam.setRelationType("USER");
+		List<BasedRole> userRoles = basedResourceDao.getRoleList(roleParam);
+		if (userRoles != null && !userRoles.isEmpty()) roles.addAll(userRoles);
+		
+		if (user.getDefaultOrgId() != null) {
+			String orgPath =  this.getOrgPath(user.getDefaultOrgId());
+			for (String org : orgPath.split("/")) {
+				roleParam.setTargetId(org);
+				roleParam.setRelationType("ORG");
+				List<BasedRole> orgRoles = basedResourceDao.getRoleList(roleParam);
+				if (orgRoles != null && !orgRoles.isEmpty()) roles.addAll(orgRoles);
+			}
+		}
+		
+		if (roles == null || roles.isEmpty()) {
+			throw new IntegrationException("ERROR.0010");
+		}
+		
+		List<GrantedAuthority> temps = new ArrayList<GrantedAuthority>();
+		GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_USER");
+		temps.add(authority);
+		for (BasedRole role : roles) {
+			authority = new SimpleGrantedAuthority(role.getRoleId());
+			temps.add(authority);
+		}
+		result.setAuthorityList(temps);
+	}
+
+
+	@Override
+	public String getOrgPath(String orgId) {
+		StringBuffer path = new StringBuffer();
+		this.setOrgPaht(orgId, path);
+		return path.toString();
+	}
+
+	private void setOrgPaht(String orgId, StringBuffer path) {
+		BasedOrgRel temp = this.orgRelationData.get(orgId);
+		if (temp != null)  {
+			path.append(temp.getSourceOrgId()).append("/");
+		}
+		if (temp != null && !temp.getTargetOrgId().equals("TOP")) {
+			this.setOrgPaht(temp.getTargetOrgId(), path);
+		}
+	}
+
+}

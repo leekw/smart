@@ -15,7 +15,7 @@ import net.smart.common.domain.IntError;
 import net.smart.common.support.analyzer.DataAnalyzer;
 import net.smart.common.support.analyzer.factory.DataAnalyzerFactory;
 import net.smart.common.support.constant.BizCode;
-import net.smart.common.support.message.IntegrationMessageSource;
+import net.smart.common.support.message.smartMessageSource;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.stereotype.Component;
@@ -50,7 +50,7 @@ public class IntegrationExceptionHandler {
 			String errorCode, String metadataType)  throws IOException, ServletException {
 		analyzerFactory = new DataAnalyzerFactory();
 		//Error Message Output
-		String message  = errorCode != null && "NOTAUTH".equals(errorCode) ? "해당 서비스에 접근할 수 있는 권한이 없습니다." : IntegrationMessageSource.getMessage(errorCode);
+		String message  = errorCode != null && "NOTAUTH".equals(errorCode) ? "해당 서비스에 접근할 수 있는 권한이 없습니다." : smartMessageSource.getMessage(errorCode);
 		DataAnalyzer converter = analyzerFactory.getDataAnalyzer(metadataType);
         IntError error = new IntError(errorCode, message);
         String result = converter.deserialize("error", error);

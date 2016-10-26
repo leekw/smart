@@ -16,7 +16,7 @@ import org.springframework.web.util.WebUtils;
  * <pre>
  *  비동기 Request/Response 처리 중심 구조로 확장위한 Utils class
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

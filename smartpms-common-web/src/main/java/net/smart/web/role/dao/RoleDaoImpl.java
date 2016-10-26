@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.resource.Resource;
 import net.smart.web.domain.resource.ResourceRole;
 import net.smart.web.domain.role.Role;
 
 @Repository
-public class RoleDaoImpl extends IntegrationSqlSessionDaoSupport implements RoleDao {
+public class RoleDaoImpl extends SmartSqlSessionDaoSupport implements RoleDao {
 
 	@Override
 	public List<Role> getRoleList(Role param) {

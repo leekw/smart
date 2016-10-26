@@ -18,7 +18,7 @@ import org.springframework.util.Assert;
  * <pre>
  *  암호화 된 데이터를 송수신 시 데이터를 암축/압축해제 하기 위한 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

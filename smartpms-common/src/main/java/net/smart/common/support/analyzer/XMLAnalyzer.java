@@ -14,7 +14,7 @@ import com.thoughtworks.xstream.XStream;
  * <pre>
  * Object를 xml로 변환하거나 xml을 Object로 변환하는 XML 데이터 분석기 클래스(계츨구조의 xml 생성, 파싱) 
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

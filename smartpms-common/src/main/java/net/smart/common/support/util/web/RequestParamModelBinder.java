@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * <pre>
  *   RequestParam ModelBinder
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

@@ -18,7 +18,7 @@ Ext.define('Ext.nmenu.store.MenuTree', {
             destroy: 'POST'
         },
         defaultRootProperty: 'resources',
-        extraParams : { maxRowSize : 0, parentResourceId : 'LIMIT', adminYn : 'Y' }
+        extraParams : { maxRowSize : 0, parentResourceId : 'TOP', adminYn : 'Y' }
 	},
 	root : {
 		id : 'root',

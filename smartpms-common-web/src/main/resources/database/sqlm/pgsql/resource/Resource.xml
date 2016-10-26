@@ -111,27 +111,31 @@
 	
 	<select id="selectUserList" parameterType="UserInfo" resultType="UserInfo">
 	SELECT
-	      user_name as userId, 
-	      case when active = 'T' then '사용' else '미사용' end as  active,
-		  display_name as userName, 
-		  email_address as emailAddress,
-		  team as team,
-		  count(1) over() as total,
-		  case when access_yn = 'Y' then true else false end as access,
-		  credential_local as userPassword
-  	FROM intg_user_info
+		  id as userId, 
+		  name as userName, 
+		  user_no as userNo, 
+		  user_type as userType, 
+		  email as emailAddress, 
+		  phone_number as phoneNumber, 
+		  status as status, 
+		  password as  userPassword, 
+       	  to_char(create_date, 'yyyy-MM-dd HH24:mi:ss') as createDate, 
+       	  to_char(last_active_date, 'yyyy-MM-dd HH24:mi:ss') as lastActiveDate
+       	  to_char(expiration_date, 'yyyy-MM-dd HH24:mi:ss') as expirationDate
+       	  default_org_id as defaultOrgId, 
+          photo_path as photoPath
+  	FROM smrt_sys_user
   	WHERE 1=1
   	<if test="userId != null">
-  	AND user_name like #{userId}||'%'
+  	AND id like #{userId}||'%'
   	</if>
   	<if test="userName != null">
-  	AND display_name like '%'||#{userName}||'%'
+  	AND name like '%'||#{userName}||'%'
   	</if>
   	<if test="searchValue != null">
-  	AND (user_name like #{searchValue}||'%' or display_name like '%'||#{searchValue}||'%')
+  	AND (id like #{searchValue}||'%' or name like '%'||#{searchValue}||'%')
   	</if>
-  	AND (email_address != 'nobody@kt.com' or active != 'F')
-  	ORDER BY updated_date DESC
+  	ORDER BY create_date DESC
   	<if test="maxRowSize == 0">
   	limit #{limit} offset (#{page} - 1) * #{limit}
   	 </if>
@@ -342,5 +346,11 @@
 	START WITH a.parent_resource_id = #{resourceId}
 	CONNECT BY PRIOR a.resource_id = a.parent_resource_id
 	order by a.sort_no, a.resource_id  asc
+	</select>
+	
+	<select id="selectUser" parameterType="RegUser" resultType="RegUser">
+	SELECT id as userId
+	FROM intg_user_info
+	WHERE user_name = #{userId}
 	</select>
 </mapper>

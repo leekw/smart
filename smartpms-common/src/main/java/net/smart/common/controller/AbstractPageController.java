@@ -1,6 +1,6 @@
 package net.smart.common.controller;
 
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,7 @@ public abstract class AbstractPageController {
 	protected static Logger logger = LoggerFactory.getLogger(PageController.class);
 	
 	@Autowired
-	protected IntegrationCommonService integrationCommonService;
+	protected SmartCommonService smartCommonService;
 	
 	protected enum CodeValue {
 		CATEGORY("_category"),

@@ -103,7 +103,7 @@ import org.springframework.web.util.WebUtils;
  * <pre>
  *  RequestMappingHandlerAdapter
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

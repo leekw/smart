@@ -18,7 +18,7 @@ import com.thoughtworks.xstream.mapper.Mapper;
  * <pre>
  * xml 파싱, 생성 시 Null값에 대한 처리 Converter class
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

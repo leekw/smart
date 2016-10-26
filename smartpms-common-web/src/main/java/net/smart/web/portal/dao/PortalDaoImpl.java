@@ -2,14 +2,14 @@ package net.smart.web.portal.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.portal.PortalData;
 import net.smart.web.domain.portal.PortalInfo;
 
 import org.springframework.stereotype.Repository;
 
 @Repository("portalDao")
-public class PortalDaoImpl extends IntegrationSqlSessionDaoSupport  implements PortalDao {
+public class PortalDaoImpl extends SmartSqlSessionDaoSupport  implements PortalDao {
 
 	@Override
 	public List<PortalData> getPortalStatisticList(PortalData param) {

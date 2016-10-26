@@ -34,10 +34,10 @@ Ext.define('Ext.loginm.view.LoginWindow', {
 					items :[{
 					    fieldLabel: 'User ID',
 					    name: 'userId',
-					    value : !Cookies._getCookie("INT_USER") ? '' : Cookies._getCookie("INT_USER"), 
+					    value : !Cookies._getCookie("SAVED_USER") ? '' : Cookies._getCookie("SAVED_USER"), 
 					    listeners : {
 					    	afterrender : function(field) {
-					    		if (!Cookies._getCookie("INT_USER"))
+					    		if (!Cookies._getCookie("SAVED_USER"))
 					    			field.focus(false, 1000);	
 					    	}
 					    }
@@ -47,7 +47,7 @@ Ext.define('Ext.loginm.view.LoginWindow', {
 					    name: 'userPassword',
 					    listeners : {
 					    	afterrender : function(field) {
-					    		if (Cookies._getCookie("INT_USER"))
+					    		if (Cookies._getCookie("SAVED_USER"))
 					    			field.focus(false, 1000);	
 					    	},
 					    	specialkey : function(f, e) {
@@ -59,7 +59,7 @@ Ext.define('Ext.loginm.view.LoginWindow', {
 					    	}
 					    }
 					}],
-					html : '<center><input type="checkbox" id="login_check" name="login_check" onClick="LoginAction._saveId();"' + (Cookies._getCookie("INT_USER") ? 'checked' : '') + '>아이디 저장<br><p>아이디와 패스워드는 JIRA와 동일합니다.<br>JIRA 접속 정보를 입력하십시오.</p></center>'
+					html : '<center><input type="checkbox" id="login_check" name="login_check" onClick="LoginAction._saveId();"' + (Cookies._getCookie("SAVED_USER") ? 'checked' : '') + '>아이디 저장<br><p>아이디와 패스워드는 JIRA와 동일합니다.<br>JIRA 접속 정보를 입력하십시오.</p></center>'
 	    	    }],
 	    	    buttons: [{
 					text : '로그인',
@@ -90,9 +90,9 @@ var LoginAction = {
 		if (check) {
 			var form = Ext.getCmp('login-form');
 			var formData = form.getForm().getValues();
-			Cookies._setCookie("INT_USER", formData.userId, -1);
+			Cookies._setCookie("SAVED_USER", formData.userId, -1);
 		} else {
-			Cookies._delCookie("INT_USER");
+			Cookies._delCookie("SAVED_USER");
 		}
 	}
 };

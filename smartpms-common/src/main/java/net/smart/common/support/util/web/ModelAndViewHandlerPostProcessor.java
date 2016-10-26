@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
  * <pre>
  *  ModelAndView를 handler에서 return시 처리 
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

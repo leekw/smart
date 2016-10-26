@@ -3,11 +3,11 @@ Ext.define('Ext.login.view.LoginModel', {
     alias: 'viewmodel.loginmodel',
 
     data: {
-        userid : !Cookies._getCookie("INT_USER") ? '' : Cookies._getCookie("INT_USER"),
+        userid : !Cookies._getCookie("SAVED_USER") ? '' : Cookies._getCookie("SAVED_USER"),
         fullName : '',
         password : '',
         email    : '',
-        persist: Cookies._getCookie("INT_USER") ? true : false,
+        persist: Cookies._getCookie("SAVED_USER") ? true : false,
         agrees : false
     }
 });

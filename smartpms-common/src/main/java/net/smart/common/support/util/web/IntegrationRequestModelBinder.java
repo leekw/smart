@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
  * <pre>
  * Command model Binder
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

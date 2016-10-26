@@ -2,8 +2,8 @@ package net.smart.web.support.authentication.provider;
 
 import net.smart.common.domain.IntUser;
 import net.smart.common.domain.UserDetail;
-import net.smart.web.domain.UserInfo;
-import net.smart.web.login.service.LoginService;
+import net.smart.common.domain.based.BasedUser;
+import net.smart.common.service.SmartCommonService;
 import net.smart.web.support.authentication.token.SSOAuthenticationToken;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class SSOAuthenticationProvider implements AuthenticationProvider {
 	protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
 	
 	@Autowired
-	private LoginService loginService;
+	private SmartCommonService smartCommonService;
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -27,14 +27,14 @@ public class SSOAuthenticationProvider implements AuthenticationProvider {
 		 String username = (authentication.getPrincipal() == null) ? "NONE_PROVIDED" : authentication.getName();
 	     String password = (authentication.getCredentials() == null) ? "NONE_PROVIDED" : (String)authentication.getCredentials();
 	     String ip = (token.getClientIP() == null) ? "NONE_PROVIDED" : (String)token.getClientIP();
-	     UserInfo param = new UserInfo();
+	     BasedUser param = new BasedUser();
 	     param.setUserId(username);
 	     param.setUserPassword(password);
 	     param.setIp(ip);
 	     IntUser user =  null;
 	     UserDetail detail = null;
 	     try {
-	    	 user = loginService.loginLocal(param);
+	    	 user = smartCommonService.login(param);
 	     } catch (Exception e) {
 	    	 throw new AuthenticationServiceException(e.getMessage(),  e);
 	     }

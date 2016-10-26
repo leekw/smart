@@ -7,7 +7,7 @@ import net.smart.common.domain.IntegrationErrorMessage;
 import net.smart.common.support.analyzer.DataAnalyzer;
 import net.smart.common.support.analyzer.factory.DataAnalyzerFactory;
 import net.smart.common.support.constant.ErrorCode;
-import net.smart.common.support.message.IntegrationMessageSource;
+import net.smart.common.support.message.smartMessageSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * <pre>
  *  System에서 사용되는 런타입 예외처리 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0
@@ -45,20 +45,20 @@ public class IntegrationException extends RuntimeException implements IIntegrati
 	}
 	
 	public IntegrationException(Throwable cause) {
-		this(IntegrationMessageSource.getDefaultMessageCode(), cause);
+		this(smartMessageSource.getDefaultMessageCode(), cause);
 	}
 	
 	public IntegrationException(String code, Throwable cause) {
 		super(cause);
 		this.isWriteLog = false;
 		this.setCode(code);
-		this.message = IntegrationMessageSource.getMessage(this.code);
+		this.message = smartMessageSource.getMessage(this.code);
 	}
 
 	public IntegrationException(String code, String message) {
 		this.isWriteLog = false;
 		this.setCode(code);
-		this.message = message != null ? message : IntegrationMessageSource.getMessage(this.code);
+		this.message = message != null ? message : smartMessageSource.getMessage(this.code);
 	}
 
 	public IntegrationException(String code, Object messageParam) {
@@ -70,19 +70,19 @@ public class IntegrationException extends RuntimeException implements IIntegrati
 		this.isWriteLog = false;
 		this.setCode(code);
 
-		this.message = IntegrationMessageSource.getMessage(this.code, messageParams);
+		this.message = smartMessageSource.getMessage(this.code, messageParams);
 	}
 
 	public IntegrationException(String code, String message, Throwable cause) {
 		super(cause);
 		this.isWriteLog = false;
-		this.code = code != null ? code : IntegrationMessageSource.getDefaultMessageCode();
+		this.code = code != null ? code : smartMessageSource.getDefaultMessageCode();
 
-		this.message = message != null ? message : IntegrationMessageSource.getMessage(code);
+		this.message = message != null ? message : smartMessageSource.getMessage(code);
 	}
 	
 	private void setCode(String code) {
-		this.code = code != null ? code : IntegrationMessageSource.getDefaultMessageCode();
+		this.code = code != null ? code : smartMessageSource.getDefaultMessageCode();
 	}
 
 	public String getCode() {

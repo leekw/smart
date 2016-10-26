@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.common.support.util.DateUtil;
 import net.smart.web.changerequest.service.ChangeRequestService;
 import net.smart.web.domain.portal.ParentPortal;
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PortalServiceImpl implements PortalService {
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 	
 	@Autowired
 	private ChangeRequestService changeRequestService;

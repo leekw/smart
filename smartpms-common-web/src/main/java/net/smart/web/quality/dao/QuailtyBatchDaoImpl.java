@@ -2,7 +2,7 @@ package net.smart.web.quality.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationBatchSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartBatchSqlSessionDaoSupport;
 import net.smart.web.domain.quality.NotUsedStat;
 import net.smart.web.domain.quality.QualityDetail;
 import net.smart.web.domain.quality.QualityInterface;
@@ -13,7 +13,7 @@ import net.smart.web.domain.quality.QualityTestProgram;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class QuailtyBatchDaoImpl extends IntegrationBatchSqlSessionDaoSupport implements QuailtyBatchDao  {
+public class QuailtyBatchDaoImpl extends SmartBatchSqlSessionDaoSupport implements QuailtyBatchDao  {
 
 	@Override
 	public void addQualityDetail(List<QualityDetail> params) {

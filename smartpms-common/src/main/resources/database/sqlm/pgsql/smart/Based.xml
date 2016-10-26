@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "src/org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd"> 
+<mapper namespace="based">
+
+	<select id="selectUserList" parameterType="BasedUser" resultType="BasedUser">
+		SELECT
+			  id as userId, 
+			  name as userName, 
+			  user_no as userNo, 
+			  user_type as userType, 
+			  email as emailAddress, 
+			  phone_number as phoneNumber, 
+			  status as status, 
+			  password as  userPassword, 
+	       	  to_char(create_date, 'yyyy-MM-dd HH24:mi:ss') as createDate, 
+	       	  to_char(last_active_date, 'yyyy-MM-dd HH24:mi:ss') as lastActiveDate,
+	       	  to_char(expiration_date, 'yyyy-MM-dd HH24:mi:ss') as expirationDate,
+	       	  default_org_id as defaultOrgId, 
+	          photo_path as photoPath
+	  	FROM smrt_sys_user
+	  	WHERE 1=1
+	  	<if test="userId != null">
+	  	AND id like #{userId}||'%'
+	  	</if>
+	  	<if test="userName != null">
+	  	AND name like '%'||#{userName}||'%'
+	  	</if>
+	  	<if test="searchValue != null">
+	  	AND (id like #{searchValue}||'%' or name like '%'||#{searchValue}||'%')
+	  	</if>
+	  	ORDER BY create_date DESC
+	  	<if test="maxRowSize == 0">
+	  	limit #{limit} offset (#{page} - 1) * #{limit}
+	  	 </if>
+	  	 <if test="maxRowSize != 0">
+	  	 limit #{maxRowSize}
+	  	 </if>
+	</select>
+	
+	<select id="selectRoleList" parameterType="BasedRole" resultType="BasedRole">
+	SELECT target_id as targetId,
+		   role_id as roleId,
+		   relation_type as relationType
+	FROM smrt_rel_role
+	WHERE 1=1
+	<if test="targetId != null">
+	AND target_id = #{targetId}
+	</if>
+	<if test="relationType != null">
+	AND relation_type = #{relationType}
+	</if>
+	</select> 
+	
+	<select id="selectOrgList" parameterType="BasedOrg" resultType="BasedOrg">
+	SELECT id as orgId,
+		   name as orgName,
+		   org_type as orgType,
+		   org_dtl_type as orgDetailType
+	FROM smrt_org
+	WHERE 1=1
+	</select>
+	
+	<select id="selectOrgRelationList" parameterType="BasedOrgRel" resultType="BasedOrgRel">
+	SELECT source_org_id as sourceOrgId,
+		   target_org_id as targetOrgId,
+		   relation_type as relationType
+	FROM smrt_org_rel
+	WHERE 1=1
+	<if test="relationType != null">
+	AND relation_type = #{relationType}
+	</if> 
+	</select>
+</mapper>

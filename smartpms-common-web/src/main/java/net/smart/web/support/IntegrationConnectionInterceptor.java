@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.smart.common.domain.IntUser;
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.common.support.util.DateUtil;
 import net.smart.common.support.util.IntegrationHttpSessionCollector;
 
@@ -26,7 +26,7 @@ public class IntegrationConnectionInterceptor extends HandlerInterceptorAdapter 
 	private List<String> exclutionUrlList;
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 
 
 	@PostConstruct
@@ -47,7 +47,7 @@ public class IntegrationConnectionInterceptor extends HandlerInterceptorAdapter 
 		if (curSession != null) {
 			HttpSession storeUser = sessions.get(curSession.getId());
 			if (storeUser != null) {
-				IntUser user = (IntUser) storeUser.getAttribute("INT_USER");
+				IntUser user = (IntUser) storeUser.getAttribute("SAVED_USER");
 				if (user != null) {
 					user.setLastActionUrl(request.getRequestURI());
 					user.setLastActionDate(DateUtil.getNow());

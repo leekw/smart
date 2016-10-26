@@ -21,6 +21,31 @@
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	
+	<bean id="basedDataSource" class="net.smart.common.support.dbcp.SmartBasicDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${based.jdbc.url}" />
+		<property name="username" value="${based.jdbc.username}" />
+		<property name="password" value="${based.jdbc.password}" />
+		<property name="initialSize" value="1"/>
+        <property name="maxIdle" value="150"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="150"/>
+        <property name="maxWait" value="60000"/>
+        <property name="defaultAutoCommit" value="false"/>
+	</bean>
+	
+	<!-- ################################## transactionManager setting ################################################## -->
+	<bean id="transactionManagerBased" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="false">
+        <property name="dataSource" ref="basedDataSource" />
+    </bean>
+    
+    <!-- ################################## MyBatis setting ################################################## -->
+    <bean id="basedSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="basedDataSource" />
+   		<property name="configLocation" value="classpath:database/conf/mybatis-config.xml"/>
+   		<property name="mapperLocations" value="classpath*:database/sqlm/${local.databse.type}/**/*.xml" />
+	</bean>
+	
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -45,17 +70,17 @@
     </bean>
     
     <!-- ################################## MyBatis setting ################################################## -->
-    <bean id="integrationSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="smartSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
    		<property name="configLocation" value="classpath:database/conf/mybatis-config.xml"/>
-   		<property name="mapperLocations" value="classpath*:database/sqlm/pgsql/**/*.xml" />
+   		<property name="mapperLocations" value="classpath*:database/sqlm/${local.databse.type}/**/*.xml" />
 	</bean>
 	
 	
-	<bean id="integrationBatchSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="smartBatchSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
    		<property name="configLocation" value="classpath:database/conf/mybatis-config.xml"/>
-   		<property name="mapperLocations" value="classpath*:database/sqlm/pgsql/**/*.xml" />
+   		<property name="mapperLocations" value="classpath*:database/sqlm/${local.databse.type}/**/*.xml" />
 	</bean>
 	
 	<bean id="dataSourceJira" class="org.apache.commons.dbcp.BasicDataSource">

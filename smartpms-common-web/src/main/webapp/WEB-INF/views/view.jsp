@@ -4,16 +4,15 @@
 <html>
     <head>
        <title> ${sysTitle}</title>
-      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-etc-gr/resources/theme-triton-all-debug.css?version=${version}">
-      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-gr/Admin-all.css?version=${version}">
-      <link rel="stylesheet" type="text/css" href="${sysContext}/resources/ux/triton/resources/ux-all-debug.css?version=${version}">
+       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-etc-gr/resources/theme-triton-all-debug.css?version=${version}">
+       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-extends-gr/Admin-all.css?version=${version}">
+       <link rel="stylesheet" type="text/css" href="${sysContext}/resources/ux/triton/resources/ux-all-debug.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/theme-int/charts-all.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/css/traffic-lignt.css?version=${version}">
        <link rel="stylesheet" type="text/css" href="${sysContext}/resources/css/flipclock.css?version=${version}">
        <link rel="icon" type="image/png" sizes="16x16" href="${sysContext}/angular/assets/img/favicon-16x16.png?version=${resVersion}">
   	   <link rel="icon" type="image/png" sizes="32x32" href="${sysContext}/angular/assets/img/favicon-32x32.png?version=${resVersion}">
   	   <link rel="icon" type="image/png" sizes="96x96" href="${sysContext}/angular/assets/img/favicon-96x96.png?version=${resVersion}">
-  
        <meta http-equiv="X-UA-Compatible" content="IE=9">
        <meta name="_csrf" content="${_csrf.token}"/>
        <meta name="_csrf_header" content="${_csrf.headerName}"/>
@@ -186,6 +185,40 @@
 		.x-viewport, .x-viewport > .x-body {
 			touch-action : auto;
 		}
+		.reg-panel-body {
+		 }
+		 .x-form-text-default {
+		 	color : #1c2b36;
+		 	background-color: rgba(0,0,0,.15);
+		   box-shadow: none;
+		 }
+		 .x-form-item-label-default {
+		 	color : #1c2b36;
+		 	text-align: right;
+		 	padding-right: 10px;
+		 	font-weight : 700;
+		 }
+		 .x-form-trigger-wrap-default {
+		 	border-radius: 5px;
+		 }
+		 .x-btn-inner-default-small {
+		 	font-weight : 700;
+		 }
+		 .x-btn-default-small-mc {
+		 	background-color : none;
+		 }
+		 .x-boundlist {
+		 	border-radius: 3px;
+		 }
+		 .x-toolbar-text-default {
+		 	    padding: 5px 4px;
+		 	    color : #1c2b36;
+		 }
+		 .x-grid-item {
+		 	/* color : #fff;
+		 	background-color : none; */
+		 }
+		 
 	   </style>
 	   <script typ="text/javascript">
 	   var G_PATH = "${sysContext}";
@@ -195,9 +228,9 @@
        <script type="text/javascript" src="${sysContext}/resources/ext/charts.js"></script>
        <script type="text/javascript" src="${sysContext}/resources/ux/ux-debug.js"></script>
        <script type="text/javascript" src="${sysContext}/resources/ux/BoxReorderer.js"></script>
-       <script type ="text/javascript" src="${sysContext}/ext/core/core.js?version=${version}"></script>  
+       <script type ="text/javascript" src="${sysContext}/ui/core/core.js?version=${version}"></script>  
       <!--  <script type="text/javascript" src="${sysContext}/resources/ext/Exporter-all.js"></script> -->
-       <script type ="text/javascript" src="${sysContext}/ext/${_category}/${_ui}.js?version=${version}"></script>
+       <script type ="text/javascript" src="${sysContext}/ui/${_category}/${_ui}.js?version=${version}"></script>
         <script type="text/javascript" src="${sysContext}/resources/js/jquery-1.7.1.min.js"></script>
        <c:if test="${(_category  == 'nlayout' || _category  == 'portal') && CALL_LOC == 'internal'}">
        <script type="text/javascript" src="${sysContext}/resources/js/sockjs-0.3.4.min.js"></script>

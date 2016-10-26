@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  * <pre>
  *  String 데이터를 암호화 및 복호화 하는 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

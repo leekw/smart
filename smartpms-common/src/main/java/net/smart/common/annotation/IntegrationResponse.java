@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  * Object를 data format(json, xml)으로 변환 하기 위한 Annotation
  * 
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

@@ -2610,11 +2610,11 @@
 }
 /* http://localhost:1843/packages/core/sass/src/list/TreeItem.scss:125 */
 .x-treelist-item-selected > .x-treelist-row {
-    background-color: #ffefbb;
+    background-color: #d6d6d6;
 }
 /* http://localhost:1843/packages/core/sass/src/list/TreeItem.scss:129 */
 .x-treelist-item-selected > .x-treelist-row:hover {
-    background-color: #ffefbb;
+    background-color: #d6d6d6;
 }
 /* http://localhost:1843/packages/core/sass/src/list/TreeItem.scss:134 */
 .x-treelist-item-tool {
@@ -4998,7 +4998,7 @@ div.x-form-text-grow .x-form-textarea {
     line-height: 17px;
     font-weight: 300;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
-    background: #f6f6f6;
+    background: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/Component.scss:18 */
 .x-animating-size,
@@ -5110,7 +5110,7 @@ body > .x-mask {
     padding: 7px 7px 7px 7px;
     border-width: 1px;
     border-style: solid;
-    background-color: #e5c649;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-btn-default-small-mc {
@@ -6932,7 +6932,7 @@ body > .x-mask {
 .x-btn-icon-el-default-toolbar-small {
     font-size: 16px;
     height: 16px;
-    color: #919191;
+    color: #fff;
     line-height: 16px;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:498 */
@@ -6947,7 +6947,7 @@ body > .x-mask {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:525 */
 .x-ie8 .x-btn-icon-el-default-toolbar-small.x-btn-glyph {
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:532 */
 .x-btn-text.x-btn-icon-left > .x-btn-icon-el-default-toolbar-small {
@@ -7495,7 +7495,7 @@ body > .x-mask {
 .x-btn-icon-el-default-toolbar-medium {
     font-size: 20px;
     height: 20px;
-    color: #919191;
+    color: #fff;
     line-height: 20px;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:498 */
@@ -7510,7 +7510,7 @@ body > .x-mask {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:525 */
 .x-ie8 .x-btn-icon-el-default-toolbar-medium.x-btn-glyph {
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:532 */
 .x-btn-text.x-btn-icon-left > .x-btn-icon-el-default-toolbar-medium {
@@ -8058,7 +8058,7 @@ body > .x-mask {
 .x-btn-icon-el-default-toolbar-large {
     font-size: 24px;
     height: 24px;
-    color: #919191;
+    color: #fff;
     line-height: 24px;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:498 */
@@ -8073,7 +8073,7 @@ body > .x-mask {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:525 */
 .x-ie8 .x-btn-icon-el-default-toolbar-large.x-btn-glyph {
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/button/Button.scss:532 */
 .x-btn-text.x-btn-icon-left > .x-btn-icon-el-default-toolbar-large {
@@ -8829,7 +8829,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/resizer/Splitter.scss:22 */
 .x-collapse-el {
     cursor: pointer;
-    color: #919191;
+    color: #fff;
     display: table;
     table-layout: fixed;
     background-color: #e0e0e0;
@@ -8957,13 +8957,13 @@ body > .x-mask {
     padding: 6px 0 6px 8px;
     border-style: solid;
     border-color: #d0d0d0;
-    border-width: 1px;
+    border-width: 0px;
     background-image: none;
-    background-color: #fff;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:248 */
 .x-toolbar-default .x-tool-img {
-    color: #919191;
+    color: #fff;
     background-color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:263 */
@@ -9024,7 +9024,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/layout/container/Box.scss:181 */
 .x-box-scroller-toolbar-default {
     cursor: pointer;
-    color: #919191;
+    color: #fff;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
     opacity: 0.6;
 }
@@ -9111,7 +9111,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:382 */
 .x-toolbar-more-icon {
     font: 16px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-toolbar-more-icon:before {
@@ -9133,7 +9133,7 @@ body > .x-mask {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:248 */
 .x-toolbar-footer .x-tool-img {
-    color: #919191;
+    color: #fff;
     background-color: #ececec;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:263 */
@@ -9194,7 +9194,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/layout/container/Box.scss:181 */
 .x-box-scroller-toolbar-footer {
     cursor: pointer;
-    color: #919191;
+    color: #fff;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
     opacity: 0.6;
 }
@@ -9251,7 +9251,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:382 */
 .x-toolbar-more-icon {
     font: 16px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-toolbar-more-icon:before {
@@ -9275,7 +9275,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/panel/Panel.scss:282 */
 .x-panel-header-default {
     font-size: 16px;
-    border: 1px solid #e5c649;
+    border: 0px solid #e5c649;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/panel/Panel.scss:289 */
 .x-panel-header-default .x-tool-img {
@@ -9369,7 +9369,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/panel/Panel.scss:507 */
 .x-panel-body-default {
     background: #fff;
-    border-color: #d0d0d0;
+    /* border-color: #d0d0d0; */
     color: #404040;
     font-size: 13px;
     font-weight: 300;
@@ -9380,7 +9380,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/panel/Panel.scss:671 */
 .x-panel-header-default {
     background-image: none;
-    background-color: #e5c649;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/panel/Panel.scss:675 */
 .x-panel-header-default-vertical {
@@ -12665,7 +12665,7 @@ body > .x-mask {
     width: 32px;
     font: 16px/30px FontAwesome;
     background: #fff;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-form-trigger-default:before {
@@ -12782,7 +12782,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/var/form/field/Checkbox.scss:104 */
 .x-form-radio-default {
     font: 18px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-form-radio-default:before {
@@ -12799,7 +12799,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/var/form/field/Checkbox.scss:121 */
 .x-form-checkbox-default {
     font: 18px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-form-checkbox-default:before {
@@ -12871,7 +12871,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/form/FieldSet.scss:148 */
 .x-fieldset-header-default > .x-fieldset-header-text {
     font: 400 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
-    color: #919191;
+    color: #fff;
     padding: 1px 0;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/form/FieldSet.scss:155 */
@@ -12904,7 +12904,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/form/FieldSet.scss:193 */
 .x-fieldset-header-tool-default > .x-tool-toggle {
     font: 14px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-fieldset-header-tool-default > .x-tool-toggle:before {
@@ -12941,7 +12941,7 @@ body > .x-mask {
     background-color: #fff;
     width: 32px;
     height: 15px;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/var/form/trigger/Spinner.scss:131 */
 .x-form-spinner-up-default {
@@ -13006,7 +13006,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Paging.scss:10 */
 .x-btn-icon-el.x-tbar-page-first {
     font: 24px/16px FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-btn-icon-el.x-tbar-page-first:before {
@@ -13015,7 +13015,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Paging.scss:19 */
 .x-btn-icon-el.x-tbar-page-prev {
     font: 24px/16px FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-btn-icon-el.x-tbar-page-prev:before {
@@ -13024,7 +13024,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Paging.scss:28 */
 .x-btn-icon-el.x-tbar-page-next {
     font: 24px/16px FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-btn-icon-el.x-tbar-page-next:before {
@@ -13033,7 +13033,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Paging.scss:37 */
 .x-btn-icon-el.x-tbar-page-last {
     font: 24px/16px FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-btn-icon-el.x-tbar-page-last:before {
@@ -13042,7 +13042,7 @@ body > .x-mask {
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Paging.scss:46 */
 .x-btn-icon-el.x-tbar-loading {
     font: 16px/16px FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-btn-icon-el.x-tbar-loading:before {
@@ -13110,7 +13110,7 @@ body > .x-mask {
     top: 0px;
     cursor: pointer;
     -webkit-touch-callout: none;
-    color: #919191;
+    color: #fff;
     background-color: #ececec;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
     opacity: 0.7;
@@ -13335,7 +13335,7 @@ a.x-monthpicker-item-inner:hover {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
     opacity: 0.7;
     -webkit-touch-callout: none;
-    color: #919191;
+    color: #fff;
     background-color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/picker/Date.scss:337 */
@@ -13801,7 +13801,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/form/field/HtmlEditor.scss:1 */
 .x-html-editor-tb .x-btn-icon-el {
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/form/field/HtmlEditor.scss:7 */
 .x-html-editor-tb .x-edit-bold,
@@ -14021,7 +14021,7 @@ a.x-color-picker-item:hover {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
     opacity: 0.85;
     font: 12px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-form-text-default .x-tagfield-item-close:before {
@@ -14031,7 +14031,7 @@ a.x-color-picker-item:hover {
 .x-form-text-default .x-tagfield-item-close:hover {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=93);
     opacity: 0.93;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/form/field/Tag.scss:213 */
 .x-form-text-default .x-tagfield-item-close:active {
@@ -14055,7 +14055,7 @@ a.x-color-picker-item:hover {
     background: #fff;
     border-width: 2px 1px 1px;
     border-style: solid;
-    border-color: #d0d0d0;
+    /* border-color: #d0d0d0; */
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/view/Table.scss:18 */
 .x-grid-item-container {
@@ -14074,11 +14074,11 @@ a.x-color-picker-item:hover {
 .x-grid-item {
     color: #404040;
     font: 300 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
-    background-color: #fff;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/view/Table.scss:38 */
 .x-grid-item-alt {
-    background-color: #f6f6f6;
+    background-color: rgba(0,0,0,.1);
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/view/Table.scss:42 */
 .x-grid-item-over {
@@ -14109,7 +14109,7 @@ a.x-color-picker-item:hover {
 /* http://localhost:1843/classic/theme-neutral/sass/src/view/Table.scss:83 */
 .x-grid-item-selected {
     color: #404040;
-    background-color: #ffefbb;
+    background-color: #d6d6d6;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/view/Table.scss:89 */
 .x-grid-with-row-lines .x-grid-item {
@@ -14173,7 +14173,7 @@ a.x-color-picker-item:hover {
 /* http://localhost:1843/classic/theme-neutral/sass/src/view/Table.scss:221 */
 .x-grid-row .x-grid-cell-selected {
     color: #404040;
-    background-color: #ffefbb;
+    background-color: #d6d6d6;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/view/Table.scss:228 */
 .x-grid-with-col-lines .x-grid-cell {
@@ -14241,7 +14241,7 @@ a.x-color-picker-item:hover {
 .x-grid-header-ct {
     border: 1px solid #d0d0d0;
     border-bottom-color: #fff;
-    background-color: #fff;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/header/Container.scss:14 */
 .x-accordion-item .x-grid-header-ct {
@@ -14254,7 +14254,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/header/Container.scss:31 */
 .x-grid-body {
-    border-top-color: #d0d0d0;
+   /*  border-top-color: #d0d0d0; */
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/header/Container.scss:35 */
 .x-hmenu-sort-asc {
@@ -14283,10 +14283,10 @@ a.x-color-picker-item:hover {
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:1 */
 .x-column-header {
     border-right: 1px solid #d0d0d0;
-    color: #404040;
+    color: #fff;
     font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     outline: 0;
-    background-color: #fff;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:27 */
 .x-group-sub-header {
@@ -14307,7 +14307,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:49 */
 .x-column-header.x-column-header-focus {
-    color: #404040;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:50 */
 .x-column-header.x-column-header-focus .x-column-header-inner:after {
@@ -14318,7 +14318,7 @@ a.x-color-picker-item:hover {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    border: 1px solid #7fb5e4;
+    border: 1px solid #63bbb2;
     pointer-events: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:64 */
@@ -14328,17 +14328,17 @@ a.x-color-picker-item:hover {
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:77 */
 .x-column-header-over {
     background-image: none;
-    background-color: #eaeff4;
+    background-color: rgba(0,0,0,.5);
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:81 */
 .x-column-header-sort-ASC,
 .x-column-header-sort-DESC {
     background-image: none;
-    background-color: #fff;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:109 */
 .x-column-header-open {
-    background-color: #eaeff4;
+    background-color: rgba(0,0,0,.5);
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:112 */
 .x-column-header-open .x-column-header-trigger {
@@ -14350,7 +14350,7 @@ a.x-color-picker-item:hover {
     width: 24px;
     cursor: pointer;
     font: 16px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-column-header-over .x-column-header-trigger:before,
@@ -14387,13 +14387,13 @@ a.x-color-picker-item:hover {
 .x-column-header-sort-ASC .x-column-header-text-inner:after {
     content: "\f176";
     font: 14px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:132 */
 .x-column-header-sort-DESC .x-column-header-text-inner:after {
     content: "\f175";
     font: 14px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Column.scss:222 */
 .x-no-header-borders .x-column-header {
@@ -14424,7 +14424,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/Action.scss:16 */
 .x-action-col-icon {
-    color: #919191;
+    color: #fff;
     font-size: 18px;
     height: 18px;
     width: 18px;
@@ -14439,7 +14439,7 @@ a.x-color-picker-item:hover {
     width: 18px;
     height: 18px;
     font: 18px/1 FontAwesome;
-    color: #919191;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-grid-checkcolumn:before {
@@ -14461,7 +14461,7 @@ a.x-color-picker-item:hover {
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/column/RowNumberer.scss:1 */
 .x-grid-cell-inner-row-numberer {
     padding: 7px 5px 6px 3px;
-    background-color: #fff;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-btn-grid-cell-small {
@@ -15012,7 +15012,7 @@ a.x-color-picker-item:hover {
     content: "\f146";
     font-size: 14px;
     font-family: FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/feature/Grouping.scss:36 */
 .x-grid-group-title {
@@ -15024,7 +15024,7 @@ a.x-color-picker-item:hover {
     content: "\f0fe";
     font-size: 14px;
     font-family: FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/feature/Grouping.scss:54 */
 .x-group-by-icon {
@@ -15077,14 +15077,14 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:323 */
 .x-menu-body-default {
-    background: #fff;
+    background: rgba(0,0,0,.5);
     padding: 0;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:328 */
 .x-menu-icon-separator-default {
     left: 32px;
     border-left: solid 1px #d0d0d0;
-    background-color: #fff;
+    background-color: rgba(0,0,0,.5);
     width: 1px;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:342 */
@@ -15095,11 +15095,11 @@ a.x-color-picker-item:hover {
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:346 */
 .x-menu-item-default.x-menu-item-active {
     background-image: none;
-    background-color: #7fb5e4;
+    background-color: #63bbb2;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:358 */
 .x-nlg .x-menu-item-default.x-menu-item-active {
-    background: #7fb5e4 repeat-x left top;
+    background: #63bbb2 repeat-x left top;
     background-image: url(images/menu/menu-item-default-active-bg.gif);
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:365 */
@@ -15186,7 +15186,7 @@ a.x-color-picker-item:hover {
     left: 4px;
     line-height: 24px;
     font-size: 16px;
-    color: #919191;
+    color: #fff;
     background-position: center center;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:496 */
@@ -15199,7 +15199,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:534 */
 .x-ie8 .x-menu-item-icon-default.x-menu-item-glyph {
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:542 */
 .x-menu-item-icon-default.x-menu-item-icon-right {
@@ -15212,7 +15212,7 @@ a.x-color-picker-item:hover {
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:562 */
 .x-menu-item-icon-default.x-menu-item-checkbox {
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/menu/Menu.scss:572 */
 .x-menu-item-active .x-menu-item-icon-default.x-menu-item-checkbox {
@@ -15263,7 +15263,7 @@ a.x-color-picker-item:hover {
     right: 0;
     margin: 0 4px 0;
     font: 16px/1 FontAwesome;
-    color: #919191;
+    color: #fff;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */
 .x-menu-item-arrow-default:before {
@@ -15289,7 +15289,7 @@ a.x-color-picker-item:hover {
 /* http://localhost:1843/classic/theme-neutral/sass/src/layout/container/Box.scss:181 */
 .x-box-scroller-menu-default {
     cursor: pointer;
-    color: #919191;
+    color: #fff;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
     opacity: 0.5;
 }
@@ -15353,7 +15353,7 @@ a.x-color-picker-item:hover {
 .x-grid-filters-icon {
     background-repeat: no-repeat;
     background-position: center center;
-    color: #919191;
+    color: #fff;
     text-align: center;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/grid/filters/Filters.scss:16 */
@@ -15737,7 +15737,7 @@ a.x-color-picker-item:hover {
     width: 16px;
     height: 16px;
     cursor: pointer;
-    color: #919191;
+    color: #1c2b36;
     font: 14px/1 FontAwesome;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/etc/mixins/font-icon.scss:125 */

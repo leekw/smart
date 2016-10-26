@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
  *  AsynAnnotationHandlerAdaptor 처리후 servletDispatcher에게 ModelAndView </br> 
  * 값을 setting 하여 전송해준다 
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

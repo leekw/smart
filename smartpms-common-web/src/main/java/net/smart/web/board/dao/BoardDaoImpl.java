@@ -2,14 +2,14 @@ package net.smart.web.board.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.CommonCode;
 import net.smart.web.domain.board.Board;
 
 import org.springframework.stereotype.Repository;
 
 @Repository("boardDao")
-public class BoardDaoImpl extends IntegrationSqlSessionDaoSupport  implements BoardDao {
+public class BoardDaoImpl extends SmartSqlSessionDaoSupport  implements BoardDao {
 
 	@Override
 	public List<Board> getBoardList(Board param) {

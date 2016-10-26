@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
  * <pre>
  * Asynch 방식의 request 전용 handlerAdapor 
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

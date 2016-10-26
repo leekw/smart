@@ -2,14 +2,14 @@ package net.smart.web.login.policy.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.LoginPolicy;
 import net.smart.web.domain.LoginPolicyFactor;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LoginPolicyDaoImpl extends IntegrationSqlSessionDaoSupport implements LoginPolicyDao{
+public class LoginPolicyDaoImpl extends SmartSqlSessionDaoSupport implements LoginPolicyDao{
 
 	@Override
 	public List<LoginPolicy> getLoginPolicyList(LoginPolicy param) {

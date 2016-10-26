@@ -2,7 +2,7 @@ package net.smart.web.jira.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.common.support.util.DateUtil;
 import net.smart.web.domain.CommonCode;
 import net.smart.web.domain.UserInfo;
@@ -23,7 +23,7 @@ import net.smart.web.domain.jira.SourceJiraLink;
 import org.springframework.stereotype.Repository;
 
 @Repository("jiraDao")
-public class JiraDaoImpl extends IntegrationSqlSessionDaoSupport  implements JiraDao  {
+public class JiraDaoImpl extends SmartSqlSessionDaoSupport  implements JiraDao  {
 
 	@Override
 	public List<Cutover> getCutoverList(Cutover param) {

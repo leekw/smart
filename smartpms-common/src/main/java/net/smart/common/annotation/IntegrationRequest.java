@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
  * <pre>
  * HttpRequest 시 RequestBody에 있는 데이터를 Object로 바인딩 하기 위한 식별 Annotation
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

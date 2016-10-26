@@ -7,13 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${sysTitle}</title>
+  <script type="text/javascript">
+  var G_PATH = "${sysContext}";
+  </script>
 
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
 
   <link rel="icon" type="image/png" sizes="16x16" href="${sysContext}/angular/assets/img/favicon-16x16.png?version=${resVersion}">
   <link rel="icon" type="image/png" sizes="32x32" href="${sysContext}/angular/assets/img/favicon-32x32.png?version=${resVersion}">
   <link rel="icon" type="image/png" sizes="96x96" href="${sysContext}/angular/assets/img/favicon-96x96.png?version=${resVersion}">
-
   <!-- build:css({.tmp/serve,src}) styles/vendor.css?version=${resVersion} -->
   <!-- bower:css -->
   <link rel="stylesheet" href="${sysContext}/angular/lib/ionicons.css?version=${resVersion}" >
@@ -48,7 +50,7 @@
 <main class="auth-main">
   <div class="auth-block">
     <h1>Login in to ${minTitle}</h1>
-    <a href="reg.html" class="auth-link">New to ${minTitle}? Sign up!</a>
+    <a href="${sysContext}/user/reg.do" class="auth-link">New to ${minTitle}? Sign up!</a>
 
     <form class="form-horizontal" action="${sysContext}/login/process.do" method="post">
       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

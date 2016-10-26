@@ -27,7 +27,7 @@
         <property name="order" value="1" />
     </bean>
     
-    <bean id="integrationPlaceholderProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+    <bean id="smartPlaceholderProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
         <property name="location" value="classpath:properties/smart.properties" />
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
         <property name="ignoreUnresolvablePlaceholders" value="true" />

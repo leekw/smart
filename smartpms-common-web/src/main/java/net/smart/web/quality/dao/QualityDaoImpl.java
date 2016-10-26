@@ -2,7 +2,7 @@ package net.smart.web.quality.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.quality.InterfaceDetail;
 import net.smart.web.domain.quality.InterfaceSummary;
 import net.smart.web.domain.quality.NotUsedStat;
@@ -15,7 +15,7 @@ import net.smart.web.domain.quality.QualityTest;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class QualityDaoImpl extends IntegrationSqlSessionDaoSupport implements QualityDao{
+public class QualityDaoImpl extends SmartSqlSessionDaoSupport implements QualityDao{
 
 	@Override
 	public List<QualitySummary> getQualitySummaryList(QualitySummary param) {

@@ -6,7 +6,7 @@ package net.smart.common.exception;
  * <pre>
  *  System에서 사용되는 예외처리 인터페이스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

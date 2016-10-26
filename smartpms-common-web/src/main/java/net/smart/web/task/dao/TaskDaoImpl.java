@@ -2,7 +2,7 @@ package net.smart.web.task.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.jira.GanttInfo;
 import net.smart.web.domain.jira.Task;
 import net.smart.web.domain.jira.TaskLink;
@@ -10,7 +10,7 @@ import net.smart.web.domain.jira.TaskLink;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TaskDaoImpl extends IntegrationSqlSessionDaoSupport implements TaskDao {
+public class TaskDaoImpl extends SmartSqlSessionDaoSupport implements TaskDao {
 
 	@Override
 	public List<Task> getTaskList(GanttInfo param) {

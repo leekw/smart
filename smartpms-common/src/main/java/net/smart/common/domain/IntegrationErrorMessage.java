@@ -6,7 +6,7 @@ package net.smart.common.domain;
  * <pre>
  *  오류 및 예외처리 메시지를 처리할 때 사용되는 메시지를 저장하는 도메인 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

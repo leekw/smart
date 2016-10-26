@@ -20,7 +20,7 @@ import org.springframework.web.context.request.ServletWebRequest;
  * <pre>
  *  AsynRequestMappingHandlerAdapter PathVariable modelBinder
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

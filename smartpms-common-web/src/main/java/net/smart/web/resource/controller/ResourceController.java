@@ -14,12 +14,13 @@ import net.smart.common.annotation.IntegrationRequest;
 import net.smart.common.annotation.IntegrationResponse;
 import net.smart.common.domain.IntUser;
 import net.smart.common.exception.IntegrationException;
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.common.support.constant.ErrorCode;
 import net.smart.common.support.util.DateUtil;
 import net.smart.common.support.util.IntegrationHttpSessionCollector;
 import net.smart.web.domain.SessionUser;
 import net.smart.web.domain.portal.PortalInfo;
+import net.smart.web.domain.resource.RegUser;
 import net.smart.web.domain.resource.Resource;
 import net.smart.web.domain.resource.ResourceRole;
 import net.smart.web.portal.service.PortalService;
@@ -53,7 +54,7 @@ public class ResourceController {
 	private PortalService portalSercice;
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 	
 	@Autowired
 	private SessionRegistry sessionRegistry;
@@ -217,7 +218,7 @@ public class ResourceController {
 		while(ie.hasNext()) {
 			Entry<String, HttpSession> e = ie.next();
 			HttpSession session = e.getValue();
-			IntUser user = (IntUser) session.getAttribute("INT_USER");
+			IntUser user = (IntUser) session.getAttribute("SAVED_USER");
 			if (user == null) {
 				expireSessionList.add(session);
 				continue;
@@ -255,5 +256,11 @@ public class ResourceController {
 	@IntegrationResponse(key="resources")
 	public List<Resource> getMenuServiceList(@IntegrationRequest Resource param) {
 		return resourceService.getMenuServiceList(param);
+	}
+	
+	@RequestMapping(value = "/user/vaild.{metadataType}", method = RequestMethod.POST)
+	@IntegrationResponse(key="vaildInfo")
+	public RegUser vaildUser(@IntegrationRequest RegUser param) {
+		return resourceService.getRegUser(param);
 	}
 }

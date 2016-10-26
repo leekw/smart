@@ -24,7 +24,7 @@ import org.springframework.web.servlet.view.AbstractView;
  * <pre>
  * BeanNameViewResolver 중 하나로 json 및 xml 형태의 데이터 포맷으로 변환하는 view 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

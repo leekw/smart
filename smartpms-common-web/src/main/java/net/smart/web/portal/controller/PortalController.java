@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import net.smart.common.annotation.IntegrationRequest;
 import net.smart.common.annotation.IntegrationResponse;
-import net.smart.common.service.IntegrationCommonService;
+import net.smart.common.service.SmartCommonService;
 import net.smart.common.support.util.DateUtil;
 import net.smart.common.support.util.IntegrationHttpSessionCollector;
 import net.smart.web.domain.portal.PortalData;
@@ -38,7 +38,7 @@ public class PortalController {
 	private SimpMessagingTemplate template;
 	
 	@Autowired
-	private IntegrationCommonService integrationCommonService;
+	private SmartCommonService integrationCommonService;
 	
 	@RequestMapping(value = "/project/status/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="status")

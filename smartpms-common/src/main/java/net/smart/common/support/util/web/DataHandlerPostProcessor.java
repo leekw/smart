@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
  * <pre>
  * Handler에서 return를 사용자 data Object로 return으로 처리하는 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

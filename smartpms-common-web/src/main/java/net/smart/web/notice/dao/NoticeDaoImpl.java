@@ -2,7 +2,7 @@ package net.smart.web.notice.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.IntegrationSqlSessionDaoSupport;
+import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.MailGroup;
 import net.smart.web.domain.MailQueue;
 import net.smart.web.domain.notice.Notice;
@@ -10,7 +10,7 @@ import net.smart.web.domain.notice.Notice;
 import org.springframework.stereotype.Repository;
 
 @Repository("noticeDao")
-public class NoticeDaoImpl  extends IntegrationSqlSessionDaoSupport  implements NoticeDao {
+public class NoticeDaoImpl  extends SmartSqlSessionDaoSupport  implements NoticeDao {
 
 	@Override
 	public List<Notice> getNoticeList(Notice param) {

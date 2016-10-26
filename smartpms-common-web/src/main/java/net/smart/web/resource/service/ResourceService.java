@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.smart.common.domain.UploadFile;
 import net.smart.web.domain.UserInfo;
+import net.smart.web.domain.resource.RegUser;
 import net.smart.web.domain.resource.Resource;
 import net.smart.web.domain.resource.ResourceRole;
 
@@ -52,4 +53,6 @@ public interface ResourceService {
 	public String getLockMenuByUserName(String resourceId);
 	
 	public List<Resource> getMenuServiceList(Resource param);
+	
+	public RegUser getRegUser(RegUser param);
 }

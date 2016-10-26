@@ -13,7 +13,7 @@ import net.smart.common.support.util.web.PartnerAnnotationMethodHandlerAdaptor.S
  * <pre>
  *  AsynAnnotationHandler bind parameter helper
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

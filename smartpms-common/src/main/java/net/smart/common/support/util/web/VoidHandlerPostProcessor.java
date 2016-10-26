@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  * <pre>
  *  handler void method 시 처리 
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

@@ -7,7 +7,7 @@ import net.smart.common.exception.IntegrationException;
  * <pre>
  *  데이터 암호화 시 byte code를 base64 code로 변환처리 하기 위한 클래스
  * </pre>
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0

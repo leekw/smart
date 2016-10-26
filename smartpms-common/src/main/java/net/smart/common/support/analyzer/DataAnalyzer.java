@@ -5,7 +5,7 @@ package net.smart.common.support.analyzer;
  * <pre>
  * Object를 json or xml 로 변환하거나 json or xml을 Object로 변환하는 데이터 분석기 인터페이스 
  * </pre> 
- * @Company : kt
+ * @Company : smart
  * @author  : ags0688
  * @Date    : 2014. 6. 9.
  * @Version : 1.0
