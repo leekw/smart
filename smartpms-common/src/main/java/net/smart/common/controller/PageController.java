@@ -76,6 +76,7 @@ public class PageController extends AbstractPageController {
 				request.setAttribute("IS_LOGIN", isLogin);
 				request.setAttribute("LOGIN_NAME", intUser != null ? intUser.getUserName() : "");
 				request.setAttribute("LOGIN_ID", intUser != null ? intUser.getUserId() : "");
+				request.setAttribute("PHOTO_PATH", intUser != null && intUser.getPhotoPath() != null ? intUser.getPhotoPath() : BaseInfo.DEFAULT_PROFILE_PATH.getValue());
 				if ("external".equals(callLocation)
 						&& smartCommonService.isIntegrationDeveloper(intUser.getUserId())) {
 					callLocation = "internal";

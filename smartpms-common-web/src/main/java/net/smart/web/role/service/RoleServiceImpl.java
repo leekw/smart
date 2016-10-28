@@ -74,17 +74,6 @@ public class RoleServiceImpl implements RoleService {
 		} else if(param.getResourceType().equals("PAGE")) {
 			return param.getUrl();
 		} else if (param.getResourceType().equals("CONTENT")) {
-//			if (param.getUrl() != null &&
-//					param.getUrl().indexOf("board") != -1) {
-//				String prefix = null;
-//				int index = param.getUrl().lastIndexOf("?");
-//				if (index != -1) {
-//					prefix = param.getUrl().substring(index+1);
-//				} else {
-//					prefix = "boardNo=0_";
-//				}
-//				param.setUrl(prefix + param.getUrl());
-//			}
 			return param.getUrl();
 		}
 		return null;

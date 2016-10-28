@@ -1,4 +1,4 @@
-package net.smart.web.domain;
+package net.smart.common.domain.based;
 
 import net.smart.common.domain.Common;
 

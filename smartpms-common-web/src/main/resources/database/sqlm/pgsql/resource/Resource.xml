@@ -120,8 +120,8 @@
 		  status as status, 
 		  password as  userPassword, 
        	  to_char(create_date, 'yyyy-MM-dd HH24:mi:ss') as createDate, 
-       	  to_char(last_active_date, 'yyyy-MM-dd HH24:mi:ss') as lastActiveDate
-       	  to_char(expiration_date, 'yyyy-MM-dd HH24:mi:ss') as expirationDate
+       	  to_char(last_active_date, 'yyyy-MM-dd HH24:mi:ss') as lastActiveDate,
+       	  to_char(expiration_date, 'yyyy-MM-dd HH24:mi:ss') as expirationDate,
        	  default_org_id as defaultOrgId, 
           photo_path as photoPath
   	FROM smrt_sys_user

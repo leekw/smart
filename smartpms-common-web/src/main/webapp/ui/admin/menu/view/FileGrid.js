@@ -11,16 +11,19 @@ Ext.define('Ui.admin.menu.view.FileGrid' ,{
         this.columns = [
         new Ext.grid.RowNumberer({
         	header : 'no',
+        	align : 'center',
         	width: 40
         }),
         { 
             header: '실제파일명',
             dataIndex: 'fileName',
+            align : 'center',
             width: 100,
             flex:1
         }, { 
             header: '파일사이즈',
             dataIndex: 'fileSize',
+            align : 'center',
             width: 200
         }, { 
             header: 'file no',
@@ -71,7 +74,7 @@ Ext.define('Ui.admin.menu.view.FileGrid' ,{
 							    		var frm = object.up("form").getForm();
 							    		if (frm.isValid()) {
 							    			frm.submit({
-							    				url : G_PATH + '/file/upload.file',
+							    				url : G_PATH + '/permit/res/file/upload.file',
 							    				success : function(ft, res) {
 							    					var jsonResult = Ext.JSON.decode(res.response.responseText);
 							    					var grid = Ext.getCmp('menu-file-grid');
@@ -105,7 +108,7 @@ Ext.define('Ui.admin.menu.view.FileGrid' ,{
 					                if (store.getCount() > 0) {
 					                    sm.select(0);
 					                }
-					                var url = G_PATH + '/file/remove.json';
+					                var url = G_PATH + '/permit/res/file/remove.json';
 					        		Ext.Ajax.request({
 					            	    url: url,
 					            	    method: 'POST',
@@ -147,7 +150,7 @@ Ext.define('Ui.admin.menu.view.FileGrid' ,{
             		var iframe = Ext.getBody().createChild({
                 		tag : 'iframe',
                 		cls : 'x-hidden',
-                		src : G_PATH + '/file/download.do?fileNo=' + encodeURIComponent(data.fileNo) + '&filePath=' + encodeURIComponent(data.filePath),
+                		src : G_PATH + '/permit/res/file/download.do?fileNo=' + encodeURIComponent(data.fileNo) + '&filePath=' + encodeURIComponent(data.filePath),
                 		onload : 'Ext.getBody().unmask(); var t = Ext.get(this); t.remove.defer(1000, t);'
                 	});
             		
@@ -172,7 +175,7 @@ var FileUpload = {
 					data.push(rec.getData());
 				}
 			}
-			var url = G_PATH + '/file/add.json';
+			var url = G_PATH + '/permit/res/file/add.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',

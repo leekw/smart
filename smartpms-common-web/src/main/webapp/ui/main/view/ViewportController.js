@@ -231,7 +231,7 @@ Ext.define('Ui.main.view.ViewportController', {
 	    	var me = this;
 	    	Ext.getBody().mask("Loading...");
 			Ext.Ajax.request({
-				url: G_PATH + '/resource/info/get.json',
+				url: G_PATH + '/based/res/info/get.json',
 				method : 'POST',
 				headers : {'Content-Type' : 'application/json'},
 				params : (Ext.JSON.encode({resourceId : id})),

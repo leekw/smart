@@ -28,51 +28,44 @@
 
   <!-- build:css({.tmp/serve,src}) styles/auth.css?version=${resVersion} -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="${sysContext}/angular/app/auth.css?version=${resVersion}">
+  
   <!-- endinject -->
   <!-- endbuild -->
   <style type="text/css">
-  .reg-panel-body {
- 	 background: url(../angular/assets/img/blur-bg-blurred.jpg) fixed;
-	 -webkit-transition : none;
-	 transition : none;
-	 background-position: 0px -120px;
-	 border-radius: 5px;
-	 box-shadow: 0 5px 5px 0 rgba(0,0,0,.25);
-	 border-top-left-radius: 3px;
-	 border-top-right-radius: 3px;
- }
- .x-form-text-default {
- 	color : #fff;
- 	background-color: rgba(0,0,0,.15);
-   box-shadow: none;
- }
- .x-form-item-label-default {
- 	color : #fff;
- 	text-align: right;
- 	padding-right: 10px;
- 	font-weight : 700;
- }
- .x-form-trigger-wrap-default {
- 	border-radius: 5px;
- }
- .x-btn-inner-default-small {
- 	font-weight : 700;
- }
- .x-btn-default-small-mc {
- 	background-color : none;
- }
- .x-boundlist {
- 	border-radius: 3px;
- }
- .x-toolbar-text-default {
- 	    padding: 5px 4px;
- 	    color : #fff;
- }
- .x-grid-item {
- 	color : #fff;
- 	background-color : none;
- }
+  	 .reg-panel-body {
+	 }
+	 .x-form-text-default {
+	 	color : #1c2b36;
+	 	background-color: rgba(0,0,0,.02);
+	 	border: 0px solid #d0d0d0;
+	    box-shadow: none;
+	 }
+	 .x-form-item-label-default {
+	 	color : #1c2b36;
+	 	text-align: right;
+	 	padding-right: 10px;
+	 	font-weight : 700;
+	 }
+	 .x-form-trigger-wrap-default {
+	 	border-radius: 5px;
+	 }
+	 .x-btn-inner-default-small {
+	 	font-weight : 700;
+	 }
+	 .x-btn-default-small-mc {
+	 	background-color : none;
+	 }
+	 .x-boundlist {
+	 	border-radius: 3px;
+	 }
+	 .x-toolbar-text-default {
+	 	    padding: 5px 4px;
+	 	    color : #1c2b36;
+	 }
+	 .x-grid-item {
+	 	/* color : #fff;
+	 	background-color : none; */
+	 }
   </style>
 </head>
 <body>

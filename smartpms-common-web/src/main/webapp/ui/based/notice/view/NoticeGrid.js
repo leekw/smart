@@ -3,7 +3,6 @@ Ext.define('Ui.based.notice.view.NoticeGrid' ,{
     extend: 'Ext.grid.Panel',
     alias : 'widget.noticegrid',    
     title: '전체 공지',
-    padding:5,
     background: 'none',
     layout: 'fit',
     minHeight : 600,
@@ -19,7 +18,8 @@ Ext.define('Ui.based.notice.view.NoticeGrid' ,{
         this.columns = [
 		new Ext.grid.RowNumberer({
 			header : 'No',
-			width: 60
+			width: 60,
+			align :'center'
 		}),
         { 
             header: '제목',

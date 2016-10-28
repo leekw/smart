@@ -189,8 +189,9 @@
 		 }
 		 .x-form-text-default {
 		 	color : #1c2b36;
-		 	background-color: rgba(0,0,0,.15);
-		   box-shadow: none;
+		 	background-color: rgba(0,0,0,.02);
+   	 		border: 1px solid #d0d0d0;
+		    box-shadow: none;
 		 }
 		 .x-form-item-label-default {
 		 	color : #1c2b36;
@@ -232,7 +233,7 @@
       <!--  <script type="text/javascript" src="${sysContext}/resources/ext/Exporter-all.js"></script> -->
        <script type ="text/javascript" src="${sysContext}/ui/${_category}/${_ui}.js?version=${version}"></script>
         <script type="text/javascript" src="${sysContext}/resources/js/jquery-1.7.1.min.js"></script>
-       <c:if test="${(_category  == 'nlayout' || _category  == 'portal') && CALL_LOC == 'internal'}">
+       <c:if test="${(_category  == 'main' || _category  == 'portal') && CALL_LOC == 'internal'}">
        <script type="text/javascript" src="${sysContext}/resources/js/sockjs-0.3.4.min.js"></script>
        <script type="text/javascript" src="${sysContext}/resources/js/stomp.js"></script>
        </c:if>
@@ -259,7 +260,7 @@
     	var app = window.navigator.userAgent.toLowerCase();
 
     	</script>
-    	<c:if test="${_category  == 'nlayout'  && CALL_LOC == 'internal'}">
+    	<c:if test="${_category  == 'main'  && CALL_LOC == 'internal'}">
     	<script type="text/javascript">
     	window.addEventListener('load', function() {
     		if (Notification.permission !== "granted")

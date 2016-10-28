@@ -5,7 +5,7 @@ Ext.define('Ui.admin.menu.store.MenuService', {
     proxy: {
         type: 'ajax',
         enablePaging : true,
-        url: G_PATH + '/resource/service/list/get.json',
+        url: G_PATH + '/permit/res/svc/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

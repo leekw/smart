@@ -2,7 +2,7 @@ Ext.define('Ui.admin.user.view.UserGrid' ,{
     extend: 'Ext.grid.Panel',
     alias : 'widget.usergrid',
     id : 'user-grid',
-    minHeight : 300,
+    minHeight : 650,
     border: false,
     initComponent: function() {
     	
@@ -24,54 +24,49 @@ Ext.define('Ui.admin.user.view.UserGrid' ,{
         this.columns = [
 		new Ext.grid.RowNumberer({
 			header : 'no',
-			width: 40
+			width: 40,
+			align:'center'
 		}),
+		{
+			header : '',
+			dataIndex : 'photoPath',
+			width : 50,
+			align: 'center',
+			renderer : function(value) {
+				value = (value == null || value == '' ? G_PATH + '/resources/images/profile-icon.png' : value); 
+				return '<img src="' + value + '" style="border-radius:23px;" width="28" height="28">';
+			}
+		},
         { 
             header: '사용자 아이디',
             dataIndex: 'userId',
-            width: 150
+            width: 100
         }, { 
             header: '사용자 이름',
             dataIndex: 'userName',
+            align : 'center',
             width: 150,
             flex: 1
         }, { 
-            header: '담당 팀',
-            dataIndex: 'team',
+            header: '소속조직',
+            align : 'center',
+            dataIndex: 'defaultOrgId',
             width: 200
         }, { 
-            xtype :'gridcolumn',
-            text : '사용자 Role',
-            dataIndex : 'roles',
-            width : 300,
-            editor : {
-            	xtype: 'rolecombobox',
-            	allowBlank : true
-            },
-            renderer : function(value, metaData, record, row, col, store, view) {
-            	return value;
-            }
-        }, { 
             header: '이메일',
+            align : 'center',
             dataIndex: 'emailAddress',
             width: 150
         }, { 
-            header: '사용여부',
-            dataIndex: 'active',
+            header: '상태',
+            align : 'center',
+            dataIndex: 'status',
             width: 80
         }, { 
-            header: '접속허용',
-            dataIndex: 'access',
-            columnHeaderCheckbox : true,
-            width: 80,
-            xtype:'checkcolumn',
-            listeners : {
-            	checkchange : function ( checkbox, rowIndex, checked, eOpts ) {
-            		var grid = Ext.getCmp('user-grid');
-            		var userId = grid.getStore().getAt(rowIndex).data.userId;
-            		UserHandler._accessUser(userId, checked);
-            	}
-            }
+            header: '유형',
+            align : 'center',
+            dataIndex: 'userType',
+            width: 80
         }
         
         ];

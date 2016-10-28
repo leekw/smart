@@ -25,7 +25,7 @@
        <script type ="text/javascript" src="${sysContext}/ext/core/core.js"></script>  
        <script type ="text/javascript" src="${sysContext}/ui/${_category}/${_ui}.js?version=${version}"></script>
        <script type="text/javascript" src="${sysContext}/resources/js/jquery-1.7.1.min.js"></script>
-       <c:if test="${(_category  == 'nlayout' || _category  == 'portal')  && CALL_LOC == 'internal'}">
+       <c:if test="${(_category  == 'main' || _category  == 'portal')  && CALL_LOC == 'internal'}">
        <script type="text/javascript" src="${sysContext}/resources/js/sockjs-0.3.4.min.js"></script>
        <script type="text/javascript" src="${sysContext}/resources/js/stomp.js"></script>
        </c:if>
@@ -44,12 +44,13 @@
     	var G_LOGIN_NAME = "${LOGIN_NAME}";
     	var G_LOGIN_ID = "${LOGIN_ID}";
     	var G_BOARD_NO = "${BOARD_NO}";
+    	var G_PHOTO_PATH = "${PHOTO_PATH}";
     	G_TOKEN = "${_csrf.token}";
     	var app = window.navigator.userAgent.toLowerCase();
     	
     	var M_RESOURCE_CONTENT = '';
     	</script>
-    	<c:if test="${_category  == 'nlayout'  && CALL_LOC == 'internal'}">
+    	<c:if test="${_category  == 'main'  && CALL_LOC == 'internal'}">
     	<script type="text/javascript">
     	window.addEventListener('load', function() {
     		if (Notification.permission !== "granted")

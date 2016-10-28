@@ -36,8 +36,10 @@ var CommonCode = {
 		_getCombo : function(_type, _label, ismult, id, option, changfunction, ref1, ref2) {
 			return Ext.create('Ext.form.ComboBox', {
 				id : id,
+				name : id,
 				store : CommonCode._getCodeStore(_type, ref1, ref2),
 				fieldLabel: _label,
+				viewText : _label,
 				multiSelect : (ismult == null?false : ismult),
 				labelWidth : option.labelWidth,
 				labelAlign : option.labelAlign ,

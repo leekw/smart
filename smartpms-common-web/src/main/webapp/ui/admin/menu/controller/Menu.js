@@ -64,7 +64,7 @@ var TreeAction = {
     		Ext.Msg.alert('Info', '잠금해제할 대상을 선택하십시오.');
     		return false;
     	}
-    	var url = G_PATH + '/resource/check/modify.json';
+    	var url = G_PATH + '/permit/res/check/modify.json';
 	   	Ext.Ajax.request({
 	       url: url,
 	       method: 'POST',
@@ -106,8 +106,8 @@ var TreeAction = {
 			grid.getView().refresh();
 		} else {
 			if (selectMenu.data.resourceTypeCode != "MENU") {
-				Ext.Msg.alert('Info', '분류 타입의 메뉴에만 추가 가능합나디.');
-			return false;
+				Ext.Msg.alert('Warning', '분류 타입의 메뉴에만 추가 가능합나디.');
+				return false;
 			}
 			parentResourceId = selectMenu.data.resourceId;
 			selectMenu.appendChild({
@@ -133,7 +133,7 @@ var TreeAction = {
     		if (btn == 'yes') {
     			if (selectMenu != null) {
 	    			var formData = {resourceId : selectMenu.data.id };
-	   			var url = G_PATH + '/resource/remove.json';
+	   			var url = G_PATH + '/permit/res/remove.json';
 	   			Ext.Ajax.request({
 	   	    	    url: url,
 	   	    	    method: 'POST',
@@ -193,7 +193,7 @@ var GridAction = {
     		params.push({resourceId : r.id});
     	}
     	if (params.length > 0) {
-			var url = url = G_PATH + '/resource/list/remove.json';
+			var url = url = G_PATH + '/permit/res/list/remove.json';
 			Ext.Ajax.request({
 	    	    url: url,
 	    	    method: 'POST',

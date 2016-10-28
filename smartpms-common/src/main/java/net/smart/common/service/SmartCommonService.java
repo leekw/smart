@@ -3,8 +3,14 @@ package net.smart.common.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.smart.common.domain.DataSyncInfo;
 import net.smart.common.domain.IntUser;
+import net.smart.common.domain.based.BasedFile;
+import net.smart.common.domain.based.BasedOrg;
+import net.smart.common.domain.based.BasedResource;
+import net.smart.common.domain.based.BasedResourceRole;
 import net.smart.common.domain.based.BasedUser;
 
 
@@ -56,4 +62,53 @@ public interface SmartCommonService {
 	
 	public String getOrgPath(String orgId);
 	
+	public List<BasedOrg> getOrgTrees(BasedOrg param);
+	
+	public BasedUser getUser(BasedUser param);
+	
+	public void regUser(BasedUser param);
+	
+	public String getSysPropertieValue(String key);
+	
+	public List<String> getSessionRoles();
+	
+	public List<BasedResource> getResourceList(BasedResource param);
+	
+	public boolean isPermitResource(List<String> roles, String checkData);
+	
+	public boolean isPermitResource(String roleId, String checkData);
+	
+	public List<BasedResource> getMenuServiceList(BasedResource param);
+	
+	public List<BasedFile> getCommonFileList(BasedFile param);
+	
+	public Map<String, Object> getFileDownload(HttpServletRequest request);
+	
+	public void addUploadFile(List<BasedFile> params);
+	
+	public void removeUploadFile(BasedFile param);
+	
+	public void addResource(BasedResource param);
+	
+	public void removeResource(List<BasedResource> params);
+	
+	public void removeResource(BasedResource param);
+	
+	public void modifyResource(List<BasedResource> params);
+	
+	public List<BasedResourceRole> getResourceRoleList(BasedResourceRole param);
+	
+	public void addResourceRole(BasedResourceRole param);
+	
+	public void removeResourceRole(List<BasedResourceRole> params);
+	
+	public void modifyResourceRole(BasedResourceRole param);
+	
+	public void modifyResourceByContent(BasedResource param);
+	
+	public Boolean getVaildModifyMenu(String resourceId);
+	
+	public String getLockMenuByUserName(String resourceId);
+	
+	public void modifyCompleteMenu(String resourceId);
 }

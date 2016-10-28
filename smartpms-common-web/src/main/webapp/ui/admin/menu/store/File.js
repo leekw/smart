@@ -4,7 +4,7 @@ Ext.define('Ui.admin.menu.store.File', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: G_PATH + '/file/list/get.json',
+        url: G_PATH + '/based/res/file/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -9129,7 +9129,7 @@ body > .x-mask {
     border-color: #d0d0d0;
     border-width: 0;
     background-image: none;
-    background-color: #ececec;
+    background-color: none;
 }
 /* http://localhost:1843/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:248 */
 .x-toolbar-footer .x-tool-img {

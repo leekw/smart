@@ -58,7 +58,7 @@ Ext.define('Ui.admin.menu.view.MenuPanel', {
 	     		    	var grid = Ext.getCmp('sub-menu');
 	     		    	var store = grid.getStore();
 	     		    	var proxy = store.getProxy();
-	     		    	proxy.extraParams.parentResourceId = 'LIMIT';
+	     		    	proxy.extraParams.parentResourceId = 'TOP';
 	     		    	store.load();
 	     		    }
 	     		}

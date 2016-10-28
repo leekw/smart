@@ -3,7 +3,7 @@ Ext.define('Ui.external.store.OrgTree', {
 	model : 'Ui.external.model.OrgTree',
 	proxy : {
 		type: 'ajax',
-        url: G_PATH + '/org/list/get.json',
+        url: G_PATH + '/based/res/org/tree/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

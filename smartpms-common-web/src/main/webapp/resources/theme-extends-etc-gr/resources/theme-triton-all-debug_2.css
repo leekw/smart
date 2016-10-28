@@ -1993,7 +1993,7 @@
 /* http://localhost:1843/classic/theme-neutral/sass/src/tree/View.scss:246 */
 .x-tree-checkbox {
     margin-right: 6px;
-    top: 7px;
+    top: 8px;
     width: 18px;
     height: 18px;
     font: 18px/1 FontAwesome;
@@ -5572,7 +5572,7 @@
 }
 /* http://localhost:1843/classic/theme-triton/sass/src/tree/View.scss:1 */
 .x-tree-checkbox {
-    color: #fff;
+    color: #1c2b36;
 }
 /* http://localhost:1843/classic/theme-triton/sass/src/window/Toast.scss:1 */
 .x-toast {

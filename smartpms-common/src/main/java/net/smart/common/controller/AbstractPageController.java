@@ -27,11 +27,12 @@ public abstract class AbstractPageController {
 		}
 	}
 	
-	private enum BaseInfo {
+	protected enum BaseInfo {
 		SYS_TITLE("Smart Project Management System"),
 		MIN_TITLE("Smart PMS"),
 		RESOURCE_VERSION("1.0.0"),
 		SYS_CONTEXT_PATH("/smart"),
+		DEFAULT_PROFILE_PATH(BaseInfo.SYS_CONTEXT_PATH.getValue() + "/resources/images/profile-icon.png"),
 		SYS_OWNER("songmax");
 		private String value;
 		private BaseInfo(String value) {

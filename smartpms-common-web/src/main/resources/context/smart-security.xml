@@ -8,13 +8,13 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	<security:http pattern="/resources/**" security="none"/>
+	<security:http pattern="/based/res/**" security="none"/>
     <security:http pattern="/etc/**" security="none"/>
     <security:http pattern="/ext/**" security="none"/>
     <security:http pattern="/angular/**" security="none"/>
     <security:http pattern="/index.html" security="none"/>
     <security:http pattern="/user/reg.do" security="none"/>
     <security:http pattern="/etc/cutover-min.html" security="none"/>
-    <security:http pattern="/login.html" security="none"/>
     <security:http pattern="/loginFail.do" security="none"/>
     <security:http pattern="/accessDenied.html" security="none"/>
     <security:http pattern="/etc/guide.html" security="none"/>
@@ -22,11 +22,11 @@
     <security:http pattern="/wait.do" security="none"/>
     <security:http pattern="/ws/**" security="none"/>
     <security:http pattern="/*.jsp" security="none"/> 
-    <security:http pattern="/file/upload.file" security="none"/>
-    <security:http pattern="/file/download.do" security="none"/>
-    <security:http pattern="/file/list/get.json" security="none"/>
-    <security:http pattern="/file/remove.json" security="none"/>
-    <security:http pattern="/file/add.json" security="none"/>
+    <security:http pattern="/permit/res/file/upload.file" security="none"/>
+    <security:http pattern="/permit/res/file/download.do" security="none"/>
+    <security:http pattern="/permit/res/file/list/get.json" security="none"/>
+    <security:http pattern="/permit/res/file/remove.json" security="none"/>
+    <security:http pattern="/permit/res/file/add.json" security="none"/>
     <security:http pattern="/code/list/get.json" security="none"/> 
     <security:http pattern="/etc/timeline.html" security="none"/>
     <security:http pattern="/notice/main/get.json" security="none"/>
@@ -39,7 +39,7 @@
     
 	<!-- 임시  -->
 	<security:http pattern="/layout/app/view.do" security="none"/>
-	<security:http pattern="/resource/info/get.json" security="none"/>
+	<security:http pattern="/based/res/info/get.json" security="none"/>
 	<security:http pattern="/compare/chart/get.json" security="none"/>
 	<security:http pattern="/resource/session/invalid.json" security="none"/>
 	<security:http pattern="/open/issue/level/get.json" security="none"/>

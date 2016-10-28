@@ -1,5 +1,6 @@
 package net.smart.common.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,16 +10,22 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import net.smart.common.dao.BasedResourceDao;
 import net.smart.common.dao.SmartCommonDao;
 import net.smart.common.domain.DataSyncInfo;
 import net.smart.common.domain.IntUser;
+import net.smart.common.domain.UploadFile;
 import net.smart.common.domain.UserDetail;
+import net.smart.common.domain.based.BasedFile;
 import net.smart.common.domain.based.BasedOrg;
 import net.smart.common.domain.based.BasedOrgRel;
+import net.smart.common.domain.based.BasedResource;
+import net.smart.common.domain.based.BasedResourceRole;
 import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.BasedUser;
+import net.smart.common.domain.sys.SysPropertie;
 import net.smart.common.exception.IntegrationException;
 import net.smart.common.support.security.StringEncrypter;
 import net.smart.common.support.util.DateUtil;
@@ -58,6 +65,9 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 	
 	private Map<String, BasedOrg> orgData;
 	private Map<String, BasedOrgRel> orgRelationData;
+	private Map<String, SysPropertie> sysProperties;
+	private Map<String, Map<String, BasedResourceRole>> resourceRoleData;
+	private Map<String, String> contextData;
 	
 	@Value("${system.deploy.version}")
 	private String systemDeployVersion;
@@ -96,6 +106,42 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 		this.setExternalPermitUrl();
 		this.setOrgData();
 		this.setOrgRelationData();
+		this.setSysProperties();
+		this.setResourceRoles();
+		contextData = new ConcurrentHashMap<String, String>();
+	}
+	
+	private void setResourceRoles() {
+		if (resourceRoleData == null) {
+			resourceRoleData = this.getCacheResourceRole();
+		}
+	}
+	
+	private Map<String, Map<String, BasedResourceRole>> getCacheResourceRole() {
+		Map<String, Map<String, BasedResourceRole>> result = new ConcurrentHashMap<String, Map<String, BasedResourceRole>>();
+		List<BasedResourceRole> temps = basedResourceDao.getResourceRoleList(new BasedResourceRole());
+		for (BasedResourceRole obj : temps) {
+			String key = obj.getResourceKey();
+			Map<String, BasedResourceRole> resource = result.get(obj.getRoleId());
+			if (resource == null) {
+				resource = new ConcurrentHashMap<String, BasedResourceRole>();
+				result.put(obj.getRoleId(), resource);
+			}
+			resource.put(key, obj);
+		}
+		return result;
+	}
+	
+	
+	
+	private void setSysProperties() {
+		if (this.sysProperties == null) {
+			this.sysProperties = new ConcurrentHashMap<String, SysPropertie>();
+			List<SysPropertie> temps = basedResourceDao.getSysProperties(new SysPropertie());
+			for (SysPropertie pro : temps) {
+				this.sysProperties.put(pro.getSysPropertieId(), pro);
+			}
+		}
 	}
 	
 	private void setOrgData() {
@@ -355,6 +401,7 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 		
 		this.setSessionAuth(users.get(0), result);
 		
+		result.setPhotoPath(users.get(0).getPhotoPath());
 		result.setAccess(isAccess);
 		result.setUserName(userName);
 
@@ -410,5 +457,209 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 			this.setOrgPaht(temp.getTargetOrgId(), path);
 		}
 	}
+
+
+	@Override
+	public List<BasedOrg> getOrgTrees(BasedOrg param) {
+		return basedResourceDao.getOrgTrees(param);
+	}
+
+
+	@Override
+	public BasedUser getUser(BasedUser param) {
+		return basedResourceDao.getUser(param);
+	}
+
+
+	@Override
+	public void regUser(BasedUser param) {
+		StringEncrypter stringEncrypter = new StringEncrypter(false);
+		param.setStatus("REQUEST");
+		try {
+			param.setUserPassword(stringEncrypter.encrypt(param.getUserPassword()));
+		} catch (Exception e) {
+			throw new IntegrationException("ERROR.0006", "사용자 패스워드 Encription 도중 오류가 발생되었습니다.");
+		}
+		basedResourceDao.regUser(param);
+	}
+
+
+	@Override
+	public String getSysPropertieValue(String key) {
+		return this.sysProperties.get(key).getSysPropertieValue();
+	}
+
+
+	@Override
+	public List<String> getSessionRoles() {
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		if (securityContext != null ) {
+			Authentication authentication = securityContext.getAuthentication();
+			if (authentication != null) {
+				List<String> roles=  new ArrayList<String>();
+				for (GrantedAuthority role : authentication.getAuthorities()) {
+					roles.add(role.getAuthority());
+				}
+				return roles;
+			}
+		}
+		return null;
+	}
+
+
+	@Override
+	public List<BasedResource> getResourceList(BasedResource param) {
+		return basedResourceDao.getResourceList(param);
+	}
+	
+	@Override
+	public boolean isPermitResource(String roleId, String checkData) {
+		Map<String, BasedResourceRole> data = resourceRoleData.get(roleId);
+		if (data == null || data.isEmpty()) return false;
+		BasedResourceRole result = data.get(checkData);
+		return data != null && !data.isEmpty() ?  (result == null ? false : (result.isExclude() ? false : true)) : false ;
+	}
+
+	@Override
+	public boolean isPermitResource(List<String> roles, String checkData) {
+		boolean isPermit = false;
+		for (String role : roles ) {
+			isPermit = this.isPermitResource(role, checkData);
+			if (isPermit) return true; 
+		}
+		return isPermit;
+	}
+
+
+	@Override
+	public List<BasedResource> getMenuServiceList(BasedResource param) {
+		return basedResourceDao.getMenuServiceList(param);
+	}
+
+
+	@Override
+	public List<BasedFile> getCommonFileList(BasedFile param) {
+		return basedResourceDao.getCommonFileList(param);
+	}
+
+
+	@Override
+	public Map<String, Object> getFileDownload(HttpServletRequest request) {
+		String path = request.getParameter("filePath");
+		String fileName = request.getParameter("fileName");
+		String temp = request.getParameter("fileNo");
+		if (temp != null && !"".equals(temp)) {
+			BasedFile param = new BasedFile();
+			param.setFileNo(Integer.parseInt(temp));
+			List<BasedFile> temps = this.getCommonFileList(param);
+			if (temps != null && !temps.isEmpty()) {
+				fileName = temps.get(0).getFileName();
+			}
+		}
+		if (path == null) {
+			throw new IntegrationException("ERROR.0001", "대상 파일이 존재하지 않습니다.");
+		}
+		File file = new File(path);
+		if (!file.exists()) throw new IntegrationException("ERROR.0001", "대상 파일이 존재하지 않습니다.");
+
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("downloadFile", file);
+		data.put("fileName", fileName);
+		
+		return data;
+	}
+
+
+	@Override
+	public void addUploadFile(List<BasedFile> params) {
+		basedResourceDao.addUploadFile(params);
+	}
+
+
+	@Override
+	public void removeUploadFile(BasedFile param) {
+		basedResourceDao.removeUploadFile(param);
+	}
+
+
+	@Override
+	public void addResource(BasedResource param) {
+		basedResourceDao.addResource(param);
+	}
+
+
+	@Override
+	public void removeResource(List<BasedResource> params) {
+		basedResourceDao.removeResource(params);
+	}
+
+
+	@Override
+	public void removeResource(BasedResource param) {
+		basedResourceDao.removeResource(param);
+	}
+
+
+
+	@Override
+	public void modifyResource(List<BasedResource> params) {
+		basedResourceDao.modifyResource(params);
+	}
+
+
+	@Override
+	public List<BasedResourceRole> getResourceRoleList(BasedResourceRole param) {
+		return basedResourceDao.getResourceRoleList(param);
+	}
+
+
+	@Override
+	public void addResourceRole(BasedResourceRole param) {
+		basedResourceDao.addResourceRole(param);
+	}
+
+
+	@Override
+	public void removeResourceRole(List<BasedResourceRole> params) {
+		basedResourceDao.removeResourceRole(params);
+	}
+
+
+	@Override
+	public void modifyResourceRole(BasedResourceRole param) {
+		basedResourceDao.modifyResourceRole(param);
+	}
+
+
+	@Override
+	public void modifyResourceByContent(BasedResource param) {
+		basedResourceDao.modifyResourceByContent(param);
+	}
+
+
+	@Override
+	public Boolean getVaildModifyMenu(String resourceId) {
+		if (contextData.containsKey(resourceId)) 
+			return false;
+		
+		String displayName = this.getSessionUserName();
+		contextData.put(resourceId, displayName);
+		return true;
+	}
+
+
+	@Override
+	public String getLockMenuByUserName(String resourceId) {
+		return contextData.get(resourceId);
+	}
+
+
+	@Override
+	public void modifyCompleteMenu(String resourceId) {
+		contextData.remove(resourceId);
+	}
+
+
+	
 
 }

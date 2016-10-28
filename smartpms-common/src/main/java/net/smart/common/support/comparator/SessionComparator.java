@@ -1,4 +1,4 @@
-package net.smart.web.resource.service;
+package net.smart.common.support.comparator;
 
 import java.util.Comparator;
 

@@ -9,16 +9,17 @@ Ext.define('Ui.external.view.UserRegPanel', {
 	items : [
 			{
 				xtype:'panel',
-				cls : 'reg-panel-body',
 				title : '사용자 기본정보',
-				bodyStyle : {
-					'border-top': '1px solid #fff'
+				style : {
+				    'background-color' : '#fff',
+				    'box-shadow': '0 5px 5px 0 rgba(0,0,0,.25)'
 				},
 				minHeight : 630,
 				border : false,
 				items : [
 				    {
 				    	xtype : 'form',
+				    	id : 'reg-user-form',
 				    	defaults: {
 				            labelWidth: 120
 				        },
@@ -37,6 +38,16 @@ Ext.define('Ui.external.view.UserRegPanel', {
 							    anchor: '0',
 							    layout : 'vbox',
 							    items : [
+							   		{
+							        	xtype : 'hidden',
+							        	name : 'defaultOrgId',
+							        	id : 'defaultOrgId'
+							        },
+							        {
+							        	xtype : 'hidden',
+							        	name : 'idCheck',
+							        	id : 'idCheck'
+							        },
 							        {
 							        	xtype : 'tbtext',
 							        	id : 'userPhoto',
@@ -44,10 +55,17 @@ Ext.define('Ui.external.view.UserRegPanel', {
 							        	height : 210,
 							        	width : '40%'
 							        },
+							        {
+							        	xtype : 'hidden',
+							        	name : 'photoPath',
+							        	id : 'photoPath'
+							        },
 									{
 									    xtype: 'filefield',
 									    emptyText: 'Select an image',
 									    name: 'photo-path',
+									    viewText : 'Photo',
+									    allowBlank: false,
 									    width : '80%',
 									    buttonText: '',
 									    buttonConfig: {
@@ -59,6 +77,7 @@ Ext.define('Ui.external.view.UserRegPanel', {
 								    		    reader.onload = function(){
 								    		      var output = document.getElementById('myPhoto');
 								    		      output.src = reader.result;
+								    		      Ext.getCmp('photoPath').setValue(reader.result);
 								    		    };
 								    		    reader.readAsDataURL(event.target.files[0]);
 									    	}
@@ -75,7 +94,8 @@ Ext.define('Ui.external.view.UserRegPanel', {
 							    items : [
 							        {
 							        	xtype : 'textfield',
-							        	name : 'id',
+							        	name : 'userId',
+							        	viewText : '아이디',
 							        	width : '41%',
 							        	enforceMaxLength : true,
 							        	maxLength : 15,
@@ -87,7 +107,7 @@ Ext.define('Ui.external.view.UserRegPanel', {
 							        				userId : obj.getValue()
 							        			};
 							        			Ext.Ajax.request({
-								    	    	    url: G_PATH + '/resource/user/vaild.json',
+								    	    	    url: G_PATH + '/based/res/user/get.json',
 								    	    	    method: 'POST',
 								    	    	    jsonData: Ext.encode(params),
 								    	    	    success: function(response){
@@ -95,8 +115,11 @@ Ext.define('Ui.external.view.UserRegPanel', {
 								    	    	    	if (result.error != null) {
 								    	    				Ext.Msg.alert('Exception', result.error.message);
 								    	    			} else {
-								    	    				if (result.vaildInfo != null && result.vaildInfo.userId != null && result.vaildInfo.userId != '') {
+								    	    				if (result.user != null && result.user.userId != null && result.user.userId != '') {
 								    	    					Ext.Msg.alert('Error', '이미 등록된 아이디 입니다.');
+								    	    					Ext.getCmp('idCheck').setValue('F');
+								    	    				} else {
+								    	    					Ext.getCmp('idCheck').setValue('T');
 								    	    				}
 								    	    			}
 								    	    	    },
@@ -116,11 +139,12 @@ Ext.define('Ui.external.view.UserRegPanel', {
 							{
 							    xtype : 'textfield',
 								fieldLabel: '이름',
-							    name: 'name',
+							    name: 'userName',
 							    anchor: '50%',
 							    maxLength : 15,
 							    enforceMaxLength : true,
-							    allowBlank: false
+							    allowBlank: false,
+							    viewText : '이름'
 							},
 							{
 								xtype : 'fieldcontainer',
@@ -131,12 +155,13 @@ Ext.define('Ui.external.view.UserRegPanel', {
 								     {
 								    	 xtype : 'textfield',
 								    	 inputType: 'password',
-										 name: 'password',
+										 name: 'userPassword',
 										 id : 'password-first',
 										 maxLength : 15,
 										 enforceMaxLength : true,
 										 allowBlank: false,
-										 width : '41%'
+										 width : '41%',
+										 viewText : '패스워드'
 								     },
 								     {
 								    	 xtype : 'textfield',
@@ -147,6 +172,7 @@ Ext.define('Ui.external.view.UserRegPanel', {
 										 allowBlank: false,
 										 maxLength : 15,
 										 enforceMaxLength : true,
+										 viewText :'패스워드확인',
 										 width : '58%',
 										 validator: function(value) {
 											 var checkValue = Ext.getCmp('password-first').getValue();
@@ -167,11 +193,13 @@ Ext.define('Ui.external.view.UserRegPanel', {
 								items : [
 								    {
 								    	xtype : 'textfield',
-								    	name : 'email',
+								    	name : 'emailAddress',
 								    	vtype : 'email',
 								    	maxLength : 30,
 								    	enforceMaxLength : true,
-								    	width : '41%'
+								    	width : '41%',
+								    	viewText : '이메일',
+								    	allowBlank: false
 								    },
 								    {
 								    	xtype : 'tbtext',
@@ -189,8 +217,10 @@ Ext.define('Ui.external.view.UserRegPanel', {
 								    	 xtype : 'textfield',
 								    	 name : 'phoneNumber',
 								    	 maxLength : 30,
+								    	 viewText : '연락처',
 								    	 enforceMaxLength : true,
-								    	 width : '41%'
+								    	 width : '41%',
+								    	 allowBlank: false
 								     },
 								     {
 								    	 xtype : 'tbtext',
@@ -199,9 +229,22 @@ Ext.define('Ui.external.view.UserRegPanel', {
 								]
 							},
 							{
-							    xtype : CommonCode._getCombo('USER_TYPE', '사용자 유형', false, 'userType', {labelWidth:120, labelAlign : 'right', width: '50%'}),
+							    xtype : CommonCode._getCombo('USER_TYPE', '사용자 유형', false, 'userType', {labelWidth:120, labelAlign : 'right', width: '50%', allowBlank : false}),
 							    anchor: '50%'
 							}
+				        ],
+				        buttons :[
+				        	{
+						        text:'Roll-in 신청',
+						        action: 'reg-user'
+						    },
+						    {
+						        text:'취소',
+						        ui : 'gray',
+						        handler : function() {
+						        	document.location.href = G_PATH + '/login.do';
+						        }
+						    }
 				        ]
 				    }
 				],
@@ -209,28 +252,19 @@ Ext.define('Ui.external.view.UserRegPanel', {
 			},
 			{
 				xtype:'panel',
-				cls : 'reg-panel-body',
+				style : {
+				    'background-color' : '#fff',
+				    'box-shadow': '0 5px 5px 0 rgba(0,0,0,.25)'
+				},
 				title : '사용자 소속조직',
 				minHeight : 630,
 				border : false,
-				bodyStyle : {
-					'border-top': '1px solid #fff'
-				},
 				items : [
 				    {
 				    	xtype : 'orgtree'
 				    }
 				],
 				responsiveCls: 'big-40 small-100'
-			},
-			{
-				items : [
-				    {
-				    	xtype : 'button',
-						text : '사용자 등록요청'
-				    }
-				],
-				responsiveCls: 'big-60 small-100'
 			}
 	],
 	listeners : {

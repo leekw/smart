@@ -36,7 +36,7 @@ Ext.define('Ext.loginfail.view.LoginFailWindow', {
 	    	    buttons: [{
 					text : '재로그인',
 					handler: function() {
-						document.location.href = "/int/login.do";
+						document.location.href = G_PATH + "/login.do";
 					}
 	    	    }]
 			});

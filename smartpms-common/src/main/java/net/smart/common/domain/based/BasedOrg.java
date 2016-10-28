@@ -13,7 +13,29 @@ public class BasedOrg extends Common {
 	private String orgName;
 	private String orgType;
 	private String orgDetailType;
+	private boolean leaf;
+	private String parentOrgId;
+	private boolean checked;
 	
+	
+	public boolean isChecked() {
+		return checked;
+	}
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+	public String getParentOrgId() {
+		return parentOrgId;
+	}
+	public void setParentOrgId(String parentOrgId) {
+		this.parentOrgId = parentOrgId;
+	}
+	public boolean isLeaf() {
+		return leaf;
+	}
+	public void setLeaf(boolean leaf) {
+		this.leaf = leaf;
+	}
 	public String getOrgId() {
 		return orgId;
 	}

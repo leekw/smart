@@ -4,7 +4,7 @@ Ext.define('Ui.main.store.NavigationTree', {
     storeId: 'NavigationTree',
     proxy : {
 		type: 'ajax',
-        url: G_PATH + '/resource/list/get.json',
+        url: G_PATH + '/permit/res/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

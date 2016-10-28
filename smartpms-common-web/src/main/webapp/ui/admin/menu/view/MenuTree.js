@@ -141,12 +141,12 @@ Ext.define('Ui.admin.menu.view.MenuTree', {
             		if (e.record.data.resourceId == null || e.record.data.resourceId == '') {
 	                	params = {resourceName: e.record.data.text, parentResourceId : e.record.data.parentResourceId
 	                			, url: e.record.data.url, resourceTypeCode: e.record.data.resourceTypeCode , resourceContent : cotnent, mainResourceYn : e.record.data.mainResource ? 'Y' : 'N'};
-	                	url = G_PATH + '/resource/add.json';
+	                	url = G_PATH + '/permit/res/add.json';
 	                	isModify = false;
             		} else {
             			params = {resourceId : e.record.data.resourceId, resourceName: e.record.data.text, parentResourceId : e.record.data.parentResourceId
             					, url: e.record.data.url, resourceTypeCode: e.record.data.resourceTypeCode, resourceContent : cotnent, mainResourceYn : e.record.data.mainResource ? 'Y' : 'N'};
-	                	url = G_PATH + '/resource/content/modify.json';
+	                	url = G_PATH + '/permit/res/content/modify.json';
 	                	isModify = true;
             		}
         			Ext.Ajax.request({
@@ -161,7 +161,7 @@ Ext.define('Ui.admin.menu.view.MenuTree', {
 	    	    				Ext.Msg.alert('Complete', '저장 되었습니다.');
 	    	    				var store = grid.getStore();
 	    	    				var proxy = store.getProxy();
-	    	     		    	proxy.extraParams.parentResourceId = 'LIMIT';
+	    	     		    	proxy.extraParams.parentResourceId = 'TOP';
 	    	     		    	store.load();
 	    	    			}
 	    	    	    },
@@ -172,7 +172,7 @@ Ext.define('Ui.admin.menu.view.MenuTree', {
         			var content = Ext.getCmp('resourceContent');
         			content.setReadOnly(true);
         			if (isModify) {
-        				var url = G_PATH + '/resource/complete/modify.json';
+        				var url = G_PATH + '/permit/res/complete/modify.json';
 						Ext.Ajax.request({
 				    	    url: url,
 				    	    method: 'POST',
@@ -190,7 +190,7 @@ Ext.define('Ui.admin.menu.view.MenuTree', {
         			content.setReadOnly(true);
         			
         			if (e.record.data.resourceId != null && e.record.data.resourceId != '') {
-	        			var url = G_PATH + '/resource/complete/modify.json';
+	        			var url = G_PATH + '/permit/res/complete/modify.json';
 						Ext.Ajax.request({
 				    	    url: url,
 				    	    method: 'POST',
@@ -229,12 +229,12 @@ Ext.define('Ui.admin.menu.view.MenuTree', {
 				if (source != target) {
 					data.records[0].data.parentResourceId = target;
 				}
-				var treeData = target === "LIMIT" ? Ext.getCmp('sub-menu').getStore().root.childNodes  : Ext.getCmp('sub-menu').getStore().getNodeById(target).childNodes;
+				var treeData = target === "TOP" ? Ext.getCmp('sub-menu').getStore().root.childNodes  : Ext.getCmp('sub-menu').getStore().getNodeById(target).childNodes;
 				for (var i=0;i < treeData.length;i++) {
 					var temp = treeData[i];
 					sendData.push({resourceId : temp.data.resourceId, parentResourceId: temp.data.parentResourceId, sortNo : i});
 				}
-				var url = G_PATH + '/resource/modify.json';
+				var url = G_PATH + '/permit/res/modify.json';
 				Ext.Ajax.request({
 		    	    url: url,
 		    	    method: 'POST',
@@ -247,7 +247,7 @@ Ext.define('Ui.admin.menu.view.MenuTree', {
 		    				var grid = Ext.getCmp('sub-menu');
 		     		    	var store = grid.getStore();
 		     		    	var proxy = store.getProxy();
-		     		    	proxy.extraParams.parentResourceId = 'LIMIT';
+		     		    	proxy.extraParams.parentResourceId = 'TOP';
 		     		    	store.load();
 		    			}
 		    	    },

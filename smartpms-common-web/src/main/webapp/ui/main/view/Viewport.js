@@ -102,7 +102,7 @@ Ext.define('Ui.main.view.Viewport', {
                     height: 35,
                     width: 35,
                     alt:'current user image',
-                    src: G_PATH + '/resources/images/Nasta.png',
+                    src: G_PHOTO_PATH,
                     listeners : {
                     	render : function() {
                     		this.imgEl.on('click', this.onClick, this);
@@ -223,9 +223,9 @@ var UserInfo = {
 				params : (Ext.JSON.encode({})),
 				success: function(res, eOtps) {
 					if (parent != null) {
-						parent.document.location.href = G_PATH + '/nlayout/app/view.do';
+						parent.document.location.href = G_PATH + '/main/app/view.do';
 					} else {
-						document.location.href = G_PATH + '/nlayout/app/view.do';
+						document.location.href = G_PATH + '/main/app/view.do';
 					}
 				},
 				failure: function(res, eOtps) {
@@ -235,6 +235,6 @@ var UserInfo = {
 		}
 	},
 	_main : function() {
-		document.location.href = G_PATH + '/nlayout/app/view.do';
+		document.location.href = G_PATH + '/main/app/view.do';
 	}
 };

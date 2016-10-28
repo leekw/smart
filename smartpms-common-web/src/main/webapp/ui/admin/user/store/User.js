@@ -7,7 +7,7 @@ Ext.define('Ui.admin.user.store.User', {
     proxy: {
         type: 'ajax',
         enablePaging : true,
-        url: G_PATH + '/user/list/get.json',
+        url: G_PATH + '/based/res/user/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },
