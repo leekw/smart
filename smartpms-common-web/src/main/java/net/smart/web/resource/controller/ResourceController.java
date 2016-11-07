@@ -15,6 +15,7 @@ import net.smart.common.annotation.IntegrationResponse;
 import net.smart.common.domain.IntUser;
 import net.smart.common.domain.based.SessionUser;
 import net.smart.common.exception.IntegrationException;
+import net.smart.common.service.RoleService;
 import net.smart.common.service.SmartCommonService;
 import net.smart.common.support.comparator.SessionComparator;
 import net.smart.common.support.constant.ErrorCode;
@@ -26,7 +27,6 @@ import net.smart.web.domain.resource.Resource;
 import net.smart.web.domain.resource.ResourceRole;
 import net.smart.web.portal.service.PortalService;
 import net.smart.web.resource.service.ResourceService;
-import net.smart.web.role.service.RoleService;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

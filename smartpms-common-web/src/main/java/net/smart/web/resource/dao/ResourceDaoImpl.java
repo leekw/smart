@@ -3,12 +3,12 @@ package net.smart.web.resource.dao;
 import java.util.List;
 
 import net.smart.common.domain.UploadFile;
+import net.smart.common.domain.based.UserRole;
 import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
 import net.smart.web.domain.UserInfo;
 import net.smart.web.domain.resource.RegUser;
 import net.smart.web.domain.resource.Resource;
 import net.smart.web.domain.resource.ResourceRole;
-import net.smart.web.domain.role.UserRole;
 
 import org.springframework.stereotype.Repository;
 

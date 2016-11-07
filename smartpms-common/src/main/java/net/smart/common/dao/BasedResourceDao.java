@@ -1,6 +1,7 @@
 package net.smart.common.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import net.smart.common.domain.based.BasedFile;
 import net.smart.common.domain.based.BasedOrg;
@@ -58,5 +59,7 @@ public interface BasedResourceDao {
 	public void modifyResourceRole(BasedResourceRole param);
 	
 	public void removeResourceRole(List<BasedResourceRole> params);
+	
+	public Map<String, String> getMainResourceInfo();
 	
 }

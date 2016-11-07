@@ -538,22 +538,16 @@
 	<repositories>
 	    <repository> 
 	        <id>public</id>
-	        <url>http://172.20.10.2:8081/nexus/content/groups/public</url>
+	        <url>http://122.35.179.162:8081/nexus/content/groups/public/</url>
 	        <releases><enabled>true</enabled></releases>
 	        <snapshots><enabled>true</enabled></snapshots>
 	    </repository>
-		<repository> 
-	        <id>thirdparty</id>
-	        <url>http://172.20.10.2:8081/nexus/content/repositories/thirdparty</url>
-	        <releases><enabled>true</enabled></releases>
-	        <snapshots><enabled>true</enabled></snapshots>
-	    </repository>    
 	</repositories>
 	  
 	<pluginRepositories>
 	    <pluginRepository>
 	        <id>central</id>
-	        <url>http://172.20.10.2:8081/nexus/content/groups/public</url>
+	        <url>http://122.35.179.162:8081/nexus/content/groups/public/</url>
 	        <releases><enabled>true</enabled></releases>
 	        <snapshots><enabled>true</enabled></snapshots>
 	    </pluginRepository>
@@ -563,12 +557,12 @@
 	    <!-- use the following if you're not using a snapshot version. -->  
 	    <repository>  
 	      <id>Releases</id>  
-	      <url>http://172.20.10.2:8081/nexus/content/repositories/releases/</url>  
+	      <url>http://122.35.179.162:8081/nexus/content/repositories/releases/</url>  
 	    </repository>  
 	    <!-- use the following if you ARE using a snapshot version. -->  
 	    <snapshotRepository>  
 	      <id>Snapshots</id>  
-	      <url>http://172.20.10.2:8081/nexus/content/repositories/snapshots/</url>  
+	      <url>http://122.35.179.162:8081/nexus/content/repositories/snapshots/</url>  
 	    </snapshotRepository>  
 	  </distributionManagement>
     <build>

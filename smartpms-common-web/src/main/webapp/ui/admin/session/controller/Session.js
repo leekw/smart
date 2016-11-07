@@ -48,7 +48,7 @@ Ext.define('Ui.admin.session.controller.Session', {
     		params.push({userId : r.userId, sessionId : r.sessionId});
     	}
     	Ext.Ajax.request({
-    	    url: G_PATH + '/resource/session/invalid.json',
+    	    url: G_PATH + '/permit/res/session/invalid.json',
     	    method: 'POST',
     	    jsonData: Ext.encode(params),
     	    success: function(response){

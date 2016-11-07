@@ -36,9 +36,5 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.removeBoard(param);
 	}
 
-	@Override
-	public List<CommonCode> getTeamList() {
-		return boardDao.getTeamList();
-	}
 
 }

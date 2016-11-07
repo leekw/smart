@@ -72,6 +72,9 @@ public class BasedResourceController extends AbstractPageController {
 		if (param.getResourceId() != null && !"".equals(param.getResourceId())) {
 			param.setTargetId(param.getResourceId());
 			param.setRelationType("MENU");
+		} else {
+			param.setTargetId(param.getBoardNo() + ":" + param.getBoardId());
+			param.setRelationType("BOARD");
 		}
 		return smartCommonService.getCommonFileList(param);
 	}

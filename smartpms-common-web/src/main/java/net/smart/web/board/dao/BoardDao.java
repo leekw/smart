@@ -15,7 +15,6 @@ public interface BoardDao {
 	
 	public void removeBoard(Board param);
 	
-	public List<CommonCode> getTeamList();
 	
 	public Integer getNextBoarId();
 

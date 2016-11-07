@@ -12,7 +12,7 @@
 	       'R' as dataMode,
 	       ip as ip,
 	       board_creator as boardCreator
-	FROM intg_board
+	FROM smrt_board
 	WHERE board_no = #{boardNo}
 	order by board_id desc
 	</select>
@@ -22,13 +22,13 @@
 	</select>
 		
 	<insert id="insertBoard" parameterType="Board">
-	INSERT INTO intg_board(
+	INSERT INTO smrt_board(
             board_id, board_title, board_no, board_team, board_create_date, board_description, ip, board_creator)
     VALUES (#{boardId}, #{boardTitle}, #{boardNo}, #{boardTeam}, to_char(now(), 'YYYY-MM-DD HH24:MI:SS'), #{boardDescription}, #{ip}, #{boardCreator})
 	</insert>
 	
 	<update id="updateBoard" parameterType="Board">
-	UPDATE intg_board
+	UPDATE smrt_board
 	SET board_title = #{boardTitle}
 	<if test="boardTeam != null">
 	, board_team = #{boardTeam}
@@ -43,14 +43,8 @@
 	</update>
 	
 	<delete id="deleteBoard" parameterType="Board">
-	DELETE FROM intg_board
+	DELETE FROM smrt_board
 	WHERE board_id = #{boardId} AND board_no = #{boardNo}
 	</delete>
 	
-	<select id="selectTeamList" resultType="CommonCode">
-	SELECT team as commonCode,
-	       team as commonCodeName
-	FROM intg_team_info
-	WHERE use_yn = 'Y'
-	</select>
 </mapper>

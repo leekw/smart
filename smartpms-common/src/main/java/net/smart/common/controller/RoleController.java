@@ -1,4 +1,4 @@
-package net.smart.web.role.controller;
+package net.smart.common.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.Map;
 
 import net.smart.common.annotation.IntegrationRequest;
 import net.smart.common.annotation.IntegrationResponse;
-import net.smart.web.domain.resource.Resource;
-import net.smart.web.domain.role.Role;
-import net.smart.web.role.service.RoleService;
+import net.smart.common.domain.based.BasedResource;
+import net.smart.common.domain.based.Role;
+import net.smart.common.service.RoleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,18 +51,18 @@ public class RoleController {
 	
 	@RequestMapping(value = "/role/auth/list/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="resources")
-	public List<Resource> getRoleAuthList(@IntegrationRequest Resource param) {	
+	public List<BasedResource> getRoleAuthList(@IntegrationRequest BasedResource param) {	
 		return roleService.getRoleAuthList(param);
 	}
 	
 	@RequestMapping(value = "/service/auth/list/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="resources")
-	public List<Resource> getServiceAuthList(@IntegrationRequest Resource param) {	
+	public List<BasedResource> getServiceAuthList(@IntegrationRequest BasedResource param) {	
 		return roleService.getServiceAuthList(param);
 	}
 	
 	@RequestMapping(value = "/role/auth/save.{metadataType}", method = RequestMethod.POST)
-	public void saveAuth(@IntegrationRequest List<Resource> params) {
+	public void saveAuth(@IntegrationRequest List<BasedResource> params) {
 		roleService.saveAuth(params);
 	}
 	

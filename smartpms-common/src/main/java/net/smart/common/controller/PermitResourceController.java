@@ -95,6 +95,9 @@ public class PermitResourceController extends AbstractPageController {
 				if (file.getResourceId() != null && !"".equals(file.getResourceId())) {
 					file.setTargetId(file.getResourceId());
 					file.setRelationType("MENU");
+				} else {
+					file.setTargetId(file.getBoardNo() + ":" + file.getBoardId());
+					file.setRelationType("BOARD");
 				}
 				files.add(file);
 			}

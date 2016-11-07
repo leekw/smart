@@ -228,30 +228,34 @@ Ext.define('Ui.main.view.ViewportController', {
     		if(IMG_RESOURCE != '')
     			FileUpload._openFileUploadForm(IMG_RESOURCE);
     	} else {
-	    	var me = this;
-	    	Ext.getBody().mask("Loading...");
-			Ext.Ajax.request({
-				url: G_PATH + '/based/res/info/get.json',
-				method : 'POST',
-				headers : {'Content-Type' : 'application/json'},
-				params : (Ext.JSON.encode({resourceId : id})),
-				success: function(res, eOtps) {
-					var result = JSON.parse(res.responseText);
-					if (result != null && result.info != null && result.info.resourceId != null
-							&& result.info.resourceId != '') {
-						me.setCurrentView(id, result.info);
-					} else {
-						Ext.MessageBox.alert('Warning', '존재하지 않은 메뉴입니다.');
-						me.redirectTo(M_RESOURCE_ID);
-						me.onRouteChange(M_RESOURCE_ID);
+    		var me = this;
+    		if (id != null) {
+		    	Ext.getBody().mask("Loading...");
+				Ext.Ajax.request({
+					url: G_PATH + '/based/res/info/get.json',
+					method : 'POST',
+					headers : {'Content-Type' : 'application/json'},
+					params : (Ext.JSON.encode({resourceId : id})),
+					success: function(res, eOtps) {
+						var result = JSON.parse(res.responseText);
+						if (result != null && result.info != null && result.info.resourceId != null
+								&& result.info.resourceId != '') {
+							me.setCurrentView(id, result.info);
+						} else {
+							Ext.MessageBox.alert('Warning', '존재하지 않은 메뉴입니다.');
+							me.redirectTo(M_RESOURCE_ID);
+							me.onRouteChange(M_RESOURCE_ID);
+						}
+						Ext.getBody().unmask();
+					},
+					failure: function(res, eOtps) {
+						Ext.getBody().unmask();
 					}
-					Ext.getBody().unmask();
-				},
-				failure: function(res, eOtps) {
-					Ext.getBody().unmask();
-				}
-				
-			});
+					
+				});
+			} else {
+				me.setCurrentView(M_RESOURCE_ID, null);
+			}
     	}
     },
 

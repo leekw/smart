@@ -16,13 +16,13 @@ public interface NoticeService {
 	
 	public void removeNotice(List<Notice> params);
 	
-	public List<MailGroup> getMailGroupList();
-	
-	public void addMailQueue(MailQueue param);
-	
-	public List<MailQueue> getMailQueueList();
-	
-	public void modifyMailQueue(MailQueue param);
-	
-	public void modifyMailGroup(MailGroup param);
+//	public List<MailGroup> getMailGroupList();
+//	
+//	public void addMailQueue(MailQueue param);
+//	
+//	public List<MailQueue> getMailQueueList();
+//	
+//	public void modifyMailQueue(MailQueue param);
+//	
+//	public void modifyMailGroup(MailGroup param);
 }

@@ -96,7 +96,7 @@ Ext.define('Ui.admin.role.view.RoleGrid' ,{
         {
 			xtype : 'label',
 			width : '100%',
-			html: '<div><div style="float:left;"><span sytle="padding-left:10px;font-size:14px;font-weight:800 !important"><i class="x-fa fa-info-circle" style="padding-left:5px;"></i>&nbsp;Role 정보</span></div>'
+			html: '<div><div style="float:left;font-size:15px;font-weight:600;"><span sytle="padding-left:10px;font-size:14px;font-weight:800 !important"><i class="x-fa fa-info-circle" style="padding-left:5px;"></i>&nbsp;Role 정보</span></div>'
 				  + '<div style="float:right;"><span style="cursor:pointer;cursor:hand;" onclick="GridAction._addRole()"><i class="x-fa fa-plus" style="padding-right:5px;"></i></span>'
 				  + '<span style="cursor:pointer;cursor:hand;" onclick="GridAction._removeRole()"><i class="x-fa fa-trash" style="padding-right:5px;"></i></span>'
 				  + '</div>'

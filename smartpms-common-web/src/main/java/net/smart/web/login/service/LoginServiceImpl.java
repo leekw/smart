@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.smart.common.domain.IntUser;
+import net.smart.common.domain.based.UserRole;
 import net.smart.common.exception.IntegrationException;
 import net.smart.common.support.security.StringEncrypter;
 import net.smart.common.support.util.DateUtil;
 import net.smart.web.domain.UserInfo;
-import net.smart.web.domain.role.UserRole;
 import net.smart.web.resource.dao.ResourceDao;
 
 import org.springframework.beans.factory.annotation.Autowired;

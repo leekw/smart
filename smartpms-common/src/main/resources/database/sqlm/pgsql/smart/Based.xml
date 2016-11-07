@@ -341,6 +341,39 @@
 	AND resource_id = #{resourceId}
 	</delete>
 	
+	<select id="selecteRoleList" parameterType="Role" resultType="Role">
+	SELECT id as roleId,
+	       name as roleName,
+	       'R' as mode
+	FROM smrt_role
+	WHERE 1=1
+	<if test="roleName != null">
+	AND name like #{roleName}||'%'
+	</if>
+	</select>
+	
+	<select id="selectUserRoleList" parameterType="UserRole" resultType="UserRole">
+	SELECT target_id as userId,
+		   role_id as roleId
+	FROM smrt_rel_role
+	WHERE 1=1
+	<if test="userId != null">
+	AND tartget_id = #{userId}
+	AND relation_type = 'USER'
+	</if>
+	</select> 
+	
+	<delete id="deleteUserRole" parameterType="UserInfo">
+	DELETE FROM smrt_rel_role
+	WHERE tatget_id = #{userId}
+	AND relation_type = 'USER'
+	</delete>
+	
+	<insert id="inserUserRole" parameterType="UserRole">
+	INSERT INTO smrt_rel_role (target_id, role_id, relation_type)
+	VALUES (#{userId}, #{roleId}, 'USER')
+	</insert>
+	
 	<insert id="insertRole" parameterType="BasedRole">
 	INSERT INTO smrt_role (id, name)
 	VALUES (#{roleId}, #{roleName})
@@ -355,4 +388,120 @@
 	DELETE FROM smrt_role
 	WHERE id = #{roleId}
 	</delete>
+	
+	<select id="selectRoleInUserList" parameterType="BasedRole" resultType="BasedRole">
+	select a.user_name as userId,
+	       b.display_name as userName,
+	       a.role_id as roleId,
+	       c.role_name as roleName,
+	       count(1) over() as total,
+	       'R' as mode
+	from smrt_rel_role a, 
+	     smrt_sys_user b,
+	     smrt_role c
+	where 1=1
+	<if test="roleId !=null">
+	and a.role_id = #{roleId}
+	</if>
+	and b.id = a.target_id
+	and a.relation_type = 'USER'
+	and c.id = a.role_id
+	limit #{limit} offset (#{page} - 1) * #{limit}
+	</select>
+	
+	<select id="selectRoleAuthList" parameterType="BasedResource" resultType="BasedResource">
+	   SELECT    a.id AS resourceId,
+			  a.name AS resourceName,
+			  a.parent_id AS parentResourceId,
+			  b.name AS parentResourceName,
+			  a.resource_type AS resourceTypeCode,
+			  case when c.auth_id is null then false else true end AS include,
+			  case when c.auth_id is null then true else false end AS exclude,
+			  level||'단계' AS resourceDepth,
+			  #{roleId} as roleId
+		FROM smrt_resource a,
+		     smrt_resource b,
+		     smrt_rel_auth_res c,
+		     smrt_rel_role_auth d
+		WHERE 1=1
+		AND b.id (+) = a.parent_id
+		and d.auth_id (+) = c.auth_id
+		and d.role_id (+) = #{roleId}
+		and c.resource_id (+) = a.id
+		AND a.resource_type IN ('MENU','PAGE', 'IMAGE')
+		START WITH a.parent_id = #{parentResourceId}
+		CONNECT BY PRIOR a.id = a.parent_id
+	</select>
+	
+	<select id="selectServiceAuthList" parameterType="BasedResource" resultType="BasedResource">
+		SELECT    a.id AS resourceId,
+			  a.name AS resourceName,
+			  a.parent_id AS parentResourceId,
+			  b.name AS parentResourceName,
+			  a.resource_type AS resourceTypeCode,
+			  case when c.auth_id is null then false else true end AS include,
+			  case when c.auth_id is null then true else false end AS exclude,
+			  level||'단계' AS resourceDepth,
+			  #{roleId} as roleId
+		FROM smrt_resource a,
+		     smrt_resource b,
+		     smrt_rel_auth_res c,
+		     smrt_rel_role_auth d
+		WHERE 1=1
+		AND b.id (+) = a.parent_id
+		and d.auth_id (+) = c.auth_id
+		and d.role_id (+) = #{roleId}
+		and c.resource_id (+) = a.id
+		AND a.resource_type = 'CONTENT'
+		START WITH a.parent_id = #{parentResourceId}
+		CONNECT BY PRIOR a.id = a.parent_id
+	</select>
+	
+	<delete id="deleteAuth" parameterType="Resource">
+	DELETE FROM smrt_rel_auth_res
+	WHERE resource_id = #{resourceId}
+	AND auth_id = #{roleId}
+	</delete>
+	
+	<update id="mergeAuth" parameterType="Resource">
+	with t_auth as (
+	select #{resourceId} as resource_id,
+		   #{authId} as auth_id
+	),
+	update_auth as (
+	update smrt_rel_auth_res a
+	set a.auth_id = t_auth.auth_id
+	from t_auth where a.resource_id = t_auth.resource_id 
+	and  a.auth_id = t_auth.auth_id
+	)
+	insert into smrt_rel_auth_res (resource_id, auth_id)
+	select t_auth.resource_id, t_auth.auth_id
+	from t_auth where not exists (select 1 from smrt_rel_auth_res a where a.resource_id = t_auth.resource_id and  a.auth_id = t_auth.auth_id)
+	</update>
+	
+	<delete id="deleteRoleUser" parameterType="Role">
+	DELETE FROM smrt_rel_role
+	WHERE role_id = #{roleId} and target_id = #{userId} and relation_type = 'USER'
+	</delete>
+	
+	<update id="insertRoleUser" parameterType="Role">
+	insert into smrt_rel_role (role_id, target_id, relation_type)
+	values (#{roleId}, #{userId}, 'USER')
+	</update>
+	
+	<select id="selectMainResourceInfo" resultType="HashMap">
+	SELECT a.url,
+		   a.id as resourceId,
+		   a.name as resourceName,
+		   a.resource_type as resourceType,
+		   a.content as resourceContent,
+		   b.name as parentResourceName 
+	FROM smrt_resource a,
+		 smrt_resource b 
+	WHERE 1=1
+	and b.id = a.parent_id
+	and a.id = (
+	select sys_prprt_value from smrt_sys_propertie where sys_prprt_id = 'MAIN_RESOURCE_ID')
+    limit 1
+	</select>
 </mapper>

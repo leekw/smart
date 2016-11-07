@@ -22,8 +22,6 @@ public interface SmartCommonService {
 	
 	public boolean isCutOverAdmin();
 	
-	public void setLimitConnectionCount();
-	
 	public int getLimitCount();
 	
 	public Map<String, String> getMainResourceInfo();

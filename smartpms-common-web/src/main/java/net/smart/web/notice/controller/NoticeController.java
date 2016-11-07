@@ -53,11 +53,12 @@ public class NoticeController {
 		if (temps != null && !temps.isEmpty()) {
 			result = temps.get(0);
 			if (result.getNoticePublishType() != null && !"1".equals(result.getNoticePublishType())) {
-				String address = this.getMailGroup(result.getMailGroupId());
+//				String address = this.getMailGroup(result.getMailGroupId());
+				String address = null;
 				MailQueue que = new MailQueue();
 				que.setNoticeId(result.getNoticeId());
 				que.setSendAddress(address);
-				noticeService.addMailQueue(que);
+//				noticeService.addMailQueue(que);
 
 			}
 			if (result.getNoticePublishType() != null && !"2".equals(result.getNoticePublishType()))
@@ -67,18 +68,18 @@ public class NoticeController {
 		}
 	}
 	
-	private String getMailGroup(String mailGroupId) {
-		for (MailGroup group : this.getMailGroups()) {
-			if (group.getMailGroupId().equals(mailGroupId)) {
-				return group.getTargetMailAddress();
-			}
-		}
-		return null;
-	}
+//	private String getMailGroup(String mailGroupId) {
+//		for (MailGroup group : this.getMailGroups()) {
+//			if (group.getMailGroupId().equals(mailGroupId)) {
+//				return group.getTargetMailAddress();
+//			}
+//		}
+//		return null;
+//	}
 		
-	private List<MailGroup> getMailGroups() {
-		return noticeService.getMailGroupList();
-	}
+//	private List<MailGroup> getMailGroups() {
+//		return noticeService.getMailGroupList();
+//	}
 	
 	@RequestMapping(value = "/notice/add.{metadataType}", method = RequestMethod.POST)
 	public void addNotice(@IntegrationRequest List<Notice> params) {
@@ -104,23 +105,24 @@ public class NoticeController {
 	@RequestMapping(value = "/mail/group/list/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="groups")
 	public List<MailGroup> getMailGroupList() {
-		return this.getMailGroups();
+//		return this.getMailGroups();
+		return null;
 	}
 	
 	
 	@RequestMapping(value = "/mail/modify.{metadataType}", method = RequestMethod.POST)
 	public void modifyMailGroup(@IntegrationRequest MailGroup param) {
-		noticeService.modifyMailGroup(param);
+//		noticeService.modifyMailGroup(param);
 	}
 	
 	@RequestMapping(value = "/mail/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="mail")
 	public MailGroup getMailGroup(@IntegrationRequest MailGroup param) {
-		for (MailGroup group : this.getMailGroups()) {
-			if (group.getMailGroupId().equals(param.getMailGroupId())) {
-				return group;
-			}
-		}
+//		for (MailGroup group : this.getMailGroups()) {
+//			if (group.getMailGroupId().equals(param.getMailGroupId())) {
+//				return group;
+//			}
+//		}
 		return null;
 	}
 

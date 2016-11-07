@@ -1,6 +1,7 @@
 package net.smart.common.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import net.smart.common.domain.based.BasedFile;
 import net.smart.common.domain.based.BasedOrg;
@@ -117,7 +118,7 @@ public class BasedResourceDaoImpl extends BasedSqlSessionDaoSupport implements B
 	@Override
 	public void modifyResource(List<BasedResource> params) {
 		for (BasedResource param : params) {
-			getSqlSession().update("based.deleteResource", param);
+			getSqlSession().update("based.updateResource", param);
 		}
 	}
 
@@ -141,6 +142,11 @@ public class BasedResourceDaoImpl extends BasedSqlSessionDaoSupport implements B
 		for (BasedResourceRole param : params) {
 			getSqlSession().delete("based.deleteResourceRole", param);
 		}
+	}
+
+	@Override
+	public Map<String, String> getMainResourceInfo() {
+		return getSqlSession().selectOne("based.selectMainResourceInfo");
 	}
 
 }

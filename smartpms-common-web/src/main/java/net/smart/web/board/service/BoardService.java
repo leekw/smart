@@ -15,5 +15,4 @@ public interface BoardService {
 	
 	public void removeBoard(Board param);
 
-	public List<CommonCode> getTeamList();
 }

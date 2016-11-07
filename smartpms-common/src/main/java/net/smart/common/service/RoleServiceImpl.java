@@ -1,4 +1,4 @@
-package net.smart.web.role.service;
+package net.smart.common.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,11 +8,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.PostConstruct;
 
-import net.smart.web.domain.resource.Resource;
-import net.smart.web.domain.resource.ResourceRole;
-import net.smart.web.domain.role.Role;
-import net.smart.web.resource.service.ResourceService;
-import net.smart.web.role.dao.RoleDao;
+import net.smart.common.dao.RoleDao;
+import net.smart.common.domain.based.BasedResource;
+import net.smart.common.domain.based.BasedResourceRole;
+import net.smart.common.domain.based.Role;
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -27,16 +29,16 @@ public class RoleServiceImpl implements RoleService {
 	private RoleDao roleDao;
 	
 	@Autowired
-	private ResourceService resourceService;
+	private SmartCommonService smartCommonService;
 	
-	private Map<String, Map<String, ResourceRole>> resourceRoleData;
+	private Map<String, Map<String, BasedResourceRole>> resourceRoleData;
 	
 	private AtomicInteger sync = new AtomicInteger(0);
 	
 	@PostConstruct
 	public void init(){
 		if (resourceRoleData == null) {
-			resourceRoleData = new HashMap<String, Map<String, ResourceRole>>();
+			resourceRoleData = new HashMap<String, Map<String, BasedResourceRole>>();
 			synchronized(sync){
 				resourceRoleData = this.getCacheResourceRole();
 			}
@@ -52,14 +54,14 @@ public class RoleServiceImpl implements RoleService {
 		}
 	}
 	
-	private Map<String, Map<String, ResourceRole>> getCacheResourceRole() {
-		Map<String, Map<String, ResourceRole>> result = new HashMap<String, Map<String, ResourceRole>>();
-		List<ResourceRole> temps = roleDao.getResourceRoleList();
-		for (ResourceRole obj : temps) {
-			String key = this.getResourceKey(obj);
-			Map<String, ResourceRole> resource = result.get(obj.getRoleId());
+	private Map<String, Map<String, BasedResourceRole>> getCacheResourceRole() {
+		Map<String, Map<String, BasedResourceRole>> result = new HashMap<String, Map<String, BasedResourceRole>>();
+		List<BasedResourceRole> temps = roleDao.getResourceRoleList();
+		for (BasedResourceRole obj : temps) {
+			String key = obj.getResourceKey();
+			Map<String, BasedResourceRole> resource = result.get(obj.getRoleId());
 			if (resource == null) {
-				resource = new HashMap<String, ResourceRole>();
+				resource = new HashMap<String, BasedResourceRole>();
 				result.put(obj.getRoleId(), resource);
 			}
 			resource.put(key, obj);
@@ -67,17 +69,6 @@ public class RoleServiceImpl implements RoleService {
 		return result;
 	}
 	
-	private String getResourceKey(ResourceRole param) {
-		if (param.getResourceType().equals("MENU")
-				|| param.getResourceType().equals("IMAGE")) {
-			return param.getResourceId();
-		} else if(param.getResourceType().equals("PAGE")) {
-			return param.getUrl();
-		} else if (param.getResourceType().equals("CONTENT")) {
-			return param.getUrl();
-		}
-		return null;
-	}
 
 	@Override
 	public List<Role> getRoleList(Role param) {
@@ -91,16 +82,16 @@ public class RoleServiceImpl implements RoleService {
 			roleDao.modifyRole(param);
 		} else {
 			roleDao.addRole(param);
-			ResourceRole defaultRole = new ResourceRole();
+			BasedResourceRole defaultRole = new BasedResourceRole();
 			defaultRole.setRoleId(param.getRoleId());
 			defaultRole.setResourceId("RE_00013");
 			defaultRole.setIncludeYn("Y");
-			resourceService.addResourceRole(defaultRole);
-			defaultRole = new ResourceRole();
+			smartCommonService.addResourceRole(defaultRole);
+			defaultRole = new BasedResourceRole();
 			defaultRole.setRoleId(param.getRoleId());
 			defaultRole.setResourceId("RE_00014");
 			defaultRole.setIncludeYn("Y");
-			resourceService.addResourceRole(defaultRole);
+			smartCommonService.addResourceRole(defaultRole);
 		}
 	}
 
@@ -112,22 +103,22 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<ResourceRole> getInlcudeResourceRoleList() {
+	public List<BasedResourceRole> getInlcudeResourceRoleList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ResourceRole> getExcludeResourceRoleList() {
+	public List<BasedResourceRole> getExcludeResourceRoleList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isPermitResource(String roleId, String checkData) {
-		Map<String, ResourceRole> data = resourceRoleData.get(roleId);
+		Map<String, BasedResourceRole> data = resourceRoleData.get(roleId);
 		if (data == null || data.isEmpty()) return false;
-		ResourceRole result = data.get(checkData);
+		BasedResourceRole result = data.get(checkData);
 		return data != null && !data.isEmpty() ?  (result == null ? false : (result.isExclude() ? false : true)) : false ;
 	}
 
@@ -147,26 +138,26 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<Resource> getRoleAuthList(Resource param) {
+	public List<BasedResource> getRoleAuthList(BasedResource param) {
 		param.setParentResourceId("TOP");
-		List<Resource> results = roleDao.getRoleAuthList(param);
+		List<BasedResource> results = roleDao.getRoleAuthList(param);
 		param.setParentResourceId("TOP2");
-		List<Resource> temps = roleDao.getRoleAuthList(param);
+		List<BasedResource> temps = roleDao.getRoleAuthList(param);
 		results.addAll(temps);		
 		return results;
 	}
 
 	@Override
-	public List<Resource> getServiceAuthList(Resource param) {
+	public List<BasedResource> getServiceAuthList(BasedResource param) {
 		return roleDao.getServiceAuthList(param);
 	}
 
 	@Override
 	@Transactional
-	public void saveAuth(List<Resource> params) {
-		List<Resource> delList = new ArrayList<Resource>();
-		List<Resource> modList = new ArrayList<Resource>();
-		for (Resource obj : params) {
+	public void saveAuth(List<BasedResource> params) {
+		List<BasedResource> delList = new ArrayList<BasedResource>();
+		List<BasedResource> modList = new ArrayList<BasedResource>();
+		for (BasedResource obj : params) {
 			if (!obj.isExclude() && !obj.isInclude()) {
 				delList.add(obj);
 			} else {

@@ -1,4 +1,4 @@
-package net.smart.web.domain.role;
+package net.smart.common.domain.based;
 
 import net.smart.common.domain.Common;
 

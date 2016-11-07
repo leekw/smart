@@ -16,22 +16,7 @@
 	</select>
 	
 	
-	<select id="selectMainResourceInfo" resultType="HashMap">
-	SELECT a.url,
-		   a.resource_id as resourceId,
-		   a.resource_name as resourceName,
-		   a.resource_type as resourceType,
-		   a.resource_content as resourceContent,
-		   b.resource_name as parentResourceName 
-	FROM intg_resource a,
-		 intg_resource b 
-	WHERE 1=1
-	and b.resource_id = a.parent_resource_id
-	and a.resource_id = (
-	SELECT  main_resource_id as mainResourceId
-    FROM intg_project_status)
-    limit 1
-	</select>
+	
 	
 	<select id="selecDataSyncInfo" resultType="DataSyncInfo" parameterType="DataSyncInfo">
 	select sync_type as syncType,

@@ -17,5 +17,6 @@ public interface SmartCommonDao {
 	public void addDataSyncInfo(DataSyncInfo param);
 	
 	public DataSyncInfo getInterfaceDateInfo();
+	
 
 }

@@ -17,6 +17,17 @@ public class DataSyncInfo extends Common {
 	private String defectStartDate;
 	private String defectEndDate;
 	
+	public DataSyncInfo() {
+		
+	}
+	
+	public DataSyncInfo(String cutoverStartDate, String cutoverEndDate, String defectStartDate, String defectEndDate) {
+		this.cutoverStartDate = cutoverStartDate;
+		this.cutoverEndDate = cutoverEndDate;
+		this.defectStartDate = defectStartDate;
+		this.defectEndDate = defectEndDate;
+	}
+	
 	public String getCutoverStartDate() {
 		return cutoverStartDate;
 	}

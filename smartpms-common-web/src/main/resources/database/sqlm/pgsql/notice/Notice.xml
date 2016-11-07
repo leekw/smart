@@ -13,16 +13,12 @@
 	       notice_retry_count as noticeRetryCount, 
 	       notice_retry_cycle as noticeRetryCycel, 
 	       notice_description as noticeDescription,
-	       a.mail_group_id as mailGroupId,
-	       b.mail_group_name as mailGroupName,
 	       'R' as dataMode,
 	       notice_template as noticeTemplate,
 	       notice_main_yn as noticeMainYn,
 	       decode(notice_main_yn, 'Y', true, false) as main
-	  FROM intg_notice a, 
-	       intg_mail_group b
+	  FROM smrt_notice a
 	  WHERE 1=1
-	  AND b.mail_group_id(+) = a.mail_group_id
 	  <if test="startSearchDate != null">
 	  AND notice_publish_date &lt;= #{endSearchDate} 
 	  AND notice_publish_date &gt;= #{startSearchDate}
@@ -37,7 +33,7 @@
 	</select>
 		
 	<insert id="insertNotice" parameterType="Notice">
-	INSERT INTO intg_notice(
+	INSERT INTO smrt_notice(
             notice_id, notice_title, notice_team, notice_level, notice_create_date, 
             notie_publish_type, notice_publish_date, notice_retry_count, 
             notice_retry_cycle, notice_description, mail_group_id, notice_template, notice_main_yn)
@@ -48,7 +44,7 @@
 	</insert>
 	
 	<update id="updateNotice" parameterType="Notice">
-	UPDATE intg_notice
+	UPDATE smrt_notice
 	SET notice_title = #{noticeTitle}
 	<if test="noticeTeam != null">
 	, notice_team = #{noticeTeam}
@@ -73,40 +69,9 @@
 	</update>
 	
 	<delete id="deleteNotice" parameterType="Notice">
-	DELETE FROM intg_notice
+	DELETE FROM smrt_notice
 	WHERE notice_id = #{noticeId}
 	</delete>
 	
-	<select id="selectMailGroupList" resultType="MailGroup">
-	SELECT mail_group_id as mailGroupId, 
-		   mail_group_name as mailGroupName, 
-		   target_mail_addr as targetMailAddress
- 	FROM intg_mail_group	
-	</select>
-	<insert id="insertMailQueue" parameterType="MailQueue">
-	INSERT INTO intg_mail_queue (que_id, notice_id, request_date, send_date, send_yn, send_address)
-	values (nextval('mail_queue'), #{noticeId}, now()::timestamp without time zone, null, 'N', #{sendAddress})
-	</insert>
-	<select id="selectMailQueueList" resultType="MailQueue">
-	SELECT send_address as sendAddress,
-	       que_id as queueId,
-	       b.notice_title as mailSummary,
-	       b.notice_description as mailDescription
-	FROM intg_mail_queue a, 
-	     intg_notice b
-	WHERE send_yn = 'N'
-	AND b.notice_id = a.notice_id
-	</select>
-	<update id="updateMailQueue" parameterType="MailQueue">
-	UPDATE intg_mail_queue
-	SET  send_date = now()::timestamp without time zone
-	    ,send_yn = #{sendYn}
-	WHERE que_id = #{queueId}
-	</update>
-	
-	<update id="updateMailGroup" parameterType="MailGroup">
-	UPDATE intg_mail_group
-	SET target_mail_addr = #{targetMailAddress}
-	WHERE mail_group_id = #{mailGroupId}
-	</update>
+
 </mapper>

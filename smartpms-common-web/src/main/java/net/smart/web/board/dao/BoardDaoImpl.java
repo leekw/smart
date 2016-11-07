@@ -2,14 +2,13 @@ package net.smart.web.board.dao;
 
 import java.util.List;
 
-import net.smart.common.support.dao.SmartSqlSessionDaoSupport;
-import net.smart.web.domain.CommonCode;
+import net.smart.common.support.dao.BasedSqlSessionDaoSupport;
 import net.smart.web.domain.board.Board;
 
 import org.springframework.stereotype.Repository;
 
 @Repository("boardDao")
-public class BoardDaoImpl extends SmartSqlSessionDaoSupport  implements BoardDao {
+public class BoardDaoImpl extends BasedSqlSessionDaoSupport  implements BoardDao {
 
 	@Override
 	public List<Board> getBoardList(Board param) {
@@ -34,10 +33,6 @@ public class BoardDaoImpl extends SmartSqlSessionDaoSupport  implements BoardDao
 		getSqlSession().delete("board.deleteBoard", param);
 	}
 
-	@Override
-	public List<CommonCode> getTeamList() {
-		return getSqlSession().selectList("board.selectTeamList") ;
-	}
 
 	@Override
 	public Integer getNextBoarId() {

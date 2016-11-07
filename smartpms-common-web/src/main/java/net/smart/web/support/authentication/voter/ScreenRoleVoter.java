@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import net.smart.common.service.RoleService;
 import net.smart.common.service.SmartCommonService;
-import net.smart.web.role.service.RoleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDecisionVoter;

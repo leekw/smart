@@ -98,7 +98,8 @@ public class BoardController {
 	@RequestMapping(value = "/team/list/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="teams")
 	public List<CommonCode> getTeamList() {
-		return boardService.getTeamList();
+//		return boardService.getTeamList();
+		return null;
 	}
 
 

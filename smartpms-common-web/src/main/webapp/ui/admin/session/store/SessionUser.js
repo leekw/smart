@@ -4,7 +4,7 @@ Ext.define('Ui.admin.session.store.SessionUser', {
     autoDestroy: true,
     proxy: {
         type: 'ajax',
-        url: G_PATH + '/resource/session/user/list/get.json',
+        url: G_PATH + '/permit/res/session/user/list/get.json',
         headers: {
             'Content-Type': 'application/json'
         },

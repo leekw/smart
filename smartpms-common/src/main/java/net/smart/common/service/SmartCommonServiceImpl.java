@@ -16,7 +16,6 @@ import net.smart.common.dao.BasedResourceDao;
 import net.smart.common.dao.SmartCommonDao;
 import net.smart.common.domain.DataSyncInfo;
 import net.smart.common.domain.IntUser;
-import net.smart.common.domain.UploadFile;
 import net.smart.common.domain.UserDetail;
 import net.smart.common.domain.based.BasedFile;
 import net.smart.common.domain.based.BasedOrg;
@@ -42,9 +41,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("smartCommonService")
 public class SmartCommonServiceImpl implements SmartCommonService {
-	
-	@Autowired
-	private SmartCommonDao smartCommonDao;
 	
 	@Autowired
 	private BasedResourceDao basedResourceDao;
@@ -99,9 +95,6 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 	
 	@PostConstruct
 	public void init() {
-		this.limitCount = smartCommonDao.getLimitConnectionCount();
-		this.mainResource = smartCommonDao.getMainResourceInfo();
-		this.interfaceDate = smartCommonDao.getInterfaceDateInfo();
 		this.setDeveloperData();
 		this.setExternalPermitUrl();
 		this.setOrgData();
@@ -109,6 +102,14 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 		this.setSysProperties();
 		this.setResourceRoles();
 		contextData = new ConcurrentHashMap<String, String>();
+		
+		this.limitCount = Integer.parseInt(sysProperties.get("LIMIT_CONNECTION").getSysPropertieValue());
+		this.mainResource = basedResourceDao.getMainResourceInfo();
+	
+		this.interfaceDate = new DataSyncInfo(sysProperties.get("CUTOVER_START_DATE").getSysPropertieValue(),
+				sysProperties.get("CUTOVER_END_DATE").getSysPropertieValue(),
+				sysProperties.get("DEFECT_START_DATE").getSysPropertieValue(),
+				sysProperties.get("DEFECT_END_DATE").getSysPropertieValue());
 	}
 	
 	private void setResourceRoles() {
@@ -179,32 +180,10 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 		}
 	}
 	
-//	@Scheduled(cron="0 0/5 * * * ? ")
-	public void setInterfaceDateInfo() {
-		DataSyncInfo data = smartCommonDao.getInterfaceDateInfo();
-		synchronized(dateSync) {
-			this.interfaceDate = null;
-			this.interfaceDate = data;
-		}
-	}
-
-
 	@Override
 	public boolean isAdmin(String ip) {
 		if (this.isSuperAmin()) return true;
 		return false;
-	}
-
-	@Override
-//	@Scheduled(cron="0 0/1 * * * ? ")
-	public void setLimitConnectionCount() {
-		Integer result = smartCommonDao.getLimitConnectionCount();
-		Map<String, String> mainResource = smartCommonDao.getMainResourceInfo();
-		synchronized(syncCount){
-			this.limitCount = result.intValue();
-			this.mainResource.clear();
-			this.mainResource = mainResource;
-		}
 	}
 
 	@Override
@@ -214,19 +193,20 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 
 	@Override
 	public DataSyncInfo getDataSyncInfo(DataSyncInfo param) {
-		return smartCommonDao.getDataSyncInfo(param);
+//		return smartCommonDao.getDataSyncInfo(param);
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public void modifyDataSyncInfo(DataSyncInfo param) {
-		smartCommonDao.modifyDataSyncInfo(param);
+//		smartCommonDao.modifyDataSyncInfo(param);
 	}
 
 	@Override
 	@Transactional
 	public void addDataSyncInfo(DataSyncInfo param) {
-		smartCommonDao.addDataSyncInfo(param);
+//		smartCommonDao.addDataSyncInfo(param);
 	}
 
 	@Override
