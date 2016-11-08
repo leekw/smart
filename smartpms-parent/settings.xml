@@ -17,7 +17,7 @@
 			<url>http://122.35.179.162:8081/nexus/content/groups/public/</url>
 		</mirror>
 	</mirrors>
-
+     
 
 	<!-- <servers>
 		<server>
