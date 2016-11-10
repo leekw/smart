@@ -21,7 +21,7 @@
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	
-	<bean id="basedDataSource" class="net.smart.common.support.dbcp.SmartBasicDataSource">
+	<bean id="basedDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${based.jdbc.url}" />
 		<property name="username" value="${based.jdbc.username}" />

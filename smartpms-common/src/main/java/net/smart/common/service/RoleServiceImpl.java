@@ -11,13 +11,10 @@ import javax.annotation.PostConstruct;
 import net.smart.common.dao.RoleDao;
 import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
+import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.Role;
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -133,7 +130,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<Role> getRoleInUserList(Role param) {
+	public List<BasedRole> getRoleInUserList(BasedRole param) {
 		return roleDao.getRoleInUserList(param);
 	}
 
@@ -158,6 +155,7 @@ public class RoleServiceImpl implements RoleService {
 		List<BasedResource> delList = new ArrayList<BasedResource>();
 		List<BasedResource> modList = new ArrayList<BasedResource>();
 		for (BasedResource obj : params) {
+			obj.setAuthId(obj.getResourceId());
 			if (!obj.isExclude() && !obj.isInclude()) {
 				delList.add(obj);
 			} else {
@@ -170,8 +168,11 @@ public class RoleServiceImpl implements RoleService {
 			}
 		}
 		
+		roleDao.removeAuth(params);
 		roleDao.mergeAuth(modList);
-		roleDao.removeAuth(delList);
+
+		roleDao.removeRelRole(params);
+		roleDao.mergeRelRole(modList);
 		
 	}
 

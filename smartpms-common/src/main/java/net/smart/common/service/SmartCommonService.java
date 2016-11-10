@@ -11,6 +11,7 @@ import net.smart.common.domain.based.BasedFile;
 import net.smart.common.domain.based.BasedOrg;
 import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
+import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.BasedUser;
 
 
@@ -109,4 +110,11 @@ public interface SmartCommonService {
 	public String getLockMenuByUserName(String resourceId);
 	
 	public void modifyCompleteMenu(String resourceId);
+	
+	public List<BasedUser> getOrgUserList(BasedUser param);
+	
+	public List<BasedRole> getOrgRoleList(BasedRole param);
+	
+	public void addOrgUser(BasedUser param);
+	
 }

@@ -10,6 +10,7 @@ import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
 import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.BasedUser;
+import net.smart.common.domain.sys.SendQueue;
 import net.smart.common.domain.sys.SysPropertie;
 
 public interface BasedResourceDao {
@@ -62,4 +63,11 @@ public interface BasedResourceDao {
 	
 	public Map<String, String> getMainResourceInfo();
 	
+	public void modifySendQueue(SendQueue param);
+	
+	public void addSendQueue(SendQueue param);
+	
+	public List<BasedUser> getOrgUserList(BasedUser param);
+	
+	public List<BasedRole> getOrgRoleList(BasedRole param);
 }

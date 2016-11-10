@@ -48,5 +48,22 @@
 	       															and execution(* net.smart..dao.*DAO.*(..))"/>
 	       <aop:around method="setControlField" pointcut-ref="coreControlFiledPointcut"/>
 	   </aop:aspect>
-	</aop:config>    
+	</aop:config>  
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${send.mail.address}"/>
+		<property name="port" value="${send.mail.port}"/>
+		
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">false</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="smartMail" class="net.smart.common.support.mail.SmartSendMail">
+		<property name="mailSender" ref="mailSender"/>
+	</bean>
+	  
 </beans>

@@ -24,6 +24,7 @@ import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
 import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.BasedUser;
+import net.smart.common.domain.sys.SendQueue;
 import net.smart.common.domain.sys.SysPropertie;
 import net.smart.common.exception.IntegrationException;
 import net.smart.common.support.security.StringEncrypter;
@@ -103,13 +104,15 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 		this.setResourceRoles();
 		contextData = new ConcurrentHashMap<String, String>();
 		
-		this.limitCount = Integer.parseInt(sysProperties.get("LIMIT_CONNECTION").getSysPropertieValue());
+		this.limitCount = Integer.parseInt(sysProperties.get("LIMIT_CONNECTION") == null ? "-1" : sysProperties.get("LIMIT_CONNECTION").getSysPropertieValue());
 		this.mainResource = basedResourceDao.getMainResourceInfo();
-	
-		this.interfaceDate = new DataSyncInfo(sysProperties.get("CUTOVER_START_DATE").getSysPropertieValue(),
-				sysProperties.get("CUTOVER_END_DATE").getSysPropertieValue(),
-				sysProperties.get("DEFECT_START_DATE").getSysPropertieValue(),
-				sysProperties.get("DEFECT_END_DATE").getSysPropertieValue());
+		
+		if (sysProperties.get("CUTOVER_START_DATE") != null) {
+			this.interfaceDate = new DataSyncInfo(sysProperties.get("CUTOVER_START_DATE").getSysPropertieValue(),
+					sysProperties.get("CUTOVER_END_DATE").getSysPropertieValue(),
+					sysProperties.get("DEFECT_START_DATE").getSysPropertieValue(),
+					sysProperties.get("DEFECT_END_DATE").getSysPropertieValue());
+		}
 	}
 	
 	private void setResourceRoles() {
@@ -640,6 +643,22 @@ public class SmartCommonServiceImpl implements SmartCommonService {
 	}
 
 
-	
+	@Override
+	public List<BasedUser> getOrgUserList(BasedUser param) {
+		return basedResourceDao.getOrgUserList(param);
+	}
+
+
+	@Override
+	public List<BasedRole> getOrgRoleList(BasedRole param) {
+		return basedResourceDao.getOrgRoleList(param);
+	}
+
+
+	@Override
+	public void addOrgUser(BasedUser param) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

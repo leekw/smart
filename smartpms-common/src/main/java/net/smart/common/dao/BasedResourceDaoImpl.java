@@ -10,6 +10,7 @@ import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
 import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.BasedUser;
+import net.smart.common.domain.sys.SendQueue;
 import net.smart.common.domain.sys.SysPropertie;
 import net.smart.common.support.dao.BasedSqlSessionDaoSupport;
 
@@ -147,6 +148,26 @@ public class BasedResourceDaoImpl extends BasedSqlSessionDaoSupport implements B
 	@Override
 	public Map<String, String> getMainResourceInfo() {
 		return getSqlSession().selectOne("based.selectMainResourceInfo");
+	}
+
+	@Override
+	public void modifySendQueue(SendQueue param) {
+		getSqlSession().update("based.updateSendQueue", param);
+	}
+
+	@Override
+	public void addSendQueue(SendQueue param) {
+		getSqlSession().insert("based.insertSendQueue", param);
+	}
+
+	@Override
+	public List<BasedUser> getOrgUserList(BasedUser param) {
+		return getSqlSession().selectList("based.selectOrgUserList", param);
+	}
+
+	@Override
+	public List<BasedRole> getOrgRoleList(BasedRole param) {
+		return getSqlSession().selectList("based.selectOrgRoleList", param);
 	}
 
 }

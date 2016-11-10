@@ -9,6 +9,7 @@ import net.smart.common.annotation.IntegrationResponse;
 import net.smart.common.domain.based.BasedFile;
 import net.smart.common.domain.based.BasedOrg;
 import net.smart.common.domain.based.BasedResource;
+import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.BasedUser;
 import net.smart.common.service.SmartCommonService;
 
@@ -79,5 +80,22 @@ public class BasedResourceController extends AbstractPageController {
 		return smartCommonService.getCommonFileList(param);
 	}
 	
+	@IntegrationResponse(key="data")
+	@RequestMapping(value="/org/user/list/get.{metadataType}", method = RequestMethod.POST)
+	public Map<String, Object> getOrgUserList(@IntegrationRequest BasedUser param) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		List<BasedUser> users = smartCommonService.getOrgUserList(param);
+		if (users != null && !users.isEmpty()) {
+			result.put("users", users);
+			result.put("total", users.get(0).getTotal());
+		}
+		return result;
+	}
+	
+	@IntegrationResponse(key="roles")
+	@RequestMapping(value="/org/role/list/get.{metadataType}", method = RequestMethod.POST)
+	public List<BasedRole> getOrgRoleList(@IntegrationRequest BasedRole param) {
+		return smartCommonService.getOrgRoleList(param);
+	}
 
 }

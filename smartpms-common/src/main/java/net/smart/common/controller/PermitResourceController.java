@@ -21,6 +21,7 @@ import net.smart.common.domain.based.BasedFile;
 import net.smart.common.domain.based.BasedFileInfo;
 import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
+import net.smart.common.domain.based.BasedUser;
 import net.smart.common.domain.based.SessionUser;
 import net.smart.common.exception.IntegrationException;
 import net.smart.common.service.SmartCommonService;
@@ -293,6 +294,11 @@ public class PermitResourceController extends AbstractPageController {
 			SessionInformation si = sessionData.get(param.getSessionId());
 			si.expireNow();
 		}
+	}
+	
+	@RequestMapping(value = "/org/user/save.{metadataType}", method = RequestMethod.POST)
+	public void saveOrgUser(@IntegrationRequest BasedUser param) {
+		
 	}
 
 }

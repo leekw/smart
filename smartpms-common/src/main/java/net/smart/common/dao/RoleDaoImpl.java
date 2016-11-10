@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
+import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.Role;
 import net.smart.common.support.dao.BasedSqlSessionDaoSupport;
 
@@ -40,7 +41,7 @@ public class RoleDaoImpl extends BasedSqlSessionDaoSupport implements RoleDao {
 	}
 
 	@Override
-	public List<Role> getRoleInUserList(Role param) {
+	public List<BasedRole> getRoleInUserList(BasedRole param) {
 		return getSqlSession().selectList("based.selectRoleInUserList", param);
 	}
 
@@ -57,7 +58,7 @@ public class RoleDaoImpl extends BasedSqlSessionDaoSupport implements RoleDao {
 	@Override
 	public void mergeAuth(List<BasedResource> params) {
 		for (BasedResource param : params) {
-			getSqlSession().update("based.mergeAuth", param);
+			getSqlSession().insert("based.mergeAuth", param);
 		}
 	}
 
@@ -78,6 +79,20 @@ public class RoleDaoImpl extends BasedSqlSessionDaoSupport implements RoleDao {
 	@Override
 	public void saveRoleUser(Role param) {
 		getSqlSession().insert("based.insertRoleUser", param);
+	}
+
+	@Override
+	public void mergeRelRole(List<BasedResource> params) {
+		for (BasedResource param : params) {
+			getSqlSession().insert("based.mergeRelRole", param);
+		}
+	}
+
+	@Override
+	public void removeRelRole(List<BasedResource> params) {
+		for (BasedResource param : params) {
+			getSqlSession().delete("based.deleteRelRole", param);
+		}
 	}
 
 }

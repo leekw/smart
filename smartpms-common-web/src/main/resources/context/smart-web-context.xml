@@ -47,21 +47,7 @@
     </context:component-scan>
     <context:annotation-config />
     
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.kt.com"/>
-		<property name="port" value="25"/>
-		
-		<property name="javaMailProperties">
-			<props>
-				<prop key="mail.smtp.auth">false</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
-			</props>
-		</property>
-	</bean>
 	
-	<bean id="integrationMail" class="net.smart.web.support.IntegrationSendMail">
-		<property name="mailSender" ref="mailSender"/>
-	</bean>
 	
 	 <import resource="classpath*:context/smart-security.xml"/> 
 </beans>

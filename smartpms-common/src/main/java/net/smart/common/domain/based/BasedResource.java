@@ -30,7 +30,17 @@ public class BasedResource extends Common {
 	private String roleId;
 	private String includeYn;
 	private boolean mainResource;
+	private String authId;
 	
+	
+	public String getAuthId() {
+		return authId;
+	}
+
+	public void setAuthId(String authId) {
+		this.authId = authId;
+	}
+
 	public String getResourceKey() {
 		if (this.getResourceTypeCode().equals("MENU")
 				|| this.getResourceTypeCode().equals("IMAGE")) {

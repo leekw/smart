@@ -2,18 +2,13 @@ package net.smart.web.notice.service;
 
 import java.util.List;
 
-import net.smart.web.domain.MailGroup;
-import net.smart.web.domain.MailQueue;
 import net.smart.web.domain.notice.Notice;
 import net.smart.web.notice.dao.NoticeDao;
-import net.smart.web.support.IntegrationSendMail;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
@@ -23,8 +18,8 @@ public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private NoticeDao noticeDao;
 	
-	@Autowired
-	private IntegrationSendMail integrationMail;
+//	@Autowired
+//	private IntegrationSendMail integrationMail;
 
 	@Override
 	public List<Notice> getNoticeList(Notice param) {

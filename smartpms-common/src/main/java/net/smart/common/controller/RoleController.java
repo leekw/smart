@@ -7,6 +7,7 @@ import java.util.Map;
 import net.smart.common.annotation.IntegrationRequest;
 import net.smart.common.annotation.IntegrationResponse;
 import net.smart.common.domain.based.BasedResource;
+import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.Role;
 import net.smart.common.service.RoleService;
 
@@ -39,9 +40,9 @@ public class RoleController {
 	
 	@RequestMapping(value = "/role/user/list/get.{metadataType}", method = RequestMethod.POST)
 	@IntegrationResponse(key="data")
-	public Map<String, Object> getRoleUserList(@IntegrationRequest Role param) {
+	public Map<String, Object> getRoleUserList(@IntegrationRequest BasedRole param) {
 		Map<String, Object> result = new HashMap<String, Object>();
-		List<Role> users =  roleService.getRoleInUserList(param);
+		List<BasedRole> users =  roleService.getRoleInUserList(param);
 		if (users != null && !users.isEmpty()) {
 			result.put("users", users);
 			result.put("total", users.get(0).getTotal());

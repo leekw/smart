@@ -17,6 +17,7 @@ public class MailQueue extends Common {
 	private String sendYn;
 	
 	
+	
 	public String getSendYn() {
 		return sendYn;
 	}

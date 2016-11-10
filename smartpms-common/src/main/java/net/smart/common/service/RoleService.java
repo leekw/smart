@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.smart.common.domain.based.BasedResource;
 import net.smart.common.domain.based.BasedResourceRole;
+import net.smart.common.domain.based.BasedRole;
 import net.smart.common.domain.based.Role;
 
 
@@ -25,7 +26,7 @@ public interface RoleService {
 	
 	public boolean isPermitResource(String roleId, String checkData);
 	
-	public List<Role> getRoleInUserList(Role param);
+	public List<BasedRole> getRoleInUserList(BasedRole param);
 	
 	public List<BasedResource> getRoleAuthList(BasedResource param);
 	

@@ -54,10 +54,10 @@ public class NoticeController {
 			result = temps.get(0);
 			if (result.getNoticePublishType() != null && !"1".equals(result.getNoticePublishType())) {
 //				String address = this.getMailGroup(result.getMailGroupId());
-				String address = null;
-				MailQueue que = new MailQueue();
-				que.setNoticeId(result.getNoticeId());
-				que.setSendAddress(address);
+//				String address = null;
+//				MailQueue que = new MailQueue();
+//				que.setNoticeId(result.getNoticeId());
+//				que.setSendAddress(address);
 //				noticeService.addMailQueue(que);
 
 			}

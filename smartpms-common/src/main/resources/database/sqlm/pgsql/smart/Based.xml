@@ -38,6 +38,37 @@
 	  	 </if>
 	</select>
 	
+	<select id="selectOrgUserList" parameterType="BasedUser" resultType="BasedUser">
+	select org_id as defaultOrgId,
+	       id as userId,
+	       name as userName,
+	       status as status,
+	       'R' as mode 
+	from smrt_rel_user_org a, 
+	     smrt_sys_user b
+	where b.id = a.user_id 
+	and a.org_id = #{defaultOrgId}
+	ORDER BY b.id ASC
+  	<if test="maxRowSize == 0">
+  	limit #{limit} offset (#{page} - 1) * #{limit}
+	</if>
+	<if test="maxRowSize != 0">
+	limit #{maxRowSize}
+	</if> 
+	</select>
+	
+	<select id="selectOrgRoleList" parameterType="BasedRole" resultType="BasedRole">
+	SELECT a.role_id as roleId, 
+	       a.target_id as orgId,
+	       b.name as roleName,
+	       'R' as mode
+	FROM smrt_rel_role a,
+	     smrt_role b
+	WHERE relation_type = #{relationType}
+	and b.id = a.role_id
+	and a.target_id = #{orgId}
+	</select>
+	
 	<select id="selectRoleList" parameterType="BasedRole" resultType="BasedRole">
 	SELECT target_id as targetId,
 		   role_id as roleId,
@@ -390,10 +421,10 @@
 	</delete>
 	
 	<select id="selectRoleInUserList" parameterType="BasedRole" resultType="BasedRole">
-	select a.user_name as userId,
-	       b.display_name as userName,
+	select a.target_id as userId,
+	       b.name as userName,
 	       a.role_id as roleId,
-	       c.role_name as roleName,
+	       c.name as roleName,
 	       count(1) over() as total,
 	       'R' as mode
 	from smrt_rel_role a, 
@@ -439,8 +470,8 @@
 			  a.parent_id AS parentResourceId,
 			  b.name AS parentResourceName,
 			  a.resource_type AS resourceTypeCode,
-			  case when c.auth_id is null then false else true end AS include,
-			  case when c.auth_id is null then true else false end AS exclude,
+			  case when c.include_yn = 'Y' then false else true end AS include,
+			  case when c.include_yn = 'N' or c.include_yn is null then true else false end AS exclude,
 			  level||'단계' AS resourceDepth,
 			  #{roleId} as roleId
 		FROM smrt_resource a,
@@ -457,27 +488,27 @@
 		CONNECT BY PRIOR a.id = a.parent_id
 	</select>
 	
-	<delete id="deleteAuth" parameterType="Resource">
+	<delete id="deleteAuth" parameterType="BasedResource">
 	DELETE FROM smrt_rel_auth_res
 	WHERE resource_id = #{resourceId}
 	AND auth_id = #{roleId}
 	</delete>
 	
-	<update id="mergeAuth" parameterType="Resource">
-	with t_auth as (
-	select #{resourceId} as resource_id,
-		   #{authId} as auth_id
-	),
-	update_auth as (
-	update smrt_rel_auth_res a
-	set a.auth_id = t_auth.auth_id
-	from t_auth where a.resource_id = t_auth.resource_id 
-	and  a.auth_id = t_auth.auth_id
-	)
-	insert into smrt_rel_auth_res (resource_id, auth_id)
-	select t_auth.resource_id, t_auth.auth_id
-	from t_auth where not exists (select 1 from smrt_rel_auth_res a where a.resource_id = t_auth.resource_id and  a.auth_id = t_auth.auth_id)
-	</update>
+	<insert id="mergeAuth" parameterType="BasedResource">
+	INSERT INTO smrt_rel_auth_res (resource_id, auth_id, include_yn)
+	VALUES (#{resourceId}, #{authId}, #{includeYn})
+	</insert>
+	
+	<delete id="deleteRelRole" parameterType="BasedResource">
+	DELETE FROM smrt_rel_role_auth
+	WHERE role_id = #{roleId}
+	AND auth_id = #{authId}
+	</delete>
+	
+	<insert id="mergeRelRole" parameterType="BasedResource">
+	INSERT INTO smrt_rel_role_auth (role_id, auth_id, include_yn)
+	VALUES (#{roleId}, #{authId}, #{includeYn})
+	</insert>
 	
 	<delete id="deleteRoleUser" parameterType="Role">
 	DELETE FROM smrt_rel_role
@@ -504,4 +535,18 @@
 	select sys_prprt_value from smrt_sys_propertie where sys_prprt_id = 'MAIN_RESOURCE_ID')
     limit 1
 	</select>
+	
+	<insert id="insertSendQueue" parameterType="SendQueue">
+	INSERT INTO smrt_send_queue(
+            send_que_id, send_req_date, send_date, send_type, send_target, 
+            send_status, send_subject, send_description)
+    VALUES (#{sendQueId}, #{sendReqDate}, #{sendDate}, #{sendType}, #{sendTarget}, 
+            #{sendStatus}, #{sendSubject}, #{sendDescription})
+	</insert>
+	<update id="updateSendQueue" parameterType="SendQueue">
+	UPDATE smrt_send_queue
+	SET send_status = #{sendStatus}
+	   ,send_date = #{sendDate}
+	WEHRE send_que_id = #{sendQueId}
+	</update>
 </mapper>

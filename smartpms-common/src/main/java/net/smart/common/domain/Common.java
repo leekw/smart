@@ -33,7 +33,9 @@ public class Common implements Serializable {
 	private int pageSize;
 	private int page;
 	private int total;
-	 	
+	private String mode;
+	
+	
 	public enum DefaultValue {
 		DEFALUT_USER("defaultUser"),
 		DEFAULT_PROGRAM("defaultProgram");
@@ -48,6 +50,12 @@ public class Common implements Serializable {
 	
 	
 	
+	public String getMode() {
+		return mode;
+	}
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
 	public int getTotal() {
 		return total;
 	}
